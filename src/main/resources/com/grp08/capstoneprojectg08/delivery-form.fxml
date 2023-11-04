@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SplitMenuButton?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="768.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.grp08.capstoneprojectg08.HomeScreen">
+    <AnchorPane prefHeight="120.0" style="-fx-background-color: #B0926A;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <Label layoutX="82.0" layoutY="45.0" text="AIMS System">
+            <font>
+                <Font name="Arial Rounded MT Bold" size="25.0" />
+            </font>
+        </Label>
+        <ImageView fitHeight="52.0" fitWidth="61.0" layoutX="14.0" layoutY="34.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@assessts/shop_icon.png" />
+        </ImageView>
+        <Label layoutX="600.0" layoutY="47.0" text="Delivery Form" textFill="#706233">
+            <font>
+                <Font name="Arial Bold" size="25.0" />
+            </font>
+        </Label>
+        <ImageView fitHeight="52.0" fitWidth="61.0" layoutX="777.0" layoutY="36.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@assessts/form_icon.png" />
+        </ImageView>
+    </AnchorPane>
+    <Button alignment="CENTER" layoutX="1198.0" layoutY="689.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="136.0" style="-fx-background-color: #A7D397;" text="Next" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+        <font>
+            <Font name="Arial Bold" size="17.0" />
+        </font>
+    </Button>
+    <AnchorPane layoutX="333.0" layoutY="139.0" prefHeight="600.0" prefWidth="700.0" style="-fx-background-color: #B3A492; -fx-background-radius: 15;">
+        <GridPane alignment="CENTER_LEFT" hgap="5.0" prefHeight="600.0" prefWidth="700.0" vgap="10.0">
+            <columnConstraints>
+                <ColumnConstraints fillWidth="false" halignment="LEFT" hgrow="NEVER" minWidth="10.0" prefWidth="200.0" />
+                <ColumnConstraints halignment="LEFT" hgrow="ALWAYS" minWidth="10.0" prefWidth="100.0" />
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="50.0" vgrow="NEVER" />
+                <RowConstraints minHeight="10.0" prefHeight="50.0" vgrow="NEVER" />
+                <RowConstraints minHeight="10.0" prefHeight="80.0" vgrow="NEVER" />
+            <RowConstraints minHeight="10.0" prefHeight="50.0" vgrow="NEVER" />
+                <RowConstraints minHeight="10.0" prefHeight="150.0" vgrow="NEVER" />
+                <RowConstraints minHeight="10.0" prefHeight="150.0" vgrow="NEVER" />
+            </rowConstraints>
+            <padding>
+                <Insets bottom="10.0" left="20.0" right="20.0" top="5.0" />
+            </padding>
+            <TextField GridPane.columnIndex="1" />
+            <Label text="Name">
+                <font>
+                    <Font name="Arial Bold" size="18.0" />
+                </font>
+            </Label>
+            <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Label text="Phone" GridPane.rowIndex="1">
+                <font>
+                    <Font name="Arial Bold" size="18.0" />
+                </font>
+            </Label>
+            <Label text="Province/City" GridPane.rowIndex="2">
+                <font>
+                    <Font name="Arial Bold" size="18.0" />
+                </font>
+            </Label>
+            <Label text="Detail Address" GridPane.rowIndex="4">
+                <font>
+                    <Font name="Arial Bold" size="18.0" />
+                </font>
+            </Label>
+            <Label text="Shipping Instruction" GridPane.rowIndex="5">
+                <font>
+                    <Font name="Arial Bold" size="18.0" />
+                </font>
+            </Label>
+            <TextArea prefHeight="150.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <TextArea prefHeight="150.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+            <SplitMenuButton alignment="CENTER" mnemonicParsing="false" prefWidth="150.0" text="Pick a city" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                <items>
+                    <MenuItem mnemonicParsing="false" text="Action 1" />
+                    <MenuItem mnemonicParsing="false" text="Action 2" />
+                </items>
+            </SplitMenuButton>
+         <Label text="Shipping Method" GridPane.rowIndex="3">
+            <font>
+               <Font name="Arial Bold" size="18.0" />
+            </font>
+         </Label>
+         <HBox alignment="CENTER" spacing="50.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+            <children>
+               <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Normal shipping">
+                  <font>
+                     <Font size="16.0" />
+                  </font>
+               </Text>
+               <CheckBox mnemonicParsing="false" text="Fast shipping">
+                  <font>
+                     <Font size="16.0" />
+                  </font>
+               </CheckBox>
+            </children>
+         </HBox>
+        </GridPane>
+    </AnchorPane>
+     <Button alignment="CENTER" layoutX="1198.0" layoutY="632.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="136.0" style="-fx-background-color: E19898;" text="Cancel" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+         <font>
+             <Font name="Arial Bold" size="17.0" />
+         </font>
+     </Button>
+</AnchorPane>

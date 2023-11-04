@@ -30,9 +30,9 @@
                 <Font name="Arial Bold" size="25.0" />
             </font>
         </Label>
-       <Button alignment="CENTER" layoutX="1189.0" layoutY="31.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="144.0" style="-fx-background-color: #96B6C5; -fx-font-weight: bold;" text="Return Home" textAlignment="CENTER" textFill="#3876bf" wrapText="true">
+       <Button alignment="CENTER" layoutX="1189.0" layoutY="31.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="144.0" style="-fx-background-color: #96B6C5;" text="Return Home" textAlignment="CENTER" textFill="#3876bf" wrapText="true">
            <font>
-               <Font name="Arial" size="17.0" />
+               <Font name="Arial Bold" size="17.0" />
            </font>
        </Button>
     </AnchorPane>
@@ -42,382 +42,305 @@
         </font>
     </Button>
    <ScrollPane layoutX="8.0" layoutY="132.0" prefHeight="629.0" prefWidth="885.0">
-      <content>
-         <VBox prefWidth="850.0" spacing="10.0">
-            <children>
-                <Pane prefHeight="110.0" prefWidth="800.0" style="-fx-background-color: #FAE7C9; -fx-border-radius: 10; -fx-background-radius: 10;" VBox.vgrow="NEVER">
-                    <ImageView fitHeight="99.0" fitWidth="113.0" layoutX="27.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
-                        <Image url="@assessts/sample_product_icon.png" />
-                    </ImageView>
-                    <VBox layoutX="142.0" layoutY="14.0" prefHeight="90.0" prefWidth="359.0" spacing="10.0">
-                        <Label text="MUSIC CD 1">
-                            <font>
-                                <Font name="Arial Bold Italic" size="20.0" />
-                            </font>
-                        </Label>
-                        <Label text="author 1">
-                            <font>
-                                <Font name="Arial Italic" size="15.0" />
-                            </font>
-                        </Label>
-                        <Label style="-fx-text-fill: #46a12a;" text="1.00 $" textFill="#46a12a">
-                            <font>
-                                <Font size="20.0" />
-                            </font>
-                        </Label>
-                    </VBox>
-                  <TextField alignment="CENTER" layoutX="516.0" layoutY="50.0" prefHeight="25.0" prefWidth="127.0" text="2" />
-                  <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="652.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@assessts/icon_arrow_up.png" />
-                     </image>
-                  </ImageView>
-                  <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="652.0" layoutY="63.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@assessts/icon_arrow_down.png" />
-                     </image>
-                  </ImageView>
-                  <Label layoutX="739.0" layoutY="22.0" text="Total">
-                     <font>
-                        <Font name="Arial Bold" size="20.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="736.0" layoutY="62.0" style="-fx-text-fill: #46a12a; -fx-font-weight: bold;" text="2.00 $" textFill="#46a12a">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                  </Label>
-                </Pane>
-               <Pane prefHeight="110.0" prefWidth="800.0" style="-fx-background-color: #FAE7C9; -fx-border-radius: 10; -fx-background-radius: 10;">
-                  <children>
-                     <ImageView fitHeight="99.0" fitWidth="113.0" layoutX="27.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
-                        <image>
-                           <Image url="@assessts/sample_product_icon.png" />
-                        </image>
-                     </ImageView>
-                     <VBox layoutX="142.0" layoutY="14.0" prefHeight="90.0" prefWidth="359.0" spacing="10.0">
-                        <children>
-                           <Label text="MUSIC CD 1">
-                              <font>
-                                 <Font name="Arial Bold Italic" size="20.0" />
-                              </font>
-                           </Label>
-                           <Label text="author 1">
-                              <font>
-                                 <Font name="Arial Italic" size="15.0" />
-                              </font>
-                           </Label>
-                           <Label style="-fx-text-fill: #46a12a;" text="1.00 $" textFill="#46a12a">
-                              <font>
-                                 <Font size="20.0" />
-                              </font>
-                           </Label>
-                        </children>
-                     </VBox>
-                     <TextField alignment="CENTER" layoutX="516.0" layoutY="50.0" prefHeight="25.0" prefWidth="127.0" text="2" />
-                     <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="652.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
-                        <image>
-                           <Image url="@assessts/icon_arrow_up.png" />
-                        </image>
-                     </ImageView>
-                     <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="652.0" layoutY="63.0" pickOnBounds="true" preserveRatio="true">
-                        <image>
-                           <Image url="@assessts/icon_arrow_down.png" />
-                        </image>
-                     </ImageView>
-                     <Label layoutX="739.0" layoutY="22.0" text="Total">
-                        <font>
-                           <Font name="Arial Bold" size="20.0" />
-                        </font>
-                     </Label>
-                     <Label layoutX="736.0" layoutY="62.0" style="-fx-text-fill: #46a12a; -fx-font-weight: bold;" text="2.00 $" textFill="#46a12a">
-                        <font>
-                           <Font size="20.0" />
-                        </font>
-                     </Label>
-                  </children>
-               </Pane>
-               <Pane prefHeight="110.0" prefWidth="800.0" style="-fx-background-color: #FAE7C9; -fx-border-radius: 10; -fx-background-radius: 10;">
-                  <children>
-                     <ImageView fitHeight="99.0" fitWidth="113.0" layoutX="27.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
-                        <image>
-                           <Image url="@assessts/sample_product_icon.png" />
-                        </image>
-                     </ImageView>
-                     <VBox layoutX="142.0" layoutY="14.0" prefHeight="90.0" prefWidth="359.0" spacing="10.0">
-                        <children>
-                           <Label text="MUSIC CD 1">
-                              <font>
-                                 <Font name="Arial Bold Italic" size="20.0" />
-                              </font>
-                           </Label>
-                           <Label text="author 1">
-                              <font>
-                                 <Font name="Arial Italic" size="15.0" />
-                              </font>
-                           </Label>
-                           <Label style="-fx-text-fill: #46a12a;" text="1.00 $" textFill="#46a12a">
-                              <font>
-                                 <Font size="20.0" />
-                              </font>
-                           </Label>
-                        </children>
-                     </VBox>
-                     <TextField alignment="CENTER" layoutX="516.0" layoutY="50.0" prefHeight="25.0" prefWidth="127.0" text="2" />
-                     <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="652.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
-                        <image>
-                           <Image url="@assessts/icon_arrow_up.png" />
-                        </image>
-                     </ImageView>
-                     <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="652.0" layoutY="63.0" pickOnBounds="true" preserveRatio="true">
-                        <image>
-                           <Image url="@assessts/icon_arrow_down.png" />
-                        </image>
-                     </ImageView>
-                     <Label layoutX="739.0" layoutY="22.0" text="Total">
-                        <font>
-                           <Font name="Arial Bold" size="20.0" />
-                        </font>
-                     </Label>
-                     <Label layoutX="736.0" layoutY="62.0" style="-fx-text-fill: #46a12a; -fx-font-weight: bold;" text="2.00 $" textFill="#46a12a">
-                        <font>
-                           <Font size="20.0" />
-                        </font>
-                     </Label>
-                  </children>
-               </Pane>
-               <Pane prefHeight="110.0" prefWidth="800.0" style="-fx-background-color: #FAE7C9; -fx-border-radius: 10; -fx-background-radius: 10;">
-                  <children>
-                     <ImageView fitHeight="99.0" fitWidth="113.0" layoutX="27.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
-                        <image>
-                           <Image url="@assessts/sample_product_icon.png" />
-                        </image>
-                     </ImageView>
-                     <VBox layoutX="142.0" layoutY="14.0" prefHeight="90.0" prefWidth="359.0" spacing="10.0">
-                        <children>
-                           <Label text="MUSIC CD 1">
-                              <font>
-                                 <Font name="Arial Bold Italic" size="20.0" />
-                              </font>
-                           </Label>
-                           <Label text="author 1">
-                              <font>
-                                 <Font name="Arial Italic" size="15.0" />
-                              </font>
-                           </Label>
-                           <Label style="-fx-text-fill: #46a12a;" text="1.00 $" textFill="#46a12a">
-                              <font>
-                                 <Font size="20.0" />
-                              </font>
-                           </Label>
-                        </children>
-                     </VBox>
-                     <TextField alignment="CENTER" layoutX="516.0" layoutY="50.0" prefHeight="25.0" prefWidth="127.0" text="2" />
-                     <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="652.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
-                        <image>
-                           <Image url="@assessts/icon_arrow_up.png" />
-                        </image>
-                     </ImageView>
-                     <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="652.0" layoutY="63.0" pickOnBounds="true" preserveRatio="true">
-                        <image>
-                           <Image url="@assessts/icon_arrow_down.png" />
-                        </image>
-                     </ImageView>
-                     <Label layoutX="739.0" layoutY="22.0" text="Total">
-                        <font>
-                           <Font name="Arial Bold" size="20.0" />
-                        </font>
-                     </Label>
-                     <Label layoutX="736.0" layoutY="62.0" style="-fx-text-fill: #46a12a; -fx-font-weight: bold;" text="2.00 $" textFill="#46a12a">
-                        <font>
-                           <Font size="20.0" />
-                        </font>
-                     </Label>
-                  </children>
-               </Pane>
-               <Pane prefHeight="110.0" prefWidth="800.0" style="-fx-background-color: #FAE7C9; -fx-border-radius: 10; -fx-background-radius: 10;">
-                  <children>
-                     <ImageView fitHeight="99.0" fitWidth="113.0" layoutX="27.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
-                        <image>
-                           <Image url="@assessts/sample_product_icon.png" />
-                        </image>
-                     </ImageView>
-                     <VBox layoutX="142.0" layoutY="14.0" prefHeight="90.0" prefWidth="359.0" spacing="10.0">
-                        <children>
-                           <Label text="MUSIC CD 1">
-                              <font>
-                                 <Font name="Arial Bold Italic" size="20.0" />
-                              </font>
-                           </Label>
-                           <Label text="author 1">
-                              <font>
-                                 <Font name="Arial Italic" size="15.0" />
-                              </font>
-                           </Label>
-                           <Label style="-fx-text-fill: #46a12a;" text="1.00 $" textFill="#46a12a">
-                              <font>
-                                 <Font size="20.0" />
-                              </font>
-                           </Label>
-                        </children>
-                     </VBox>
-                     <TextField alignment="CENTER" layoutX="516.0" layoutY="50.0" prefHeight="25.0" prefWidth="127.0" text="2" />
-                     <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="652.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
-                        <image>
-                           <Image url="@assessts/icon_arrow_up.png" />
-                        </image>
-                     </ImageView>
-                     <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="652.0" layoutY="63.0" pickOnBounds="true" preserveRatio="true">
-                        <image>
-                           <Image url="@assessts/icon_arrow_down.png" />
-                        </image>
-                     </ImageView>
-                     <Label layoutX="739.0" layoutY="22.0" text="Total">
-                        <font>
-                           <Font name="Arial Bold" size="20.0" />
-                        </font>
-                     </Label>
-                     <Label layoutX="736.0" layoutY="62.0" style="-fx-text-fill: #46a12a; -fx-font-weight: bold;" text="2.00 $" textFill="#46a12a">
-                        <font>
-                           <Font size="20.0" />
-                        </font>
-                     </Label>
-                  </children>
-               </Pane>
-               <Pane prefHeight="110.0" prefWidth="800.0" style="-fx-background-color: #FAE7C9; -fx-border-radius: 10; -fx-background-radius: 10;">
-                  <children>
-                     <ImageView fitHeight="99.0" fitWidth="113.0" layoutX="27.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
-                        <image>
-                           <Image url="@assessts/sample_product_icon.png" />
-                        </image>
-                     </ImageView>
-                     <VBox layoutX="142.0" layoutY="14.0" prefHeight="90.0" prefWidth="359.0" spacing="10.0">
-                        <children>
-                           <Label text="MUSIC CD 1">
-                              <font>
-                                 <Font name="Arial Bold Italic" size="20.0" />
-                              </font>
-                           </Label>
-                           <Label text="author 1">
-                              <font>
-                                 <Font name="Arial Italic" size="15.0" />
-                              </font>
-                           </Label>
-                           <Label style="-fx-text-fill: #46a12a;" text="1.00 $" textFill="#46a12a">
-                              <font>
-                                 <Font size="20.0" />
-                              </font>
-                           </Label>
-                        </children>
-                     </VBox>
-                     <TextField alignment="CENTER" layoutX="516.0" layoutY="50.0" prefHeight="25.0" prefWidth="127.0" text="2" />
-                     <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="652.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
-                        <image>
-                           <Image url="@assessts/icon_arrow_up.png" />
-                        </image>
-                     </ImageView>
-                     <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="652.0" layoutY="63.0" pickOnBounds="true" preserveRatio="true">
-                        <image>
-                           <Image url="@assessts/icon_arrow_down.png" />
-                        </image>
-                     </ImageView>
-                     <Label layoutX="739.0" layoutY="22.0" text="Total">
-                        <font>
-                           <Font name="Arial Bold" size="20.0" />
-                        </font>
-                     </Label>
-                     <Label layoutX="736.0" layoutY="62.0" style="-fx-text-fill: #46a12a; -fx-font-weight: bold;" text="2.00 $" textFill="#46a12a">
-                        <font>
-                           <Font size="20.0" />
-                        </font>
-                     </Label>
-                  </children>
-               </Pane>
-               <Pane prefHeight="110.0" prefWidth="800.0" style="-fx-background-color: #FAE7C9; -fx-border-radius: 10; -fx-background-radius: 10;">
-                  <children>
-                     <ImageView fitHeight="99.0" fitWidth="113.0" layoutX="27.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
-                        <image>
-                           <Image url="@assessts/sample_product_icon.png" />
-                        </image>
-                     </ImageView>
-                     <VBox layoutX="142.0" layoutY="14.0" prefHeight="90.0" prefWidth="359.0" spacing="10.0">
-                        <children>
-                           <Label text="MUSIC CD 1">
-                              <font>
-                                 <Font name="Arial Bold Italic" size="20.0" />
-                              </font>
-                           </Label>
-                           <Label text="author 1">
-                              <font>
-                                 <Font name="Arial Italic" size="15.0" />
-                              </font>
-                           </Label>
-                           <Label style="-fx-text-fill: #46a12a;" text="1.00 $" textFill="#46a12a">
-                              <font>
-                                 <Font size="20.0" />
-                              </font>
-                           </Label>
-                        </children>
-                     </VBox>
-                     <TextField alignment="CENTER" layoutX="516.0" layoutY="50.0" prefHeight="25.0" prefWidth="127.0" text="2" />
-                     <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="652.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
-                        <image>
-                           <Image url="@assessts/icon_arrow_up.png" />
-                        </image>
-                     </ImageView>
-                     <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="652.0" layoutY="63.0" pickOnBounds="true" preserveRatio="true">
-                        <image>
-                           <Image url="@assessts/icon_arrow_down.png" />
-                        </image>
-                     </ImageView>
-                     <Label layoutX="739.0" layoutY="22.0" text="Total">
-                        <font>
-                           <Font name="Arial Bold" size="20.0" />
-                        </font>
-                     </Label>
-                     <Label layoutX="736.0" layoutY="62.0" style="-fx-text-fill: #46a12a; -fx-font-weight: bold;" text="2.00 $" textFill="#46a12a">
-                        <font>
-                           <Font size="20.0" />
-                        </font>
-                     </Label>
-                  </children>
-               </Pane>
-            </children>
-         </VBox>
-      </content>
+      <VBox prefWidth="850.0" spacing="10.0">
+         <Pane prefHeight="110.0" prefWidth="800.0"
+               style="-fx-background-color: #FAE7C9; -fx-border-radius: 10; -fx-background-radius: 10;"
+               VBox.vgrow="NEVER">
+            <ImageView fitHeight="99.0" fitWidth="113.0" layoutX="27.0" layoutY="7.0" pickOnBounds="true"
+                       preserveRatio="true">
+               <Image url="@assessts/sample_product_icon.png"/>
+            </ImageView>
+            <VBox layoutX="142.0" layoutY="14.0" prefHeight="90.0" prefWidth="359.0" spacing="10.0">
+               <Label text="MUSIC CD 1">
+                  <font>
+                     <Font name="Arial Bold Italic" size="20.0"/>
+                  </font>
+               </Label>
+               <Label text="author 1">
+                  <font>
+                     <Font name="Arial Italic" size="15.0"/>
+                  </font>
+               </Label>
+               <Label style="-fx-text-fill: #46a12a;" text="1.00 $" textFill="#46a12a">
+                  <font>
+                     <Font size="20.0"/>
+                  </font>
+               </Label>
+            </VBox>
+            <TextField alignment="CENTER" layoutX="516.0" layoutY="50.0" prefHeight="25.0" prefWidth="127.0"
+                       text="2"/>
+            <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="652.0" layoutY="26.0" pickOnBounds="true"
+                       preserveRatio="true">
+               <Image url="@assessts/icon_arrow_up.png"/>
+            </ImageView>
+            <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="652.0" layoutY="63.0" pickOnBounds="true"
+                       preserveRatio="true">
+               <Image url="@assessts/icon_arrow_down.png"/>
+            </ImageView>
+            <Label layoutX="739.0" layoutY="22.0" text="Total">
+               <font>
+                  <Font name="Arial Bold" size="20.0"/>
+               </font>
+            </Label>
+            <Label layoutX="736.0" layoutY="62.0" text="2.00 $" textFill="#46a12a">
+               <font>
+                  <Font name="System Bold" size="20.0"/>
+               </font>
+            </Label>
+         </Pane>
+         <Pane prefHeight="110.0" prefWidth="800.0"
+               style="-fx-background-color: #FAE7C9; -fx-border-radius: 10; -fx-background-radius: 10;">
+            <ImageView fitHeight="99.0" fitWidth="113.0" layoutX="27.0" layoutY="7.0" pickOnBounds="true"
+                       preserveRatio="true">
+               <Image url="@assessts/sample_product_icon.png"/>
+            </ImageView>
+            <VBox layoutX="142.0" layoutY="14.0" prefHeight="90.0" prefWidth="359.0" spacing="10.0">
+               <Label text="MUSIC CD 1">
+                  <font>
+                     <Font name="Arial Bold Italic" size="20.0"/>
+                  </font>
+               </Label>
+               <Label text="author 1">
+                  <font>
+                     <Font name="Arial Italic" size="15.0"/>
+                  </font>
+               </Label>
+               <Label style="-fx-text-fill: #46a12a;" text="1.00 $" textFill="#46a12a">
+                  <font>
+                     <Font size="20.0"/>
+                  </font>
+               </Label>
+            </VBox>
+            <TextField alignment="CENTER" layoutX="516.0" layoutY="50.0" prefHeight="25.0" prefWidth="127.0"
+                       text="2"/>
+            <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="652.0" layoutY="26.0" pickOnBounds="true"
+                       preserveRatio="true">
+               <Image url="@assessts/icon_arrow_up.png"/>
+            </ImageView>
+            <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="652.0" layoutY="63.0" pickOnBounds="true"
+                       preserveRatio="true">
+               <Image url="@assessts/icon_arrow_down.png"/>
+            </ImageView>
+            <Label layoutX="739.0" layoutY="22.0" text="Total">
+               <font>
+                  <Font name="Arial Bold" size="20.0"/>
+               </font>
+            </Label>
+            <Label layoutX="736.0" layoutY="62.0" text="2.00 $" textFill="#46a12a">
+               <font>
+                  <Font name="System Bold" size="20.0"/>
+               </font>
+            </Label>
+         </Pane>
+         <Pane prefHeight="110.0" prefWidth="800.0"
+               style="-fx-background-color: #FAE7C9; -fx-border-radius: 10; -fx-background-radius: 10;">
+            <ImageView fitHeight="99.0" fitWidth="113.0" layoutX="27.0" layoutY="7.0" pickOnBounds="true"
+                       preserveRatio="true">
+               <Image url="@assessts/sample_product_icon.png"/>
+            </ImageView>
+            <VBox layoutX="142.0" layoutY="14.0" prefHeight="90.0" prefWidth="359.0" spacing="10.0">
+               <Label text="MUSIC CD 1">
+                  <font>
+                     <Font name="Arial Bold Italic" size="20.0"/>
+                  </font>
+               </Label>
+               <Label text="author 1">
+                  <font>
+                     <Font name="Arial Italic" size="15.0"/>
+                  </font>
+               </Label>
+               <Label style="-fx-text-fill: #46a12a;" text="1.00 $" textFill="#46a12a">
+                  <font>
+                     <Font size="20.0"/>
+                  </font>
+               </Label>
+            </VBox>
+            <TextField alignment="CENTER" layoutX="516.0" layoutY="50.0" prefHeight="25.0" prefWidth="127.0"
+                       text="2"/>
+            <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="652.0" layoutY="26.0" pickOnBounds="true"
+                       preserveRatio="true">
+               <Image url="@assessts/icon_arrow_up.png"/>
+            </ImageView>
+            <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="652.0" layoutY="63.0" pickOnBounds="true"
+                       preserveRatio="true">
+               <Image url="@assessts/icon_arrow_down.png"/>
+            </ImageView>
+            <Label layoutX="739.0" layoutY="22.0" text="Total">
+               <font>
+                  <Font name="Arial Bold" size="20.0"/>
+               </font>
+            </Label>
+            <Label layoutX="736.0" layoutY="62.0" text="2.00 $" textFill="#46a12a">
+               <font>
+                  <Font name="System Bold" size="20.0"/>
+               </font>
+            </Label>
+         </Pane>
+         <Pane prefHeight="110.0" prefWidth="800.0"
+               style="-fx-background-color: #FAE7C9; -fx-border-radius: 10; -fx-background-radius: 10;">
+            <ImageView fitHeight="99.0" fitWidth="113.0" layoutX="27.0" layoutY="7.0" pickOnBounds="true"
+                       preserveRatio="true">
+               <Image url="@assessts/sample_product_icon.png"/>
+            </ImageView>
+            <VBox layoutX="142.0" layoutY="14.0" prefHeight="90.0" prefWidth="359.0" spacing="10.0">
+               <Label text="MUSIC CD 1">
+                  <font>
+                     <Font name="Arial Bold Italic" size="20.0"/>
+                  </font>
+               </Label>
+               <Label text="author 1">
+                  <font>
+                     <Font name="Arial Italic" size="15.0"/>
+                  </font>
+               </Label>
+               <Label style="-fx-text-fill: #46a12a;" text="1.00 $" textFill="#46a12a">
+                  <font>
+                     <Font size="20.0"/>
+                  </font>
+               </Label>
+            </VBox>
+            <TextField alignment="CENTER" layoutX="516.0" layoutY="50.0" prefHeight="25.0" prefWidth="127.0"
+                       text="2"/>
+            <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="652.0" layoutY="26.0" pickOnBounds="true"
+                       preserveRatio="true">
+               <Image url="@assessts/icon_arrow_up.png"/>
+            </ImageView>
+            <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="652.0" layoutY="63.0" pickOnBounds="true"
+                       preserveRatio="true">
+               <Image url="@assessts/icon_arrow_down.png"/>
+            </ImageView>
+            <Label layoutX="739.0" layoutY="22.0" text="Total">
+               <font>
+                  <Font name="Arial Bold" size="20.0"/>
+               </font>
+            </Label>
+            <Label layoutX="736.0" layoutY="62.0" text="2.00 $" textFill="#46a12a">
+               <font>
+                  <Font name="System Bold" size="20.0"/>
+               </font>
+            </Label>
+         </Pane>
+         <Pane prefHeight="110.0" prefWidth="800.0"
+               style="-fx-background-color: #FAE7C9; -fx-border-radius: 10; -fx-background-radius: 10;">
+            <ImageView fitHeight="99.0" fitWidth="113.0" layoutX="27.0" layoutY="7.0" pickOnBounds="true"
+                       preserveRatio="true">
+               <Image url="@assessts/sample_product_icon.png"/>
+            </ImageView>
+            <VBox layoutX="142.0" layoutY="14.0" prefHeight="90.0" prefWidth="359.0" spacing="10.0">
+               <Label text="MUSIC CD 1">
+                  <font>
+                     <Font name="Arial Bold Italic" size="20.0"/>
+                  </font>
+               </Label>
+               <Label text="author 1">
+                  <font>
+                     <Font name="Arial Italic" size="15.0"/>
+                  </font>
+               </Label>
+               <Label style="-fx-text-fill: #46a12a;" text="1.00 $" textFill="#46a12a">
+                  <font>
+                     <Font size="20.0"/>
+                  </font>
+               </Label>
+            </VBox>
+            <TextField alignment="CENTER" layoutX="516.0" layoutY="50.0" prefHeight="25.0" prefWidth="127.0"
+                       text="2"/>
+            <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="652.0" layoutY="26.0" pickOnBounds="true"
+                       preserveRatio="true">
+               <Image url="@assessts/icon_arrow_up.png"/>
+            </ImageView>
+            <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="652.0" layoutY="63.0" pickOnBounds="true"
+                       preserveRatio="true">
+               <Image url="@assessts/icon_arrow_down.png"/>
+            </ImageView>
+            <Label layoutX="739.0" layoutY="22.0" text="Total">
+               <font>
+                  <Font name="Arial Bold" size="20.0"/>
+               </font>
+            </Label>
+            <Label layoutX="736.0" layoutY="62.0" text="2.00 $" textFill="#46a12a">
+               <font>
+                  <Font name="System Bold" size="20.0"/>
+               </font>
+            </Label>
+         </Pane>
+         <Pane prefHeight="110.0" prefWidth="800.0"
+               style="-fx-background-color: #FAE7C9; -fx-border-radius: 10; -fx-background-radius: 10;">
+            <ImageView fitHeight="99.0" fitWidth="113.0" layoutX="27.0" layoutY="7.0" pickOnBounds="true"
+                       preserveRatio="true">
+               <Image url="@assessts/sample_product_icon.png"/>
+            </ImageView>
+            <VBox layoutX="142.0" layoutY="14.0" prefHeight="90.0" prefWidth="359.0" spacing="10.0">
+               <Label text="MUSIC CD 1">
+                  <font>
+                     <Font name="Arial Bold Italic" size="20.0"/>
+                  </font>
+               </Label>
+               <Label text="author 1">
+                  <font>
+                     <Font name="Arial Italic" size="15.0"/>
+                  </font>
+               </Label>
+               <Label style="-fx-text-fill: #46a12a;" text="1.00 $" textFill="#46a12a">
+                  <font>
+                     <Font size="20.0"/>
+                  </font>
+               </Label>
+            </VBox>
+            <TextField alignment="CENTER" layoutX="516.0" layoutY="50.0" prefHeight="25.0" prefWidth="127.0"
+                       text="2"/>
+            <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="652.0" layoutY="26.0" pickOnBounds="true"
+                       preserveRatio="true">
+               <Image url="@assessts/icon_arrow_up.png"/>
+            </ImageView>
+            <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="652.0" layoutY="63.0" pickOnBounds="true"
+                       preserveRatio="true">
+               <Image url="@assessts/icon_arrow_down.png"/>
+            </ImageView>
+            <Label layoutX="739.0" layoutY="22.0" text="Total">
+               <font>
+                  <Font name="Arial Bold" size="20.0"/>
+               </font>
+            </Label>
+            <Label layoutX="736.0" layoutY="62.0" text="2.00 $" textFill="#46a12a">
+               <font>
+                  <Font name="System Bold" size="20.0"/>
+               </font>
+            </Label>
+         </Pane>
+      </VBox>
    </ScrollPane>
-   <AnchorPane layoutX="983.0" layoutY="197.0" prefHeight="360.0" prefWidth="344.0" style="-fx-background-color: #B3A492; -fx-background-radius: 15;">
-      <children>
-         <Label layoutX="21.0" layoutY="29.0" text="Subtotal">
-            <font>
-               <Font name="Arial" size="20.0" />
-            </font>
-         </Label>
-         <Label layoutX="21.0" layoutY="102.0" text="Amount:">
-            <font>
-               <Font name="Arial Bold" size="20.0" />
-            </font>
-         </Label>
-         <Label layoutX="21.0" layoutY="71.0" text="VAT (10%)">
-            <font>
-               <Font name="Arial" size="18.0" />
-            </font>
-         </Label>
-         <Text fill="#1e7c1b" layoutX="132.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" text="120.00 $">
-            <font>
-               <Font name="System Italic" size="18.0" />
-            </font>
-         </Text>
-         <Text fill="#1e7c1b" layoutX="132.0" layoutY="86.0" strokeType="OUTSIDE" strokeWidth="0.0" text="12.00 $">
-            <font>
-               <Font name="System Italic" size="18.0" />
-            </font>
-         </Text>
-         <Text fill="#1e7c1b" layoutX="132.0" layoutY="120.0" strokeType="OUTSIDE" strokeWidth="0.0" text="132.00 $">
-            <font>
-               <Font name="System Bold Italic" size="18.0" />
-            </font>
-         </Text>
-      </children>
+   <AnchorPane layoutX="983.0" layoutY="197.0" prefHeight="360.0" prefWidth="344.0"
+               style="-fx-background-color: #B3A492; -fx-background-radius: 15;">
+      <Label layoutX="21.0" layoutY="29.0" text="Subtotal">
+         <font>
+            <Font name="Arial" size="20.0"/>
+         </font>
+      </Label>
+      <Label layoutX="21.0" layoutY="102.0" text="Amount:">
+         <font>
+            <Font name="Arial Bold" size="20.0"/>
+         </font>
+      </Label>
+      <Label layoutX="21.0" layoutY="71.0" text="VAT (10%)">
+         <font>
+            <Font name="Arial" size="18.0"/>
+         </font>
+      </Label>
+      <Text fill="#1e7c1b" layoutX="132.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" text="120.00 $">
+         <font>
+            <Font name="System Italic" size="18.0"/>
+         </font>
+      </Text>
+      <Text fill="#1e7c1b" layoutX="132.0" layoutY="86.0" strokeType="OUTSIDE" strokeWidth="0.0" text="12.00 $">
+         <font>
+            <Font name="System Italic" size="18.0"/>
+         </font>
+      </Text>
+      <Text fill="#1e7c1b" layoutX="132.0" layoutY="120.0" strokeType="OUTSIDE" strokeWidth="0.0" text="132.00 $">
+         <font>
+            <Font name="System Bold Italic" size="18.0"/>
+         </font>
+      </Text>
    </AnchorPane>
 </AnchorPane>
