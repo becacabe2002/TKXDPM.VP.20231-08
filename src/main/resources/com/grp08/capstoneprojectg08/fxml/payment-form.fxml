@@ -10,7 +10,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.image.Image?>
 <?import javafx.geometry.Insets?>
-<AnchorPane prefHeight="768.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.grp08.capstoneprojectg08.HomeScreen">
+<AnchorPane prefHeight="768.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.grp08.capstoneprojectg08.screen_handler.payment.PaymentScreenHandler">
     <AnchorPane prefHeight="120.0" style="-fx-background-color: #B0926A;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <Label layoutX="82.0" layoutY="45.0" text="AIMS System">
             <font>
@@ -18,7 +18,7 @@
             </font>
         </Label>
         <ImageView fitHeight="52.0" fitWidth="61.0" layoutX="14.0" layoutY="34.0" pickOnBounds="true" preserveRatio="true">
-            <Image url="@../assessts/shop_icon.png" />
+            <Image url="@../assets/shop_icon.png" />
         </ImageView>
         <Label layoutX="631.0" layoutY="47.0" text="Payment" textFill="#706233">
             <font>
@@ -26,7 +26,7 @@
             </font>
         </Label>
         <ImageView fitHeight="70.0" fitWidth="70.0" layoutX="759.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
-            <Image url="@../assessts/money.png" />
+            <Image url="@../assets/money.png" />
         </ImageView>
     </AnchorPane>
     <AnchorPane layoutX="293.0" layoutY="139.0" prefHeight="600.0" prefWidth="700.0" style="-fx-background-color: #B3A492; -fx-background-radius: 15;">

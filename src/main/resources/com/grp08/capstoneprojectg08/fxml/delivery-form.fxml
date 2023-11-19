@@ -18,7 +18,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="768.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.grp08.capstoneprojectg08.HomeScreen">
+<AnchorPane prefHeight="768.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.grp08.capstoneprojectg08.screen_handler.delivery.DeliveryFormHandler">
     <AnchorPane prefHeight="120.0" style="-fx-background-color: #B0926A;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <Label layoutX="82.0" layoutY="45.0" text="AIMS System">
             <font>
@@ -26,7 +26,7 @@
             </font>
         </Label>
         <ImageView fitHeight="52.0" fitWidth="61.0" layoutX="14.0" layoutY="34.0" pickOnBounds="true" preserveRatio="true">
-            <Image url="@../assessts/shop_icon.png" />
+            <Image url="@../assets/shop_icon.png" />
         </ImageView>
         <Label layoutX="600.0" layoutY="47.0" text="Delivery Form" textFill="#706233">
             <font>
@@ -34,7 +34,7 @@
             </font>
         </Label>
         <ImageView fitHeight="52.0" fitWidth="61.0" layoutX="777.0" layoutY="36.0" pickOnBounds="true" preserveRatio="true">
-            <Image url="@../assessts/form_icon.png" />
+            <Image url="@../assets/form_icon.png" />
         </ImageView>
     </AnchorPane>
     <Button alignment="CENTER" layoutX="1198.0" layoutY="689.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="136.0" style="-fx-background-color: #A7D397;" text="Next" textAlignment="CENTER" textFill="WHITE" wrapText="true">

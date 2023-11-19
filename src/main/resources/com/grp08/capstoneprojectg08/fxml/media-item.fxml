@@ -10,7 +10,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="200.0" prefWidth="450.0" style="-fx-background-color: #BFB29E; -fx-border-radius: 10; -fx-background-radius: 10;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="200.0" prefWidth="450.0" style="-fx-background-color: #BFB29E; -fx-border-radius: 10; -fx-background-radius: 10;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.grp08.capstoneprojectg08.screen_handler.home.MediaItemHandler">
     <Button alignment="CENTER" layoutX="307.0" layoutY="135.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="120.0" style="-fx-background-color: #B3A492;" text="Add to Cart" textAlignment="CENTER" wrapText="true">
         <font>
             <Font size="15.0" />
@@ -22,7 +22,7 @@
         </font>
     </Button>
     <ImageView fitHeight="90.0" fitWidth="82.0" layoutX="49.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
-        <Image url="@../assessts/sample_product_icon.png" />
+        <Image url="@../assets/sample_product_icon.png" />
     </ImageView>
     <VBox layoutX="178.0" layoutY="29.0" spacing="8.0">
         <Label text="MUSIC CD 1">

@@ -10,10 +10,10 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="768.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.grp08.capstoneprojectg08.HomeScreen">
+<AnchorPane prefHeight="768.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.grp08.capstoneprojectg08.screen_handler.cart.CartScreenHandler">
     <AnchorPane prefHeight="120.0" style="-fx-background-color: #B0926A;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <ImageView fitHeight="61.0" fitWidth="65.0" layoutX="753.0" layoutY="31.0" pickOnBounds="true" preserveRatio="true">
-            <Image url="@../assessts/cart_icon.png" />
+            <Image url="@../assets/cart_icon.png" />
         </ImageView>
         <Label layoutX="82.0" layoutY="45.0" text="AIMS System">
             <font>
@@ -21,7 +21,7 @@
             </font>
         </Label>
         <ImageView fitHeight="52.0" fitWidth="61.0" layoutX="14.0" layoutY="34.0" pickOnBounds="true" preserveRatio="true">
-            <Image url="@../assessts/shop_icon.png" />
+            <Image url="@../assets/shop_icon.png" />
         </ImageView>
         <Label layoutX="627.0" layoutY="46.0" text="User Cart" textFill="#706233">
             <font>

@@ -11,7 +11,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="768.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.grp08.capstoneprojectg08.HomeScreen">
+<AnchorPane prefHeight="768.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.grp08.capstoneprojectg08.screen_handler.SuccessScreenHandler">
     <AnchorPane prefHeight="120.0" style="-fx-background-color: #B0926A;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <Label layoutX="82.0" layoutY="45.0" text="AIMS System">
             <font>
@@ -19,14 +19,14 @@
             </font>
         </Label>
         <ImageView fitHeight="52.0" fitWidth="61.0" layoutX="14.0" layoutY="34.0" pickOnBounds="true" preserveRatio="true">
-            <Image url="@../assessts/shop_icon.png" />
+            <Image url="@../assets/shop_icon.png" />
         </ImageView>
     </AnchorPane>
     <AnchorPane layoutX="433.0" layoutY="138.0" prefHeight="600.0" prefWidth="500.0"
                 style="-fx-background-color: #FAE7C9; -fx-background-radius: 15;">
         <ImageView fitHeight="150.0" fitWidth="150.0" layoutX="175.0" layoutY="14.0" pickOnBounds="true"
                    preserveRatio="true">
-            <Image url="@../assessts/yes.png"/>
+            <Image url="@../assets/yes.png"/>
         </ImageView>
         <Label layoutX="162.0" layoutY="174.0" text="Order Success">
            <font>
