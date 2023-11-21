@@ -1,10 +1,7 @@
 package com.grp08.capstoneprojectg08.repository;
 
 import com.grp08.capstoneprojectg08.entity.media.Media;
-import com.grp08.capstoneprojectg08.util.DatabaseConnection;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 // Use for query on tables media, book, cd, dvd
