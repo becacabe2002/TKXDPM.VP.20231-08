@@ -13,4 +13,11 @@ public abstract class BaseRepo {
 
     protected Statement statement = null;
     protected ResultSet resultSet = null;
+
+    protected DeliveryRepo deliveryRepo = new DeliveryRepo();
+    protected MediaRepo mediaRepo = new MediaRepo();
+    protected OrderRepo orderRepo = new OrderRepo();
+
+    protected PaymentRepo paymentRepo = new PaymentRepo();
+    protected UserRepo userRepo = new UserRepo();
 }

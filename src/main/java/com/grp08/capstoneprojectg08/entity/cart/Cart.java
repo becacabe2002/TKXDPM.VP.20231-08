@@ -1,8 +1,13 @@
 package com.grp08.capstoneprojectg08.entity.cart;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import java.util.ArrayList;
 import java.util.List;
 
+@Getter
+@Setter
 public class Cart {
     private final List<CartItem> cartItems;
     private float subTotal;

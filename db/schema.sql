@@ -41,7 +41,10 @@ CREATE TABLE `card` (
   `owner` varchar(45) NOT NULL,
   `cvvCode` varchar(3) NOT NULL,
   `dateExpired` varchar(4) NOT NULL,
-  PRIMARY KEY (`id`)
+  `UID` char(36) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `UID` (`UID`),
+  CONSTRAINT `card_ibfk_1` FOREIGN KEY (`UID`) REFERENCES `users` (`externalUID`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -142,6 +145,7 @@ CREATE TABLE `orderhistory` (
   `id` int NOT NULL AUTO_INCREMENT,
   `uid` char(36) NOT NULL,
   `orderId` int NOT NULL,
+  `paid` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`,`uid`,`orderId`),
   KEY `uid` (`uid`),
   KEY `orderId` (`orderId`),
@@ -157,8 +161,8 @@ CREATE TABLE `orderhistory` (
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `orderinfo` (
-  `id` int NOT NULL,
-  `shippingFees` varchar(45) DEFAULT NULL,
+  `id` int NOT NULL AUTO_INCREMENT,
+  `shippingFees` int DEFAULT NULL,
   `DeliveryInfoId` int NOT NULL,
   PRIMARY KEY (`id`,`DeliveryInfoId`),
   KEY `DeliveryInfoId` (`DeliveryInfoId`),
@@ -191,8 +195,8 @@ CREATE TABLE `ordermedia` (
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `paymenttransaction` (
-  `id` int NOT NULL,
-  `createAt` datetime NOT NULL,
+  `id` int NOT NULL AUTO_INCREMENT,
+  `createAt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `content` varchar(45) NOT NULL,
   `method` varchar(45) DEFAULT NULL,
   `cardId` int NOT NULL,
@@ -213,7 +217,7 @@ CREATE TABLE `paymenttransaction` (
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `rushdeliveryinfo` (
   `id` int NOT NULL,
-  `shippingTime` datetime NOT NULL,
+  `shippingTime` date DEFAULT NULL,
   `rushDeliveryInstructions` varchar(200) DEFAULT NULL,
   PRIMARY KEY (`id`),
   CONSTRAINT `rushdeliveryinfo_ibfk_1` FOREIGN KEY (`id`) REFERENCES `deliveryinfo` (`id`)
@@ -241,7 +245,7 @@ CREATE TABLE `schema_migrations` (
 CREATE TABLE `users` (
   `id` int NOT NULL AUTO_INCREMENT,
   `uname` varchar(45) NOT NULL,
-  `createdAt` datetime DEFAULT NULL,
+  `createdAt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `role` enum('admin','user') NOT NULL DEFAULT 'user',
   `externalUID` char(36) NOT NULL,
   PRIMARY KEY (`id`),
@@ -272,5 +276,7 @@ LOCK TABLES `schema_migrations` WRITE;
 INSERT INTO `schema_migrations` (version) VALUES
   ('20231123012025'),
   ('20231123013445'),
-  ('20231123015502');
+  ('20231123015502'),
+  ('20231123033418'),
+  ('20231123141144');
 UNLOCK TABLES;

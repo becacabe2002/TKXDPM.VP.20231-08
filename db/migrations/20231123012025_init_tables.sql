@@ -62,8 +62,8 @@ CREATE TABLE RushDeliveryInfo(
 
 
 CREATE TABLE OrderInfo(
-                          id INT NOT NULL,
-                          shippingFees VARCHAR(45),
+                          id INT AUTO_INCREMENT NOT NULL,
+                          shippingFees int,
                           DeliveryInfoId INT NOT NULL,
                           PRIMARY KEY(id, DeliveryInfoId),
                           FOREIGN KEY(DeliveryInfoId) REFERENCES DeliveryInfo(id)
@@ -95,8 +95,8 @@ CREATE TABLE Card(
 );
 
 CREATE TABLE PaymentTransaction(
-                                   id INT NOT NULL,
-                                   createAt DATETIME NOT NULL,
+                                   id INT auto_increment,
+                                   createAt DATETIME NOT NULL default CURRENT_TIMESTAMP,
                                    content VARCHAR(45) NOT NULL,
                                    method VARCHAR(45),
                                    cardId INT NOT NULL,
@@ -118,6 +118,7 @@ create table orderHistory(
                              id INT auto_increment,
                              uid char(36) not null,
                              orderId int not null,
+                             paid tinyint(1) not null default false,
                              primary key(id, uid, orderId),
                              foreign key(uid) references Users(externalUID),
                              foreign key(orderId) references OrderInfo(id)
