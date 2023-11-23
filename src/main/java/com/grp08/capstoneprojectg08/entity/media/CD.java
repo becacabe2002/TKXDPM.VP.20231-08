@@ -13,7 +13,7 @@ public class CD extends Media{
     private String musicType;
     private Date releasedDate;
 
-    public CD(int id, String category, int price, int quantity, String title, int value, String imageUrl, boolean fastShipping, String artist, String recordLabel, String musicType, Date releasedDate) {
+    public CD(int id, MediaCategory category, int price, int quantity, String title, int value, String imageUrl, boolean fastShipping, String artist, String recordLabel, String musicType, Date releasedDate) {
         super(id, category, price, quantity, title, value, imageUrl, fastShipping);
         this.artist = artist;
         this.recordLabel = recordLabel;

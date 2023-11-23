@@ -8,14 +8,14 @@ import java.util.Date;
 @Setter
 @Getter
 public class DVD extends Media{
-    private String discType;
+    private DiscType discType;
     private String director;
     private int runtime;
     private String studio;
     private String subtitle;
     private Date releaseDate;
 
-    public DVD(int id, String category, int price, int quantity, String title, int value, String imageUrl, boolean fastShipping, String discType, String director, int runtime, String studio, String subtitle, Date releaseDate) {
+    public DVD(int id, MediaCategory category, int price, int quantity, String title, int value, String imageUrl, boolean fastShipping, DiscType discType, String director, int runtime, String studio, String subtitle, Date releaseDate) {
         super(id, category, price, quantity, title, value, imageUrl, fastShipping);
         this.discType = discType;
         this.director = director;

@@ -17,7 +17,7 @@ public class MediaRepo extends BaseRepo{
             while(resultSet.next()){
                 listMedia.add(new Media(
                         resultSet.getInt("id"),
-                        resultSet.getString("category"),
+                        MediaCategory.valueOf(resultSet.getString("category")),
                         resultSet.getInt("price"),
                         resultSet.getInt("quantity"),
                         resultSet.getString("title"),
@@ -41,7 +41,7 @@ public class MediaRepo extends BaseRepo{
             if(resultSet.next()){
                 return new Media(
                         resultSet.getInt("id"),
-                        resultSet.getString("category"),
+                        MediaCategory.valueOf(resultSet.getString("category")),
                         resultSet.getInt("price"),
                         resultSet.getInt("quantity"),
                         resultSet.getString("title"),
@@ -70,7 +70,7 @@ public class MediaRepo extends BaseRepo{
             while(resultSet.next()){
                 listBook.add(new Book(
                         resultSet.getInt("id"),
-                        resultSet.getString("category"),
+                        MediaCategory.valueOf(resultSet.getString("category")),
                         resultSet.getInt("price"),
                         resultSet.getInt("quantity"),
                         resultSet.getString("title"),
@@ -78,7 +78,7 @@ public class MediaRepo extends BaseRepo{
                         resultSet.getString("imageUrl"),
                         resultSet.getBoolean("fastShipping"),
                         resultSet.getString("author"),
-                        resultSet.getString("coverType"),
+                        CoverType.valueOf(resultSet.getString("coverType")),
                         resultSet.getString("publisher"),
                         resultSet.getDate("publishedDate"),
                         resultSet.getInt("numOfPages"),
@@ -105,7 +105,7 @@ public class MediaRepo extends BaseRepo{
             while(resultSet.next()){
                 listCD.add(new CD(
                         resultSet.getInt("id"),
-                        resultSet.getString("category"),
+                        MediaCategory.valueOf(resultSet.getString("category")),
                         resultSet.getInt("price"),
                         resultSet.getInt("quantity"),
                         resultSet.getString("title"),
@@ -137,14 +137,14 @@ public class MediaRepo extends BaseRepo{
             while(resultSet.next()){
                 listDVD.add(new DVD(
                         resultSet.getInt("id"),
-                        resultSet.getString("category"),
+                        MediaCategory.valueOf(resultSet.getString("category")),
                         resultSet.getInt("price"),
                         resultSet.getInt("quantity"),
                         resultSet.getString("title"),
                         resultSet.getInt("value"),
                         resultSet.getString("imageUrl"),
                         resultSet.getBoolean("fastShipping"),
-                        resultSet.getString("discType"),
+                        DiscType.valueOf(resultSet.getString("discType")),
                         resultSet.getString("director"),
                         resultSet.getInt("runtime"),
                         resultSet.getString("studio"),

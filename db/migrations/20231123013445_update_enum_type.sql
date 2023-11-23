@@ -4,7 +4,7 @@ alter table `media`
      modify `imageUrl` VARCHAR(45) null;
 
 alter table `dvd`
-    modify `discType` ENUM('HD-DVD','Blu-ray') NOT NULL DEFAULT 'HD-DVD';
+    modify `discType` ENUM('HD_DVD','Blu_ray') NOT NULL DEFAULT 'HD_DVD';
 
 alter table `book`
     modify `coverType` ENUM('hardcover', 'paperback') NOT NULL default 'hardcover';

@@ -86,7 +86,7 @@ CREATE TABLE `deliveryinfo` (
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `dvd` (
   `id` int NOT NULL,
-  `discType` enum('HD-DVD','Blu-ray') NOT NULL DEFAULT 'HD-DVD',
+  `discType` enum('HD_DVD','Blu_ray') NOT NULL DEFAULT 'HD_DVD',
   `director` varchar(45) NOT NULL,
   `runtime` int NOT NULL,
   `studio` varchar(45) NOT NULL,

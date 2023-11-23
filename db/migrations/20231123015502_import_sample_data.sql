@@ -62,16 +62,16 @@ VALUES
 
 INSERT INTO DVD (id, discType, director, runtime, studio, subtitle, releasedDate)
 VALUES
-    (3, 'Blu-ray', 'Frank Darabont', 142, 'Castle Rock Entertainment', 'English, French', '1994-01-01'),
-    (6, 'Blu-ray', 'Francis Ford Coppola', 540, 'Paramount Pictures', 'English', '1972-01-01'),
-    (9, 'HD-DVD', 'Christopher Nolan', 152, 'Warner Bros. Pictures', 'English', '2008-07-18'),
-    (12, 'Blu-ray', 'Quentin Tarantino', 154, 'Miramax Films', 'English', '1994-01-01'),
-    (15, 'HD-DVD', 'David Fincher', 139, '20th Century Fox', 'English', '1999-01-01'),
-    (18, 'Blu-ray', 'Robert Zemeckis', 142, 'Paramount Pictures', 'English, Danish, Swedish, Dutch', '1994-07-06'),
-    (21, 'HD-DVD', 'Christopher Nolan', 148, 'Warner Bros. Pictures', 'English', '2010-07-16'),
-    (24, 'Blu-ray', 'The Wachowskis', 136, 'Warner Bros. Pictures', 'English', '1999-03-31'),
-    (27, 'HD-DVD', 'Martin Scorsese', 146, 'Warner Bros. Pictures', 'English', '1990-09-19'),
-    (30, 'Blu-ray', 'Christopher Nolan', 169, 'Paramount Pictures, Warner Bros. Pictures', 'English', '2014-11-05');
+    (3, 'Blu_ray', 'Frank Darabont', 142, 'Castle Rock Entertainment', 'English, French', '1994-01-01'),
+    (6, 'Blu_ray', 'Francis Ford Coppola', 540, 'Paramount Pictures', 'English', '1972-01-01'),
+    (9, 'HD_DVD', 'Christopher Nolan', 152, 'Warner Bros. Pictures', 'English', '2008-07-18'),
+    (12, 'Blu_ray', 'Quentin Tarantino', 154, 'Miramax Films', 'English', '1994-01-01'),
+    (15, 'HD_DVD', 'David Fincher', 139, '20th Century Fox', 'English', '1999-01-01'),
+    (18, 'Blu_ray', 'Robert Zemeckis', 142, 'Paramount Pictures', 'English, Danish, Swedish, Dutch', '1994-07-06'),
+    (21, 'HD_DVD', 'Christopher Nolan', 148, 'Warner Bros. Pictures', 'English', '2010-07-16'),
+    (24, 'Blu_ray', 'The Wachowskis', 136, 'Warner Bros. Pictures', 'English', '1999-03-31'),
+    (27, 'HD_DVD', 'Martin Scorsese', 146, 'Warner Bros. Pictures', 'English', '1990-09-19'),
+    (30, 'Blu_ray', 'Christopher Nolan', 169, 'Paramount Pictures, Warner Bros. Pictures', 'English', '2014-11-05');
 
 COMMIT;
 

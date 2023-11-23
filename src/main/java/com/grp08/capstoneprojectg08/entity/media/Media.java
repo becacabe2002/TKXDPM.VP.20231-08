@@ -7,15 +7,15 @@ import lombok.Setter;
 @Setter
 public class Media {
     protected int ID;
-    protected String category;
+    protected MediaCategory category;
     protected int price; // gia ca
     protected int stockQuantity; //stock
     protected String title;
     protected int value;// gia tri
-    protected String imageUrl;
+    protected String imageUrl = null;
     protected boolean fastShipping; // if the media support shipping or not
 
-    public Media(int id, String category, int price, int quantity, String title, int value, String imageUrl, boolean fastShipping) {
+    public Media(int id, MediaCategory category, int price, int quantity, String title, int value, String imageUrl, boolean fastShipping) {
         this.ID = id;
         this.category = category;
         this.price = price;
