@@ -1,4 +1,4 @@
-Drop database aims;
+-- migrate:up
 CREATE DATABASE IF NOT EXISTS aims;
 USE aims;
 
@@ -60,14 +60,6 @@ CREATE TABLE RushDeliveryInfo(
                                  FOREIGN KEY(id) REFERENCES DeliveryInfo(id)
 );
 
-CREATE TABLE Card(
-                     id INT AUTO_INCREMENT PRIMARY KEY,
-                     cardCode VARCHAR(15) NOT NULL,
-                     owner VARCHAR(45) NOT NULL,
-                     cvvCode VARCHAR(3) NOT NULL,
-                     dateExpired VARCHAR(4) NOT NULL
-);
-
 
 CREATE TABLE OrderInfo(
                           id INT NOT NULL,
@@ -94,6 +86,14 @@ CREATE TABLE Invoice(
                         FOREIGN KEY(orderId) REFERENCES OrderInfo(id)
 );
 
+CREATE TABLE Card(
+                     id INT AUTO_INCREMENT PRIMARY KEY,
+                     cardCode VARCHAR(15) NOT NULL,
+                     owner VARCHAR(45) NOT NULL,
+                     cvvCode VARCHAR(3) NOT NULL,
+                     dateExpired VARCHAR(4) NOT NULL
+);
+
 CREATE TABLE PaymentTransaction(
                                    id INT NOT NULL,
                                    createAt DATETIME NOT NULL,
@@ -110,14 +110,19 @@ create table Users(
                       id INT primary key auto_increment,
                       uname varchar(45) not null,
                       createdAt datetime,
-                      externalUID int unique not null
+                      role ENUM('admin', 'user') not null,
+                      externalUID char(36) unique not null
 );
 
 create table orderHistory(
                              id INT auto_increment,
-                             uid int not null,
+                             uid char(36) not null,
                              orderId int not null,
                              primary key(id, uid, orderId),
                              foreign key(uid) references Users(externalUID),
                              foreign key(orderId) references OrderInfo(id)
 );
+
+-- migrate:down
+
+DROP DATABASE IF EXISTS aims;
