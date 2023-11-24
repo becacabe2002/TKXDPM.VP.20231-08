@@ -2,9 +2,7 @@ package com.grp08.capstoneprojectg08.entity.cart;
 
 import com.grp08.capstoneprojectg08.entity.media.Media;
 import com.grp08.capstoneprojectg08.repository.MediaRepo;
-import lombok.Getter;
 
-@Getter
 public class CartItem {
     private int mediaId;
     private int quantity;
@@ -22,6 +20,26 @@ public class CartItem {
         } catch (NullPointerException e){
             System.err.println(e.getMessage());
         }
+    }
+
+    public int getMediaId() {
+        return mediaId;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public int getSubPrice() {
+        return subPrice;
+    }
+
+    public MediaRepo getMediaRepo() {
+        return mediaRepo;
+    }
+
+    public Media getMedia() {
+        return media;
     }
 
     private void addQuantity(){

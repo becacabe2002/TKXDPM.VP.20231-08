@@ -1,12 +1,8 @@
 package com.grp08.capstoneprojectg08.entity.order;
 
 import com.grp08.capstoneprojectg08.entity.cart.CartItem;
-import lombok.Getter;
-import lombok.Setter;
 
 // entity for table orderInfo
-@Getter
-@Setter
 public class OrderItem {
     // convert from CartItem to OrderItem
     private int mediaId;
@@ -19,5 +15,29 @@ public class OrderItem {
         this.mediaId = cartItem.getMediaId();
         this.quantity = cartItem.getQuantity();
         this.subPrice = cartItem.getSubPrice();
+    }
+
+    public int getMediaId() {
+        return mediaId;
+    }
+
+    public void setMediaId(int mediaId) {
+        this.mediaId = mediaId;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
+    public int getSubPrice() {
+        return subPrice;
+    }
+
+    public void setSubPrice(int subPrice) {
+        this.subPrice = subPrice;
     }
 }

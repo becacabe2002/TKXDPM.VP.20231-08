@@ -4,13 +4,10 @@ import com.grp08.capstoneprojectg08.entity.cart.Cart;
 import com.grp08.capstoneprojectg08.entity.order.Invoice;
 import com.grp08.capstoneprojectg08.entity.user.User;
 import com.grp08.capstoneprojectg08.entity.user.UserRole;
-import lombok.Getter;
-import lombok.Setter;
+import com.grp08.capstoneprojectg08.repository.UserRepo;
 
 import java.util.UUID;
 
-@Getter
-@Setter
 public class UserSession {
     private static UserSession instance;
     private UserRole role;
@@ -35,9 +32,44 @@ public class UserSession {
         return instance;
     }
 
+    public static void setInstance(UserSession instance) {
+        UserSession.instance = instance;
+    }
+
+    public UserRole getRole() {
+        return role;
+    }
+
+    public void setRole(UserRole role) {
+        this.role = role;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public Cart getCart() {
+        return cart;
+    }
+
+    public void setCart(Cart cart) {
+        this.cart = cart;
+    }
+
+    public Invoice getInvoice() {
+        return invoice;
+    }
+
+    public void setInvoice(Invoice invoice) {
+        this.invoice = invoice;
+    }
+
     public UUID getCurrentUserUID(){
-        // get current user's UUID based on username through UserRepo
-        return null;
+        return new UserRepo().findUserByUsername(this.username).getExternalUID();
     }
     public void emptyCart(){
         this.cart = new Cart();

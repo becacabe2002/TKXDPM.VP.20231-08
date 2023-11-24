@@ -1,12 +1,7 @@
 package com.grp08.capstoneprojectg08.entity.media;
 
-import lombok.Getter;
-import lombok.Setter;
-
 import java.util.Date;
 
-@Getter
-@Setter
 public class CD extends Media{
     private String artist;
     private String recordLabel; // hang ghi am
@@ -18,6 +13,38 @@ public class CD extends Media{
         this.artist = artist;
         this.recordLabel = recordLabel;
         this.musicType = musicType;
+        this.releasedDate = releasedDate;
+    }
+
+    public String getArtist() {
+        return artist;
+    }
+
+    public void setArtist(String artist) {
+        this.artist = artist;
+    }
+
+    public String getRecordLabel() {
+        return recordLabel;
+    }
+
+    public void setRecordLabel(String recordLabel) {
+        this.recordLabel = recordLabel;
+    }
+
+    public String getMusicType() {
+        return musicType;
+    }
+
+    public void setMusicType(String musicType) {
+        this.musicType = musicType;
+    }
+
+    public Date getReleasedDate() {
+        return releasedDate;
+    }
+
+    public void setReleasedDate(Date releasedDate) {
         this.releasedDate = releasedDate;
     }
 

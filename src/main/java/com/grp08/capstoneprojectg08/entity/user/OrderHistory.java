@@ -3,13 +3,10 @@ package com.grp08.capstoneprojectg08.entity.user;
 import com.grp08.capstoneprojectg08.entity.order.Invoice;
 import com.grp08.capstoneprojectg08.entity.order.Order;
 import com.grp08.capstoneprojectg08.repository.OrderRepo;
-import lombok.Getter;
-import lombok.Setter;
 
 import java.util.UUID;
 
-@Getter
-@Setter
+
 public class OrderHistory {
     private Order order = null;
     private UUID externalUID;
@@ -24,4 +21,27 @@ public class OrderHistory {
         }
     }
 
+    public Order getOrder() {
+        return order;
+    }
+
+    public void setOrder(Order order) {
+        this.order = order;
+    }
+
+    public UUID getExternalUID() {
+        return externalUID;
+    }
+
+    public void setExternalUID(UUID externalUID) {
+        this.externalUID = externalUID;
+    }
+
+    public boolean isPaid() {
+        return paid;
+    }
+
+    public void setPaid(boolean paid) {
+        this.paid = paid;
+    }
 }

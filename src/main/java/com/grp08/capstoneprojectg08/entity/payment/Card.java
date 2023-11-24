@@ -1,10 +1,5 @@
 package com.grp08.capstoneprojectg08.entity.payment;
 
-import lombok.Getter;
-import lombok.Setter;
-
-@Getter
-@Setter
 public class Card {
     private int id;
     private String cardCode; // 15 Characters
@@ -18,6 +13,46 @@ public class Card {
         this.cardCode = cardCode;
         this.cardOwner = cardOwner;
         this.cvvCode = cvvCode;
+        this.dateExpire = dateExpire;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getCardCode() {
+        return cardCode;
+    }
+
+    public void setCardCode(String cardCode) {
+        this.cardCode = cardCode;
+    }
+
+    public String getCardOwner() {
+        return cardOwner;
+    }
+
+    public void setCardOwner(String cardOwner) {
+        this.cardOwner = cardOwner;
+    }
+
+    public String getCvvCode() {
+        return cvvCode;
+    }
+
+    public void setCvvCode(String cvvCode) {
+        this.cvvCode = cvvCode;
+    }
+
+    public String getDateExpire() {
+        return dateExpire;
+    }
+
+    public void setDateExpire(String dateExpire) {
         this.dateExpire = dateExpire;
     }
 

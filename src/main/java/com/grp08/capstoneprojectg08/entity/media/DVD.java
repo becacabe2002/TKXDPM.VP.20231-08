@@ -1,12 +1,7 @@
 package com.grp08.capstoneprojectg08.entity.media;
 
-import lombok.Getter;
-import lombok.Setter;
-
 import java.util.Date;
 
-@Setter
-@Getter
 public class DVD extends Media{
     private DiscType discType;
     private String director;
@@ -24,6 +19,55 @@ public class DVD extends Media{
         this.subtitle = subtitle;
         this.releaseDate = releaseDate;
     }
+
+    public DiscType getDiscType() {
+        return discType;
+    }
+
+    public void setDiscType(DiscType discType) {
+        this.discType = discType;
+    }
+
+    public String getDirector() {
+        return director;
+    }
+
+    public void setDirector(String director) {
+        this.director = director;
+    }
+
+    public int getRuntime() {
+        return runtime;
+    }
+
+    public void setRuntime(int runtime) {
+        this.runtime = runtime;
+    }
+
+    public String getStudio() {
+        return studio;
+    }
+
+    public void setStudio(String studio) {
+        this.studio = studio;
+    }
+
+    public String getSubtitle() {
+        return subtitle;
+    }
+
+    public void setSubtitle(String subtitle) {
+        this.subtitle = subtitle;
+    }
+
+    public Date getReleaseDate() {
+        return releaseDate;
+    }
+
+    public void setReleaseDate(Date releaseDate) {
+        this.releaseDate = releaseDate;
+    }
+
     //override toString method
     @Override
     public String toString(){

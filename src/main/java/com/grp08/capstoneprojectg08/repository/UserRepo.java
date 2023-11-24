@@ -1,17 +1,24 @@
 package com.grp08.capstoneprojectg08.repository;
 
-import com.grp08.capstoneprojectg08.entity.order.Order;
 import com.grp08.capstoneprojectg08.entity.user.OrderHistory;
 import com.grp08.capstoneprojectg08.entity.user.User;
 import com.grp08.capstoneprojectg08.entity.user.UserRole;
+import com.grp08.capstoneprojectg08.util.DatabaseConnection;
 
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
 // Used on table User, orderHistory
-public class UserRepo extends BaseRepo{
+public class UserRepo{
+    private Connection mysqlConnection = DatabaseConnection.getConnectionMySQL();
+    private PreparedStatement ppStatement = null;
+    private Statement statement = null;
+    private ResultSet resultSet = null;
+
+    private OrderRepo orderRepo = new OrderRepo();
+
     //get all Order History of a user -> next, use OrderRepo.findOrderById() to get Order
     public List<OrderHistory> findAllOrderHistoryByUsername(String uname){
         List<OrderHistory> orderHistories = new ArrayList<>();
@@ -19,14 +26,14 @@ public class UserRepo extends BaseRepo{
         String queryOrderHistory = "select * from orderHistory where uid = ?";
         // get user's UUID
         try{
-            ppStatement = dbConnection.prepareStatement(queryUser);
+            ppStatement = mysqlConnection.prepareStatement(queryUser);
             ppStatement.setString(1, uname);
             resultSet = ppStatement.executeQuery();
             resultSet.next();
             UUID uid = UUID.fromString(resultSet.getString("externalUID"));
 
             // get order history
-            ppStatement = dbConnection.prepareStatement(queryOrderHistory);
+            ppStatement = mysqlConnection.prepareStatement(queryOrderHistory);
             ppStatement.setString(1, uid.toString());
             resultSet = ppStatement.executeQuery();
             while(resultSet.next()){
@@ -46,7 +53,7 @@ public class UserRepo extends BaseRepo{
         String query = "select * from users where role = ?;";
         List<User> listUser = new ArrayList<>();
         try{
-            ppStatement = dbConnection.prepareStatement(query);
+            ppStatement = mysqlConnection.prepareStatement(query);
             ppStatement.setString(1, role.toString());
             resultSet = statement.executeQuery(query);
             while(resultSet.next()){
@@ -66,7 +73,7 @@ public class UserRepo extends BaseRepo{
         User user = null;
         String query = "select * from users where uname = ?";
         try{
-            ppStatement = dbConnection.prepareStatement(query);
+            ppStatement = mysqlConnection.prepareStatement(query);
             ppStatement.setString(1, uname);
             resultSet = ppStatement.executeQuery();
             if(resultSet.next()){

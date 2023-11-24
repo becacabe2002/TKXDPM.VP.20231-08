@@ -1,10 +1,5 @@
 package com.grp08.capstoneprojectg08.entity.media;
 
-import lombok.Getter;
-import lombok.Setter;
-
-@Getter
-@Setter
 public class Media {
     protected int ID;
     protected MediaCategory category;
@@ -23,6 +18,70 @@ public class Media {
         this.title = title;
         this.value = value;
         this.imageUrl = imageUrl;
+        this.fastShipping = fastShipping;
+    }
+
+    public int getID() {
+        return ID;
+    }
+
+    public void setID(int ID) {
+        this.ID = ID;
+    }
+
+    public MediaCategory getCategory() {
+        return category;
+    }
+
+    public void setCategory(MediaCategory category) {
+        this.category = category;
+    }
+
+    public int getPrice() {
+        return price;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
+    }
+
+    public int getStockQuantity() {
+        return stockQuantity;
+    }
+
+    public void setStockQuantity(int stockQuantity) {
+        this.stockQuantity = stockQuantity;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public int getValue() {
+        return value;
+    }
+
+    public void setValue(int value) {
+        this.value = value;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
+
+    public boolean isFastShipping() {
+        return fastShipping;
+    }
+
+    public void setFastShipping(boolean fastShipping) {
         this.fastShipping = fastShipping;
     }
 }

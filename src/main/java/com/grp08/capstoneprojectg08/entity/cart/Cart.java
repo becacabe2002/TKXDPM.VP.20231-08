@@ -1,13 +1,8 @@
 package com.grp08.capstoneprojectg08.entity.cart;
 
-import lombok.Getter;
-import lombok.Setter;
-
 import java.util.ArrayList;
 import java.util.List;
 
-@Getter
-@Setter
 public class Cart {
     private final List<CartItem> cartItems;
     private float subTotal;
@@ -17,6 +12,34 @@ public class Cart {
     public Cart(){
         this.cartItems = new ArrayList<CartItem>();
         this.subTotal = this.vat = this.total = 0;
+    }
+
+    public List<CartItem> getCartItems() {
+        return cartItems;
+    }
+
+    public float getSubTotal() {
+        return subTotal;
+    }
+
+    public void setSubTotal(float subTotal) {
+        this.subTotal = subTotal;
+    }
+
+    public float getVat() {
+        return vat;
+    }
+
+    public void setVat(float vat) {
+        this.vat = vat;
+    }
+
+    public float getTotal() {
+        return total;
+    }
+
+    public void setTotal(float total) {
+        this.total = total;
     }
 
     private void calculate(){
