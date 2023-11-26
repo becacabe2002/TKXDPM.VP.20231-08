@@ -1,0 +1,15 @@
+### Mô hình kết nối
+B1: Khách hàng thực hiện mua hàng, tiến hành thanh toán trực tuyến cho đơn hàng.
+
+B2: PM tạo yêu cầu thanh toán dưới dạng URL mang thông tin thanh toán và chuyển hướng khách hàng sang cổng thanh toán VNPay bằng URL đó.
+    * Cần mở cửa sổ internal browser để hiển thị cổng thanh toán VNPay
+B3: Cổng thanh toán VNPay xử lý yêu cầu thanh toán được PM gửi sang, khách hàng tiến hành nhập các thông tin được yêu cầu để thực hiện việc thanh toán
+
+B4: Giao dịch được thực hiện, VNPay tiến hành:
+    * Chuyển hướng khách hàng về Website (cần handle để đóng cửa sổ internal browser, chuyển hướng về trang thanh toán thành công)
+    * Thông báo cho PM kết quả thanh toán của khách hàng thông qua IPN URL, Merchant ghi nhận kết quả thanh toán được gửi tại URL này.
+
+B5: Merchant hiển thị kết quả giao dịch tới khách hàng.
+
+Mail sandbox: tungominh.hust@gmail.com
+Pass sandbox: AimsVNPay2023

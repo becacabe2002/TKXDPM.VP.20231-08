@@ -8,8 +8,6 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-
-
 public class DatabaseConnection {
     public static Connection getConnectionMySQL(){
         try{
@@ -21,10 +19,9 @@ public class DatabaseConnection {
         }
     }
 
-    public static MongoDatabase getMongoDatabase(String dbName){
+    public static MongoClient getMongoClient(){
         try{
-            MongoClient mongoClient = MongoClients.create("mongodb://localhost:27017");
-            return mongoClient.getDatabase(dbName);
+            return MongoClients.create("mongodb://localhost:27017");
         } catch (Exception e){
             System.err.println("ConnectionUtil: " + e.getMessage());
             return null;

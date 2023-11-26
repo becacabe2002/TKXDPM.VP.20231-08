@@ -3,17 +3,21 @@ package com.grp08.capstoneprojectg08.entity.payment;
 public class Card {
     private int id;
     private String cardCode; // 15 Characters
+
+    // private String bankName;
     private String cardOwner;
     private String cvvCode; // 3 Characters
-    private String dateExpire;
+    private String dateRelease;
+
+    // private String dateExpire;
 
     public Card(){
     }
-    public Card(String cardCode, String cardOwner, String cvvCode, String dateExpire){
+    public Card(String cardCode, String cardOwner, String cvvCode, String dateRelease){
         this.cardCode = cardCode;
         this.cardOwner = cardOwner;
         this.cvvCode = cvvCode;
-        this.dateExpire = dateExpire;
+        this.dateRelease = dateRelease;
     }
 
     public int getId() {
@@ -48,12 +52,12 @@ public class Card {
         this.cvvCode = cvvCode;
     }
 
-    public String getDateExpire() {
-        return dateExpire;
+    public String getDateRelease() {
+        return dateRelease;
     }
 
-    public void setDateExpire(String dateExpire) {
-        this.dateExpire = dateExpire;
+    public void setDateRelease(String dateRelease) {
+        this.dateRelease = dateRelease;
     }
 
     public static boolean validateCardCode(String inputCardCode){

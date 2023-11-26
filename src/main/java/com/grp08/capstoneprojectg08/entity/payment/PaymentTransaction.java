@@ -8,7 +8,7 @@ public class PaymentTransaction {
 
     private String content;
 
-    private String method;
+    private String method; // payment method,right now only support VNPay
     private Timestamp createdAt;
 
     public PaymentTransaction(){
