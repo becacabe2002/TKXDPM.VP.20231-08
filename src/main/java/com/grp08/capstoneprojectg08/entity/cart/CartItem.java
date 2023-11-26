@@ -42,11 +42,11 @@ public class CartItem {
         return media;
     }
 
-    private void addQuantity(){
+    public void addQuantity(){
         this.quantity += 1;
         this.subPrice = this.quantity * media.getPrice();
     }
-    private void minusQuantity(){
+    public void minusQuantity(){
         this.quantity -= 1;
         this.subPrice = this.quantity * media.getPrice();
     }

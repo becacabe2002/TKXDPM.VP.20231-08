@@ -12,10 +12,10 @@ public class BaseController {
     // check if media item is in cart
     // if yes, return cartItem which contains its quantity
     // if no, return null
-    public CartItem checkMediaItemInCart(Media media){
+    public CartItem checkMediaItemInCart(int mediaId){
         List<CartItem> cartItemList = UserSession.getInstance().getCart().getCartItems();
         for(CartItem cartItem : cartItemList){
-            if(cartItem.getMediaId() == media.getID()){
+            if(cartItem.getMediaId() == mediaId){
                 return cartItem;
             }
         }

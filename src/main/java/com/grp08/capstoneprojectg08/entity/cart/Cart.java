@@ -42,7 +42,7 @@ public class Cart {
         this.total = total;
     }
 
-    private void calculate(){
+    public void calculate(){
         subTotal = 0;
         for(CartItem cartItem : cartItems){
             subTotal += cartItem.getSubPrice();
