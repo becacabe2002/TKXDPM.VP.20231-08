@@ -7,7 +7,7 @@ public class Media {
     protected int stockQuantity; //stock
     protected String title;
     protected int value;// gia tri
-    protected String imageUrl = null;
+    protected String imageUrl = null; // in form: "@../assets/MediaImages/<image_name>.png"
     protected boolean fastShipping; // if the media support shipping or not
 
     public Media(int id, MediaCategory category, int price, int quantity, String title, int value, String imageUrl, boolean fastShipping) {

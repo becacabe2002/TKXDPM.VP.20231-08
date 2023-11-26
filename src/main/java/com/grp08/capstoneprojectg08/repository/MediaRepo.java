@@ -65,6 +65,30 @@ public class MediaRepo{
         return null;
     }
 
+    public Media findMediaByTitle(String title){
+        String script = "Select * from Media where title = ? limit 1;";
+        try{
+            ppStatement = mysqlConnection.prepareStatement(script);
+            ppStatement.setString(1, "%" + title + "%");
+            resultSet = ppStatement.executeQuery();
+            if(resultSet.next()){
+                return new Media(
+                        resultSet.getInt("id"),
+                        MediaCategory.valueOf(resultSet.getString("category")),
+                        resultSet.getInt("price"),
+                        resultSet.getInt("quantity"),
+                        resultSet.getString("title"),
+                        resultSet.getInt("value"),
+                        resultSet.getString("imageUrl"),
+                        resultSet.getBoolean("fastShipping")
+                );
+            } else return null;
+        } catch (SQLException e){
+            System.err.println(e.getMessage());
+        }
+        return null;
+    }
+
     // find medias by category and search string
     // * Books
     public List<Book> findBooksFilterByTitle(String title){
@@ -74,7 +98,7 @@ public class MediaRepo{
         String script = "Select * from Media inner join Book on Media.id = Book.id where lower(Media.title) like ?;";
         try{
             ppStatement = mysqlConnection.prepareStatement(script);
-            ppStatement.setString(1, "'%" + lowerTitle + "%'");
+            ppStatement.setString(1, "%" + lowerTitle + "%");
             resultSet = ppStatement.executeQuery();
             while(resultSet.next()){
                 listBook.add(new Book(
@@ -89,7 +113,7 @@ public class MediaRepo{
                         resultSet.getString("author"),
                         CoverType.valueOf(resultSet.getString("coverType")),
                         resultSet.getString("publisher"),
-                        resultSet.getDate("publishedDate"),
+                        resultSet.getDate("publishDate"),
                         resultSet.getInt("numOfPages"),
                         resultSet.getString("language"),
                         resultSet.getString("bookCategory")
@@ -109,7 +133,7 @@ public class MediaRepo{
         String script = "Select * from Media inner join CD on Media.id = CD.id where lower(Media.title) like ?;";
         try{
             ppStatement = mysqlConnection.prepareStatement(script);
-            ppStatement.setString(1, "'%" + lowerTitle + "%'");
+            ppStatement.setString(1, "%" + lowerTitle + "%");
             resultSet = ppStatement.executeQuery();
             while(resultSet.next()){
                 listCD.add(new CD(
@@ -141,7 +165,7 @@ public class MediaRepo{
         String script = "Select * from Media inner join DVD on Media.id = DVD.id where lower(Media.title) like ?;";
         try{
             ppStatement = mysqlConnection.prepareStatement(script);
-            ppStatement.setString(1, "'%" + lowerTitle + "%'");
+            ppStatement.setString(1, "%" + lowerTitle + "%");
             resultSet = ppStatement.executeQuery();
             while(resultSet.next()){
                 listDVD.add(new DVD(
@@ -158,7 +182,7 @@ public class MediaRepo{
                         resultSet.getInt("runtime"),
                         resultSet.getString("studio"),
                         resultSet.getString("subtitle"),
-                        resultSet.getDate("releaseDate")
+                        resultSet.getDate("releasedDate")
                 ));
             }
         } catch (SQLException e){
