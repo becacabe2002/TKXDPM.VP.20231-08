@@ -4,7 +4,8 @@ module com.grp08.capstoneprojectg08 {
     requires java.sql;
 //    requires lombok;
     requires mysql.connector.j;
-//    requires org.mongodb.driver.sync.client;
+    requires org.mongodb.driver.sync.client;
+    requires org.mongodb.bson;
 
 
     opens com.grp08.capstoneprojectg08 to javafx.fxml;
