@@ -6,7 +6,7 @@ alter table `rushdeliveryinfo`
     modify `shippingTime` date null;
 
 alter table `users`
-    modify `createdAt` datetime not null default current_timestamp;
+    modify `createdAt` date not null default (current_date);
 
 -- migrate:down
 

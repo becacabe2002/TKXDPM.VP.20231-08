@@ -18,6 +18,8 @@ public class OrderRepo {
 
     private DeliveryRepo deliveryRepo = new DeliveryRepo();
 
+    public OrderRepo() {
+    }
     public int saveOrder(Order order){
         // save OrderInfo
         int resOrderId = -1;

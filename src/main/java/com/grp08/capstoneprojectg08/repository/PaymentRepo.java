@@ -23,7 +23,9 @@ public class PaymentRepo {
 //    private OrderRepo orderRepo = new OrderRepo();
 //    private UserRepo userRepo = new UserRepo();
 
-    // TODO: save payment transaction
+    public PaymentRepo() {
+    }
+    // save payment transaction
     public void savePaymentTransaction(URL url){
         Document doc = vnpayTransaction.fromUrlToMongoDocument(url);
         if (doc == null){

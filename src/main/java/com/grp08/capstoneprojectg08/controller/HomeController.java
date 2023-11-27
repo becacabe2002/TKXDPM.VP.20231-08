@@ -16,6 +16,11 @@ public class HomeController extends BaseController{
     private final MediaRepo mediaRepo = new MediaRepo();
 
     private final ImageRepo imageRepo = new ImageRepo();
+
+    public HomeController(){
+            super();
+        }
+
     private boolean checkImageExist(Media media){
         // check if image exist in local storage in form of: "src/main/resources/com/grp08/capstoneprojectg08/assets/" + imageName
         String imageName = StringProcess.fromNameToImageName(media);

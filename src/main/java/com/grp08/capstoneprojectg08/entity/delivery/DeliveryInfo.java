@@ -16,6 +16,8 @@ public class DeliveryInfo {
     }
     private RushDeliveryInfo rushDeliveryInfo = null;
 
+    public DeliveryInfo() {
+    }
     public DeliveryInfo(int id, String address, String instructions, String province, String name, String phone) {
         this.id = id;
         this.address = address;

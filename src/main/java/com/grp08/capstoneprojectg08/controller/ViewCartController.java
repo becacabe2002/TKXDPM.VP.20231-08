@@ -8,6 +8,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ViewCartController extends BaseController{
+
+    public ViewCartController(){
+        super();
+    }
+
     // change quantity of a cart item, then recalculate price
     public void increaseQuantity(int mediaId){
         checkMediaItemInCart(mediaId).addQuantity();

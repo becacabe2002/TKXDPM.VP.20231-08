@@ -19,6 +19,9 @@ public class UserRepo{
 
     private OrderRepo orderRepo = new OrderRepo();
 
+    public UserRepo() {
+    }
+
     //get all Order History of a user -> next, use OrderRepo.findOrderById() to get Order
     public List<OrderHistory> findAllOrderHistoryByUsername(String uname){
         List<OrderHistory> orderHistories = new ArrayList<>();

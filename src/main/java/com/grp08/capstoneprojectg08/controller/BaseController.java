@@ -13,6 +13,11 @@ public class BaseController {
     protected Alert errorAlert = new Alert(Alert.AlertType.ERROR);
     protected Alert warningAlert = new Alert(Alert.AlertType.WARNING);
 
+    public BaseController(){
+        infomationAlert.setTitle("Information");
+        errorAlert.setTitle("Error");
+        warningAlert.setTitle("Warning");
+    }
 
     // check if media item is in cart
     // if yes, return cartItem which contains its quantity

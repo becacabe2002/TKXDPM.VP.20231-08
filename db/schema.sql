@@ -206,7 +206,7 @@ CREATE TABLE `schema_migrations` (
 CREATE TABLE `users` (
   `id` int NOT NULL AUTO_INCREMENT,
   `uname` varchar(45) NOT NULL,
-  `createdAt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `createdAt` date NOT NULL DEFAULT (curdate()),
   `role` enum('admin','user') NOT NULL DEFAULT 'user',
   `externalUID` char(36) NOT NULL,
   PRIMARY KEY (`id`),
