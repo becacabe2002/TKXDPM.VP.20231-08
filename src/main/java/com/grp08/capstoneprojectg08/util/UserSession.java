@@ -74,4 +74,8 @@ public class UserSession {
     public void emptyCart(){
         this.cart = new Cart();
     }
+
+    public void emptyInvoice(){
+        this.invoice = null;
+    }
 }

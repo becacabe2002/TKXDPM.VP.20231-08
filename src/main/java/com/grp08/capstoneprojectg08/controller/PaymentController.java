@@ -5,5 +5,6 @@ public class PaymentController extends BaseController{
 
     // TODO: create payment to interact with subsystem
 
-    // TODO: save payment, order, invoice to database (include orderHistory table)
+    // TODO: save payment, order, invoice to database (only when payment success)
+    // clear current userSession's invoice
 }

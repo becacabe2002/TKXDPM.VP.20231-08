@@ -30,25 +30,6 @@ CREATE TABLE `book` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Table structure for table `card`
---
-
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `card` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `cardCode` varchar(15) NOT NULL,
-  `owner` varchar(45) NOT NULL,
-  `cvvCode` varchar(3) NOT NULL,
-  `dateExpired` varchar(4) NOT NULL,
-  `UID` char(36) NOT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `UID` (`UID`),
-  CONSTRAINT `card_ibfk_1` FOREIGN KEY (`UID`) REFERENCES `users` (`externalUID`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
 -- Table structure for table `cd`
 --
 
@@ -190,27 +171,6 @@ CREATE TABLE `ordermedia` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Table structure for table `paymenttransaction`
---
-
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `paymenttransaction` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `createAt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `content` varchar(45) NOT NULL,
-  `method` varchar(45) DEFAULT NULL,
-  `cardId` int NOT NULL,
-  `invoiceId` int NOT NULL,
-  PRIMARY KEY (`id`,`cardId`,`invoiceId`),
-  KEY `cardId` (`cardId`),
-  KEY `invoiceId` (`invoiceId`),
-  CONSTRAINT `paymenttransaction_ibfk_1` FOREIGN KEY (`cardId`) REFERENCES `card` (`id`),
-  CONSTRAINT `paymenttransaction_ibfk_2` FOREIGN KEY (`invoiceId`) REFERENCES `invoice` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
 -- Table structure for table `rushdeliveryinfo`
 --
 
@@ -279,5 +239,7 @@ INSERT INTO `schema_migrations` (version) VALUES
   ('20231123013445'),
   ('20231123015502'),
   ('20231123033418'),
-  ('20231123141144');
+  ('20231123141144'),
+  ('20231127092441'),
+  ('20231127094154');
 UNLOCK TABLES;

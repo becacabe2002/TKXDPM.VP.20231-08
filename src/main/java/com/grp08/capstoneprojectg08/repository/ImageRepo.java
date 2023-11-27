@@ -20,18 +20,18 @@ public class ImageRepo {
         String imageName = StringProcess.fromNameToImageName(media);
         MongoClient mongoClient = DatabaseConnection.getMongoClient();
         assert mongoClient != null;
-        MongoDatabase imageBase64DB = mongoClient.getDatabase("aims_image");
+        MongoDatabase aimsDB = mongoClient.getDatabase("aims_2023");
         Document doc = new Document();
         String imageBase64 = ImageBase64.encodeImage(filePath);
         if(imageBase64 == null){
-            System.err.println("Couldn't find aims_image database");
+            System.err.println("Couldn't find aims_2023 database");
             mongoClient.close();
             return false;
         } else {
             try{
                 doc.append("name", imageName);
                 doc.append("stringBase64", imageBase64);
-                imageBase64DB.getCollection("media_images").insertOne(doc);
+                aimsDB.getCollection("media_images").insertOne(doc);
                 mongoClient.close();
                 return true;
             } catch (Exception e){
