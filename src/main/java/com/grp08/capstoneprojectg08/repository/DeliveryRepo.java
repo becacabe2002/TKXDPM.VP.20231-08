@@ -18,7 +18,7 @@ public class DeliveryRepo{
     public int saveDeliveryInfo(DeliveryInfo deliveryInfo){
         int deliveryInfoId = -1;
         // return saved delivery info id
-        String querySave = "insert into deliveryInfo(address, instructions, province, name) values(?, ?, ?, ?)";
+        String querySave = "insert into deliveryInfo(address, instructions, province, name, phone) values(?, ?, ?, ?, ?)";
         String querySaveRush = "insert into rushDeliveryInfo(id, shippingTime, rushDeliveryInstructions) values(?, ?, ?)";
         String queryGetLastId = "select id from deliveryInfo order by id desc limit 1";
         try{
@@ -27,6 +27,7 @@ public class DeliveryRepo{
             ppStatement.setString(2, deliveryInfo.getInstructions());
             ppStatement.setString(3, deliveryInfo.getProvince());
             ppStatement.setString(4, deliveryInfo.getName());
+            ppStatement.setString(5, deliveryInfo.getPhone());
             ppStatement.executeUpdate();
 
             if (deliveryInfo.getRushDeliveryInfo() != null){
@@ -62,7 +63,8 @@ public class DeliveryRepo{
                         resultSet.getString("address"),
                         resultSet.getString("instructions"),
                         resultSet.getString("province"),
-                        resultSet.getString("name")
+                        resultSet.getString("name"),
+                        resultSet.getString("phone")
                 );
                 if(resultSet.getDate("shippingTime") != null){
                     deliveryInfo.setRushDeliveryInfo(

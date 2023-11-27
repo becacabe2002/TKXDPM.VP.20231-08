@@ -8,7 +8,7 @@ import com.grp08.capstoneprojectg08.util.UserSession;
 public class PlaceOrderController extends BaseController{
     //
 
-    // TODO: create order and set it to user session
+    // create invoice, attach order to it and set it to user session
     // check if user is logged in and is customer
     public void createOrder(){
         // check if user cart is not empty
@@ -29,13 +29,13 @@ public class PlaceOrderController extends BaseController{
         UserSession.getInstance().setInvoice(new Invoice(getCart()));
     }
 
-    // TODO: validate input: name, phone, address, shipping instructions
+    // TODO: validate input: name, phone, address, shipping instructions, (shipping time and Fast shipping instructions)
 
-    // TODO: calculate shipping fee
+    // TODO: calculate shipping fee, update to deliveryInfo in invoice
     // return of pairs cartItem and its shipping fee
     // shipping fee of a cart item = 0.01 * random from 1 - 10 * subPrice of cartItem
 
-    // TODO: create invoice
+    // TODO: update invoice with shipping
 
 
 }

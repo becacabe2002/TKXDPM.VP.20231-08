@@ -6,14 +6,23 @@ public class DeliveryInfo {
     private String instructions;
     private String province;
     private String name; // receiver's name
+
+    private String phone; // size = 10
+    public String getPhone() {
+        return phone;
+    }
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
     private RushDeliveryInfo rushDeliveryInfo = null;
 
-    public DeliveryInfo(int id, String address, String instructions, String province, String name) {
+    public DeliveryInfo(int id, String address, String instructions, String province, String name, String phone) {
         this.id = id;
         this.address = address;
         this.instructions = instructions;
         this.province = province;
         this.name = name;
+        this.phone = phone;
     }
 
     public int getId() {

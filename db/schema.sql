@@ -74,6 +74,7 @@ CREATE TABLE `cd` (
 CREATE TABLE `deliveryinfo` (
   `id` int NOT NULL AUTO_INCREMENT,
   `name` varchar(45) DEFAULT NULL,
+  `phone` varchar(10) DEFAULT NULL,
   `province` varchar(45) DEFAULT NULL,
   `instructions` varchar(200) DEFAULT NULL,
   `address` varchar(100) DEFAULT NULL,

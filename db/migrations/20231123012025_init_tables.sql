@@ -48,6 +48,7 @@ CREATE TABLE Book(
 CREATE TABLE DeliveryInfo(
                              id INT AUTO_INCREMENT PRIMARY KEY,
                              name VARCHAR(45),
+                             phone VARCHAR(10),
                              province VARCHAR(45),
                              instructions VARCHAR(200),
                              address VARCHAR(100)
