@@ -7,9 +7,9 @@ B3: Cổng thanh toán VNPay xử lý yêu cầu thanh toán được PM gửi s
 
 B4: Giao dịch được thực hiện, VNPay tiến hành:
     * Chuyển hướng khách hàng về Website (cần handle để đóng cửa sổ internal browser, chuyển hướng về trang thanh toán thành công)
-    * Thông báo cho PM kết quả thanh toán của khách hàng thông qua IPN URL, Merchant ghi nhận kết quả thanh toán được gửi tại URL này.
+    * Thông báo cho PM kết quả thanh toán của khách hàng thông qua IPN URL, Merchant ghi nhận kết quả thanh toán được gửi tại URL này (các thông tin về transaction được truyền như các parameter của URL).
 
-B5: Merchant hiển thị kết quả giao dịch tới khách hàng.
+B5: PM hiển thị kết quả giao dịch tới khách hàng. (parse URL trả về để hiển thị thông tin)
 
 Mail sandbox: tungominh.hust@gmail.com
 Pass sandbox: AimsVNPay2023

@@ -12,7 +12,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class WebViewController implements Initializable {
+public class WebViewHandler implements Initializable {
     private URL url;
     private WebEngine engine;
 
@@ -42,11 +42,11 @@ public class WebViewController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         engine = webDisplay.getEngine();
-//        try {
-//            url = new URL("https://www.twitter.com");
-//        } catch (MalformedURLException e) {
-//            throw new RuntimeException(e);
-//        }
+        try {
+            url = new URL("https://www.twitter.com");
+        } catch (MalformedURLException e) {
+            throw new RuntimeException(e);
+        }
         engine.load(url.toString());
     }
 

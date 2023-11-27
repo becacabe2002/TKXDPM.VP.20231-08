@@ -6,7 +6,8 @@ module com.grp08.capstoneprojectg08 {
     requires mysql.connector.j;
     requires javafx.web;
     requires mongo.java.driver;
-    requires jakarta.servlet;
+//    requires javax.servlet.api;
+
 
     opens com.grp08.capstoneprojectg08.screen_handler to javafx.fxml;
     opens com.grp08.capstoneprojectg08.subsystem to javafx.fxml;

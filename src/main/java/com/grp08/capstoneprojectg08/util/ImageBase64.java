@@ -7,7 +7,6 @@ import java.nio.file.StandardOpenOption;
 import java.util.Base64;
 
 public class ImageBase64 {
-    // TODO: encode image to base64
     public static String encodeImage(String imagePath) {
         byte[] imageBytes;
         try {
@@ -19,7 +18,6 @@ public class ImageBase64 {
         return Base64.getEncoder().encodeToString(imageBytes);
     }
 
-    // TODO: decode base64 to image
     public static void decodeImage(String base64String, String savePath){
         byte[] imageBytes = Base64.getDecoder().decode(base64String);
         try {

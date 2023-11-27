@@ -1,17 +1,23 @@
 package com.grp08.capstoneprojectg08.repository;
 
+import com.grp08.capstoneprojectg08.entity.media.Media;
 import com.grp08.capstoneprojectg08.entity.media.MediaCategory;
 import com.grp08.capstoneprojectg08.util.DatabaseConnection;
 import com.grp08.capstoneprojectg08.util.ImageBase64;
 
+import com.grp08.capstoneprojectg08.util.StringProcess;
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoDatabase;
 import org.bson.Document;
 import java.util.Base64;
 
 public class ImageRepo {
+
+    public ImageRepo() {
+    }
     // save image to database
-    public boolean saveMediaImage(String filePath, String imageName){
+    public boolean saveMediaImage(String filePath, Media media){
+        String imageName = StringProcess.fromNameToImageName(media);
         MongoClient mongoClient = DatabaseConnection.getMongoClient();
         assert mongoClient != null;
         MongoDatabase imageBase64DB = mongoClient.getDatabase("aims_image");
@@ -37,7 +43,8 @@ public class ImageRepo {
     }
 
     // get image from db and save to local storage if not exist
-    public String getMediaImage(String imageName){
+    public String getMediaImage(Media media){
+        String imageName = StringProcess.fromNameToImageName(media);
         MongoClient mongoClient = DatabaseConnection.getMongoClient();
         assert mongoClient != null;
         MongoDatabase imageBase64DB = mongoClient.getDatabase("aims_image");
@@ -53,7 +60,7 @@ public class ImageRepo {
             return null;
         } else {
             String imageBase64 = doc.getString("stringBase64");
-            String imagePath = "src/main/resources/com/grp08/capstoneprojectg08/assets/" + imageName;
+            String imagePath = "src/main/resources/com/grp08/capstoneprojectg08/assets/MediaImages" + imageName;
             ImageBase64.decodeImage(imageBase64, imagePath);
             mongoClient.close();
             return imagePath;

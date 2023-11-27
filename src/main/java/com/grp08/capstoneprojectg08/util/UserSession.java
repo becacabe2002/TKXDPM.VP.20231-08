@@ -10,8 +10,8 @@ import java.util.UUID;
 
 public class UserSession {
     private static UserSession instance;
-    private UserRole role;
-    private String username;
+    private UserRole role = null;
+    private String username = null;
 
     private Cart cart = null; // for storing temporary cart
 

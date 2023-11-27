@@ -4,10 +4,15 @@ import com.grp08.capstoneprojectg08.entity.cart.Cart;
 import com.grp08.capstoneprojectg08.entity.cart.CartItem;
 import com.grp08.capstoneprojectg08.entity.media.Media;
 import com.grp08.capstoneprojectg08.util.UserSession;
+import javafx.scene.control.Alert;
 
 import java.util.List;
 
 public class BaseController {
+    protected Alert infomationAlert = new Alert(Alert.AlertType.INFORMATION);
+    protected Alert errorAlert = new Alert(Alert.AlertType.ERROR);
+    protected Alert warningAlert = new Alert(Alert.AlertType.WARNING);
+
 
     // check if media item is in cart
     // if yes, return cartItem which contains its quantity
