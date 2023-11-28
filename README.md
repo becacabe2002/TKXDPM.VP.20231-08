@@ -11,3 +11,19 @@ Capstone Project cho môn học Thiết kế &amp; xây dựng phần mềm, Nh�
     ```bash
     dbmate up
     ```
+## Sử dụng mongodb tools để migrate database
+### Cài đặt mongodb tools
+- Cài đặt mongodb tools theo hướng dẫn tại [đây](https://www.mongodb.com/docs/database-tools/installation/installation/)
+
+### Sử dụng mongodb tools
+- Dump dữ liệu từ collection về path .\mongodata
+  ```bash
+  mongodump --uri="mongodb://localhost:27017/aims_2023" --out=".\mongodata\"
+  ```
+  
+- Restore dữ liệu từ path .\mongodata vào db và các collection (tạo collection nếu chưa có)
+  ```bash
+  mongorestore --uri="mongodb://localhost:27017/aims_2023" ".\mongodata\aims_2023"
+  ```
+
+(_Thay đổi Uri tương ứng với uri của người dùng_)
