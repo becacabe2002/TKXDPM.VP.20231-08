@@ -7,12 +7,11 @@ public class CartItem {
     private int mediaId;
     private int quantity;
     private int subPrice;// = media.price * quantity
-    private MediaRepo mediaRepo;
     private Media media = null;
 
     public CartItem(int mediaId, int quantity) {
         try{
-            media = mediaRepo.findMediaById(mediaId);
+            media = MediaRepo.findMediaById(mediaId);
             if(media == null) throw new NullPointerException("Media not found");
             this.mediaId = mediaId;
             this.quantity = quantity;
@@ -32,10 +31,6 @@ public class CartItem {
 
     public int getSubPrice() {
         return subPrice;
-    }
-
-    public MediaRepo getMediaRepo() {
-        return mediaRepo;
     }
 
     public Media getMedia() {

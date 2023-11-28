@@ -13,7 +13,6 @@ import java.util.List;
 import java.util.Map;
 
 public class PlaceRushOrderController extends BaseController{
-    private MediaRepo mediaRepo = new MediaRepo();
 
     public PlaceRushOrderController(){
         super();
@@ -25,7 +24,7 @@ public class PlaceRushOrderController extends BaseController{
         List<Integer> supportedOrderItems = new ArrayList<>();
         List<OrderItem> orderItems = UserSession.getInstance().getInvoice().getOrder().getOrderItems();
         for(OrderItem orderItem : orderItems){
-            Media media = mediaRepo.findMediaById(orderItem.getMediaId());
+            Media media = MediaRepo.findMediaById(orderItem.getMediaId());
             if(media.isFastShipping()){
                 supportedOrderItems.add(orderItem.getMediaId());
             }

@@ -13,9 +13,6 @@ import java.io.File;
 import java.util.List;
 
 public class HomeController extends BaseController{
-    private final MediaRepo mediaRepo = new MediaRepo();
-
-    private final ImageRepo imageRepo = new ImageRepo();
 
     public HomeController(){
             super();
@@ -31,14 +28,14 @@ public class HomeController extends BaseController{
 
     // get Media and its image from database
     public List<Media> getMediaAndImage(){
-        List<Media> mediaList = mediaRepo.findAllMedias();
+        List<Media> mediaList = MediaRepo.findAllMedias();
         // check
         for (Media m : mediaList){
             String imagePath = null;
             // if image not exist in local storage
             if(!checkImageExist(m)){
                 // get image from database and save to local storage
-                imagePath = imageRepo.getMediaImage(m);
+                imagePath = ImageRepo.getMediaImage(m);
             }
             if(m.getImageUrl() == null && imagePath != null){
                 m.setImageUrl(imagePath);
@@ -50,10 +47,10 @@ public class HomeController extends BaseController{
     // get Media base on its category and name filter
     public List<? extends Media> getMediaByCategoryAndName(MediaCategory mediaCategory, String name){
         return switch (mediaCategory) {
-            case Book -> mediaRepo.findBooksFilterByTitle(name);
-            case DVD -> mediaRepo.findDVDsFilterByTitle(name);
-            case CD -> mediaRepo.findCDsFilterByTitle(name);
-            default -> mediaRepo.findAllMedias();
+            case Book -> MediaRepo.findBooksFilterByTitle(name);
+            case DVD -> MediaRepo.findDVDsFilterByTitle(name);
+            case CD -> MediaRepo.findCDsFilterByTitle(name);
+            default -> MediaRepo.findAllMedias();
         };
     }
 

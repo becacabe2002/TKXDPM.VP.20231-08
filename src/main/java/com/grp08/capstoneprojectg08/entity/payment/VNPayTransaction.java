@@ -10,9 +10,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class VNPayTransaction {
-    public VNPayTransaction() {
-    }
-    public Document fromUrlToMongoDocument(URL url) {
+
+    public static Document fromUrlToMongoDocument(URL url) {
         try{
             URI uri = url.toURI();
             Document doc = new Document();

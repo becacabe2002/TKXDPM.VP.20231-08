@@ -12,12 +12,13 @@ public class MediaRepo{
     public MediaRepo() {
     }
 
-    private Connection mysqlConnection = DatabaseConnection.getConnectionMySQL();
-    private PreparedStatement ppStatement = null;
-    private Statement statement = null;
-    private ResultSet resultSet = null;
+    private static Connection mysqlConnection = DatabaseConnection.getConnectionMySQL();
+    private static PreparedStatement ppStatement = null;
+    private static Statement statement = null;
+    private static ResultSet resultSet = null;
 
-    public List<Media> findAllMedias(){
+
+    public static List<Media> findAllMedias(){
         List<Media> listMedia = new ArrayList<>();
         String script = "Select * from Media;";
         try{
@@ -41,7 +42,7 @@ public class MediaRepo{
         return listMedia;
     }
 
-    public Media findMediaById(int id){
+    public static Media findMediaById(int id){
         String script = "Select * from Media where id = ? limit 1;";
         try{
             ppStatement = mysqlConnection.prepareStatement(script);
@@ -65,7 +66,7 @@ public class MediaRepo{
         return null;
     }
 
-    public Media findMediaByTitle(String title){
+    public static Media findMediaByTitle(String title){
         String script = "Select * from Media where title = ? limit 1;";
         try{
             ppStatement = mysqlConnection.prepareStatement(script);
@@ -91,7 +92,7 @@ public class MediaRepo{
 
     // find medias by category and search string
     // * Books
-    public List<Book> findBooksFilterByTitle(String title){
+    public static List<Book> findBooksFilterByTitle(String title){
         List<Book> listBook = new ArrayList<>();
         String lowerTitle = title.toLowerCase();
         // merge 2 tables: Media and Book by id
@@ -126,7 +127,7 @@ public class MediaRepo{
         return listBook;
     }
     // * CDs
-    public List<CD> findCDsFilterByTitle(String title){
+    public static List<CD> findCDsFilterByTitle(String title){
         List<CD> listCD = new ArrayList<>();
         String lowerTitle = title.toLowerCase();
         // merge 2 tables: Media and CD by id
@@ -158,7 +159,7 @@ public class MediaRepo{
         return listCD;
     }
     // * DVDs
-    public List<DVD> findDVDsFilterByTitle(String title){
+    public static List<DVD> findDVDsFilterByTitle(String title){
         List<DVD> listDVD = new ArrayList<>();
         String lowerTitle = title.toLowerCase();
         // merge 2 tables: Media and DVD by id
@@ -192,7 +193,7 @@ public class MediaRepo{
         return listDVD;
     }
 
-    // TODO: add media (for admin)
+    // TODO: add media (for admin), also set mediaUrl to under MediaImages folder
     // * Book
     // * CD
     // * DVD

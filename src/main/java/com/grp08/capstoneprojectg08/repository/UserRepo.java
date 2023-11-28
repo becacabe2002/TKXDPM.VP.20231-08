@@ -12,18 +12,14 @@ import java.util.UUID;
 
 // Used on table User, orderHistory
 public class UserRepo{
-    private Connection mysqlConnection = DatabaseConnection.getConnectionMySQL();
-    private PreparedStatement ppStatement = null;
-    private Statement statement = null;
-    private ResultSet resultSet = null;
+    private static Connection mysqlConnection = DatabaseConnection.getConnectionMySQL();
+    private static PreparedStatement ppStatement = null;
+    private static Statement statement = null;
+    private static ResultSet resultSet = null;
 
-    private OrderRepo orderRepo = new OrderRepo();
-
-    public UserRepo() {
-    }
 
     //get all Order History of a user -> next, use OrderRepo.findOrderById() to get Order
-    public List<OrderHistory> findAllOrderHistoryByUsername(String uname){
+    public static List<OrderHistory> findAllOrderHistoryByUsername(String uname){
         List<OrderHistory> orderHistories = new ArrayList<>();
         String queryUser = "select externalUID from users where uname = ? limit 1";
         String queryOrderHistory = "select * from orderHistory where uid = ?";
@@ -43,7 +39,7 @@ public class UserRepo{
                 OrderHistory temp = new OrderHistory();
                 temp.setPaid(resultSet.getBoolean("paid"));
                 temp.setExternalUID(uid);
-                temp.setOrder(orderRepo.findOrderById(resultSet.getInt("orderId")));
+                temp.setOrder(OrderRepo.findOrderById(resultSet.getInt("orderId")));
                 orderHistories.add(temp);
             }
 
@@ -52,7 +48,7 @@ public class UserRepo{
         }
         return orderHistories;
     }
-    public List<User> findAllUserBaseOnRole(UserRole role){ // UserRole.admin
+    public static List<User> findAllUserBaseOnRole(UserRole role){ // UserRole.admin
         String query = "select * from users where role = ?;";
         List<User> listUser = new ArrayList<>();
         try{
@@ -72,7 +68,7 @@ public class UserRepo{
         return listUser;
     }
 
-    public User findUserByUsername(String uname){
+    public static User findUserByUsername(String uname){
         User user = null;
         String query = "select * from users where uname = ?";
         try{

@@ -69,7 +69,7 @@ public class UserSession {
     }
 
     public UUID getCurrentUserUID(){
-        return new UserRepo().findUserByUsername(this.username).getExternalUID();
+        return UserRepo.findUserByUsername(this.username).getExternalUID();
     }
     public void emptyCart(){
         this.cart = new Cart();

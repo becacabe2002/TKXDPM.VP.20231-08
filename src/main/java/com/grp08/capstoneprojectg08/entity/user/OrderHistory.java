@@ -17,7 +17,7 @@ public class OrderHistory {
     public Invoice getOrderInvoice(){
         if (order == null) return null;
         else{
-            return new OrderRepo().findInvoiceOfOrderId(order.getId());
+            return OrderRepo.findInvoiceOfOrderId(order.getId());
         }
     }
 

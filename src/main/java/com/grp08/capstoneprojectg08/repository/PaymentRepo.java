@@ -15,7 +15,7 @@ import java.util.UUID;
 
 // query on table paymentTransaction, card
 public class PaymentRepo {
-    private VNPayTransaction vnpayTransaction = new VNPayTransaction();
+
 //    private Connection mysqlConnection = DatabaseConnection.getConnectionMySQL();
 //    private PreparedStatement ppStatement = null;
 //    private Statement statement = null;
@@ -23,11 +23,9 @@ public class PaymentRepo {
 //    private OrderRepo orderRepo = new OrderRepo();
 //    private UserRepo userRepo = new UserRepo();
 
-    public PaymentRepo() {
-    }
     // save payment transaction
-    public void savePaymentTransaction(URL url){
-        Document doc = vnpayTransaction.fromUrlToMongoDocument(url);
+    public static void savePaymentTransaction(URL url){
+        Document doc = VNPayTransaction.fromUrlToMongoDocument(url);
         if (doc == null){
             System.err.println("PaymentRepo: Couldn't parse url to mongo document");
             return;
@@ -42,8 +40,17 @@ public class PaymentRepo {
         } catch (Exception e){
             System.err.println("PaymentRepo: " + e.getMessage());
         }
+        mongoClient.close();
     }
 
-    // TODO: get payment transaction by userUID
+    // get payment transaction by userUID
+    public static Document getPaymentTransactionByUserUID(UUID userUID){
+        MongoClient mongoClient = DatabaseConnection.getMongoClient();
+        assert mongoClient != null;
+        MongoDatabase aimsDB = mongoClient.getDatabase("aims_2023");
+        Document doc = aimsDB.getCollection("transactions").find(new Document("userUID", userUID.toString())).first();
+        mongoClient.close();
+        return doc;
+    }
 
 }

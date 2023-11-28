@@ -8,14 +8,12 @@ import java.sql.*;
 
 // Used for query on table deliveryInfo, rushDeliveryInfo
 public class DeliveryRepo{
-    public DeliveryRepo(){
-    }
-    private Connection mysqlConnection = DatabaseConnection.getConnectionMySQL();
-    private PreparedStatement ppStatement = null;
-    private Statement statement = null;
-    private ResultSet resultSet = null;
+    private static Connection mysqlConnection = DatabaseConnection.getConnectionMySQL();
+    private static PreparedStatement ppStatement = null;
+    private static Statement statement = null;
+    private static ResultSet resultSet = null;
 
-    public int saveDeliveryInfo(DeliveryInfo deliveryInfo){
+    public static int saveDeliveryInfo(DeliveryInfo deliveryInfo){
         int deliveryInfoId = -1;
         // return saved delivery info id
         String querySave = "insert into deliveryInfo(address, instructions, province, name, phone) values(?, ?, ?, ?, ?)";
@@ -50,7 +48,7 @@ public class DeliveryRepo{
         }
         return deliveryInfoId;
     }
-    public DeliveryInfo findDeliveryInfoById(int deliveryInfoId){
+    public static DeliveryInfo findDeliveryInfoById(int deliveryInfoId){
         String query = "select * from deliveryInfo left join rushDeliveryInfo on deliveryInfo.id = rushDeliveryInfo.id where deliveryInfo.id = ? limit 1";
         DeliveryInfo deliveryInfo = null;
         try{

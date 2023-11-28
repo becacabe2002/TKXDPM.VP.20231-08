@@ -11,23 +11,23 @@ import java.sql.*;
 // Used for query on table orderInfo, orderMedia, invoice
 public class OrderRepo {
 
-    private Connection mysqlConnection = DatabaseConnection.getConnectionMySQL();
-    private PreparedStatement ppStatement = null;
-    private Statement statement = null;
-    private ResultSet resultSet = null;
+    private static Connection mysqlConnection = DatabaseConnection.getConnectionMySQL();
+    private static PreparedStatement ppStatement = null;
+    private static Statement statement = null;
+    private static ResultSet resultSet = null;
 
-    private DeliveryRepo deliveryRepo = new DeliveryRepo();
+//    private DeliveryRepo deliveryRepo = new DeliveryRepo();
 
-    public OrderRepo() {
-    }
-    public int saveOrder(Order order){
+//    public OrderRepo() {
+//    }
+    public static int saveOrder(Order order){
         // save OrderInfo
         int resOrderId = -1;
         String queryInsertOrderInfo = "insert into orderInfo(deliveryInfoId, shippingFees) values(?, ?)";
         String queryLastId = "select id from orderInfo order by id desc limit 1";
         try{
             ppStatement = mysqlConnection.prepareStatement(queryInsertOrderInfo);
-            ppStatement.setInt(1, deliveryRepo.saveDeliveryInfo(order.getDeliveryInfo()));
+            ppStatement.setInt(1, DeliveryRepo.saveDeliveryInfo(order.getDeliveryInfo()));
             ppStatement.setInt(2, order.getShippingFees());
             ppStatement.executeUpdate();
 
@@ -69,7 +69,7 @@ public class OrderRepo {
     }
 
 
-    public int saveInvoice(Invoice invoice){
+    public static int saveInvoice(Invoice invoice){
         /*
           save all information of invoice to database
          */
@@ -96,7 +96,7 @@ public class OrderRepo {
         return resInvoiceId;
     }
 
-    public Order findOrderById(int orderId){
+    public static Order findOrderById(int orderId){
         Order order = null;
         String query = "select * from orderInfo where id = ?";
         try {
@@ -107,7 +107,7 @@ public class OrderRepo {
                 order = new Order();
                 order.setId(resultSet.getInt("id"));
                 order.setShippingFees(resultSet.getInt("shippingFees"));
-                order.setDeliveryInfo(deliveryRepo.findDeliveryInfoById(resultSet.getInt("deliveryInfoId")));
+                order.setDeliveryInfo(DeliveryRepo.findDeliveryInfoById(resultSet.getInt("deliveryInfoId")));
             }
             // get orderItems
             if (order != null) {
@@ -128,7 +128,7 @@ public class OrderRepo {
         }
         return order;
     }
-    public Invoice findInvoiceOfOrderId(int orderId){
+    public static Invoice findInvoiceOfOrderId(int orderId){
         Invoice invoice = null;
         String queryInvoice = "select * from invoice where orderId = ?";
         try{

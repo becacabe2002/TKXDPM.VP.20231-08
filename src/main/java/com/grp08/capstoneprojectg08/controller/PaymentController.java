@@ -8,8 +8,6 @@ import com.grp08.capstoneprojectg08.util.UserSession;
 import java.net.URL;
 
 public class PaymentController extends BaseController{
-    OrderRepo orderRepo = new OrderRepo();
-    PaymentRepo paymentRepo = new PaymentRepo();
 
     public PaymentController() {
         super();
@@ -19,8 +17,8 @@ public class PaymentController extends BaseController{
     // clear current userSession's invoice
     public void savePayment(URL url){
         Invoice currentUserInvoice = UserSession.getInstance().getInvoice();
-        orderRepo.saveInvoice(currentUserInvoice);
-        paymentRepo.savePaymentTransaction(url);
+        OrderRepo.saveInvoice(currentUserInvoice);
+        PaymentRepo.savePaymentTransaction(url);
         UserSession.getInstance().emptyInvoice();
     }
 }

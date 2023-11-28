@@ -8,15 +8,19 @@ import com.grp08.capstoneprojectg08.util.ImageBase64;
 import com.grp08.capstoneprojectg08.util.StringProcess;
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoDatabase;
+import com.mongodb.client.model.Filters;
 import org.bson.Document;
+
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.Base64;
+import java.util.Objects;
 
 public class ImageRepo {
+    private static PreparedStatement ppStatement = null;
 
-    public ImageRepo() {
-    }
     // save image to database
-    public boolean saveMediaImage(String filePath, Media media){
+    public static boolean saveMediaImage(String filePath, Media media){// if media Image URL is null, update it with image path
         String imageName = StringProcess.fromNameToImageName(media);
         MongoClient mongoClient = DatabaseConnection.getMongoClient();
         assert mongoClient != null;
@@ -33,6 +37,15 @@ public class ImageRepo {
                 doc.append("stringBase64", imageBase64);
                 aimsDB.getCollection("media_images").insertOne(doc);
                 mongoClient.close();
+                String updateScript = "update Media set imageUrl = ? where title = ?;";
+                try{
+                    ppStatement = Objects.requireNonNull(DatabaseConnection.getConnectionMySQL()).prepareStatement(updateScript);
+                    ppStatement.setString(1, "src/main/resources/com/grp08/capstoneprojectg08/assets/MediaImages" + imageName);
+                    ppStatement.setString(2, media.getTitle());
+                    ppStatement.executeUpdate();
+                } catch (SQLException e){
+                    System.err.println("MediaRepo: " + e.getMessage());
+                }
                 return true;
             } catch (Exception e){
                 System.err.println("ImageRepo: " + e.getMessage());
@@ -43,14 +56,14 @@ public class ImageRepo {
     }
 
     // get image from db and save to local storage if not exist
-    public String getMediaImage(Media media){
+    public static String getMediaImage(Media media){
         String imageName = StringProcess.fromNameToImageName(media);
         MongoClient mongoClient = DatabaseConnection.getMongoClient();
         assert mongoClient != null;
-        MongoDatabase imageBase64DB = mongoClient.getDatabase("aims_image");
-        Document doc = new Document();
+        MongoDatabase imageBase64DB = mongoClient.getDatabase("aims_2023");
+        Document doc = null;
         try{
-            doc = imageBase64DB.getCollection("media_images").find(new Document("name", imageName)).first();
+            doc = imageBase64DB.getCollection("media_images").find(Filters.eq("name", imageName)).first();
         } catch (Exception e){
             System.err.println("ImageRepo: " + e.getMessage());
         }
@@ -60,7 +73,7 @@ public class ImageRepo {
             return null;
         } else {
             String imageBase64 = doc.getString("stringBase64");
-            String imagePath = "src/main/resources/com/grp08/capstoneprojectg08/assets/MediaImages" + imageName;
+            String imagePath = "src/main/resources/com/grp08/capstoneprojectg08/assets/MediaImages/" + imageName;
             ImageBase64.decodeImage(imageBase64, imagePath);
             mongoClient.close();
             return imagePath;
