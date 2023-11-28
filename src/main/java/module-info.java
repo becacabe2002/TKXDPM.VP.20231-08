@@ -14,4 +14,10 @@ module com.grp08.capstoneprojectg08 {
     exports com.grp08.capstoneprojectg08 to javafx.graphics;
     exports com.grp08.capstoneprojectg08.screen_handler to javafx.fxml;
     exports com.grp08.capstoneprojectg08.subsystem to javafx.fxml;
+    exports com.grp08.capstoneprojectg08.entity.cart;
+    exports com.grp08.capstoneprojectg08.entity.delivery;
+    exports com.grp08.capstoneprojectg08.entity.media;
+    exports com.grp08.capstoneprojectg08.entity.order;
+    exports com.grp08.capstoneprojectg08.entity.payment;
+    exports com.grp08.capstoneprojectg08.entity.user;
 }
