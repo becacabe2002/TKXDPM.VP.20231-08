@@ -9,9 +9,6 @@ import java.util.List;
 
 // Use for query on tables media, book, cd, dvd
 public class MediaRepo{
-    public MediaRepo() {
-    }
-
     private static Connection mysqlConnection = DatabaseConnection.getConnectionMySQL();
     private static PreparedStatement ppStatement = null;
     private static Statement statement = null;
