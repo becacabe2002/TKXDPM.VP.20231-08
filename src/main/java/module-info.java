@@ -6,6 +6,7 @@ module com.grp08.capstoneprojectg08 {
     requires mysql.connector.j;
     requires javafx.web;
     requires mongo.java.driver;
+    requires java.dotenv;
 //    requires javax.servlet.api;
 
 

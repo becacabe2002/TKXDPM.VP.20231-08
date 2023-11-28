@@ -7,11 +7,13 @@ import com.grp08.capstoneprojectg08.util.StringProcess;
 
 public class TestImageUpload {
     public static void main(String[] args) {
-        Media media = MediaRepo.findMediaById(3);
-//        boolean upload = ImageRepo.saveMediaImage("src/main/resources/com/grp08/capstoneprojectg08/assets/ImportImages/shaw_redem.jpg", media);
-//        System.out.println(upload);
-        System.out.println(StringProcess.fromNameToImageName(media));
-        String imagePath = ImageRepo.getMediaImage(media);
-        System.out.println(imagePath);
+        for (int i = 1; i <= 30; i++){
+            Media media = MediaRepo.findMediaById(i);
+        boolean upload = ImageRepo.saveMediaImage("src/main/resources/com/grp08/capstoneprojectg08/assets/ImportImages/"+ i + ".jpg", media);
+        System.out.println(upload);
+            System.out.println(StringProcess.fromNameToImageName(media));
+            String imagePath = ImageRepo.getMediaImage(media);
+            System.out.println(imagePath);
+        }
     }
 }

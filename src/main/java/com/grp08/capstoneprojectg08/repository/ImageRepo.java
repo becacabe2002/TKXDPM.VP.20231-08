@@ -9,6 +9,7 @@ import com.grp08.capstoneprojectg08.util.StringProcess;
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.model.Filters;
+import io.github.cdimascio.dotenv.Dotenv;
 import org.bson.Document;
 
 import java.sql.PreparedStatement;
@@ -18,13 +19,14 @@ import java.util.Objects;
 
 public class ImageRepo {
     private static PreparedStatement ppStatement = null;
+    private static Dotenv dotenv = Dotenv.load();
 
     // save image to database
     public static boolean saveMediaImage(String filePath, Media media){// if media Image URL is null, update it with image path
         String imageName = StringProcess.fromNameToImageName(media);
         MongoClient mongoClient = DatabaseConnection.getMongoClient();
         assert mongoClient != null;
-        MongoDatabase aimsDB = mongoClient.getDatabase("aims_2023");
+        MongoDatabase aimsDB = mongoClient.getDatabase(dotenv.get("IMAGE_DB"));
         Document doc = new Document();
         String imageBase64 = ImageBase64.encodeImage(filePath);
         if(imageBase64 == null){
@@ -60,7 +62,7 @@ public class ImageRepo {
         String imageName = StringProcess.fromNameToImageName(media);
         MongoClient mongoClient = DatabaseConnection.getMongoClient();
         assert mongoClient != null;
-        MongoDatabase imageBase64DB = mongoClient.getDatabase("aims_2023");
+        MongoDatabase imageBase64DB = mongoClient.getDatabase(dotenv.get("IMAGE_DB"));
         Document doc = null;
         try{
             doc = imageBase64DB.getCollection("media_images").find(Filters.eq("name", imageName)).first();
