@@ -45,19 +45,19 @@ public class WebViewHandler implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         engine = webDisplay.getEngine();
         try {
-            url = new URL("http://sandbox.vnpayment.vn/tryitnow/Home/CreateOrder");
+            url = new URL("https://sandbox.vnpayment.vn/tryitnow/Home/CreateOrder");
         } catch (MalformedURLException e) {
             throw new RuntimeException(e);
         }
         engine.load(url.toString());
-        engine.locationProperty().addListener(new ChangeListener<String>() {
-            @Override
-            public void changed(ObservableValue<? extends String> observableValue, String oldLoc, String newLoc) {
-                if(newLoc.contains("https://sandbox.vnpayment.vn/tryitnow/Home/VnPayReturn")){
-                    System.out.println("Return IPN URL" + newLoc);
-                }
-            }
-        });
+//        engine.locationProperty().addListener(new ChangeListener<String>() {
+//            @Override
+//            public void changed(ObservableValue<? extends String> observableValue, String oldLoc, String newLoc) {
+//                if(newLoc.contains("https://sandbox.vnpayment.vn/tryitnow/Home/VnPayReturn")){
+//                    System.out.println("Return IPN URL" + newLoc);
+//                }
+//            }
+//        });
     }
 
 }
