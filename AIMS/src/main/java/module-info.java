@@ -21,4 +21,6 @@ module com.grp08.capstoneprojectg08 {
     exports com.grp08.capstoneprojectg08.entity.order;
     exports com.grp08.capstoneprojectg08.entity.payment;
     exports com.grp08.capstoneprojectg08.entity.user;
+    exports com.grp08.capstoneprojectg08.screen_handler.base to javafx.fxml;
+    opens com.grp08.capstoneprojectg08.screen_handler.base to javafx.fxml;
 }
