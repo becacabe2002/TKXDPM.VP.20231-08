@@ -24,7 +24,7 @@ public class PlaceRushOrderController extends BaseController{
         List<Integer> supportedOrderItems = new ArrayList<>();
         List<OrderItem> orderItems = UserSession.getInstance().getInvoice().getOrder().getOrderItems();
         for(OrderItem orderItem : orderItems){
-            Media media = MediaRepo.findMediaById(orderItem.getMediaId());
+            Media media = mediaRepo.findMediaById(orderItem.getMediaId());
             if(media.isFastShipping()){
                 supportedOrderItems.add(orderItem.getMediaId());
             }
