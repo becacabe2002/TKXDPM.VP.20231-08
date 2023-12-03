@@ -14,43 +14,11 @@ import java.util.List;
 import java.util.UUID;
 
 // query on table paymentTransaction, card
-public class PaymentRepo {
-
-//    private Connection mysqlConnection = DatabaseConnection.getConnectionMySQL();
-//    private PreparedStatement ppStatement = null;
-//    private Statement statement = null;
-//    private ResultSet resultSet = null;
-//    private OrderRepo orderRepo = new OrderRepo();
-//    private UserRepo userRepo = new UserRepo();
+public interface PaymentRepo extends BaseRepo{
 
     // save payment transaction
-    public static void savePaymentTransaction(URL url){
-        Document doc = VNPayTransaction.fromUrlToMongoDocument(url);
-        if (doc == null){
-            System.err.println("PaymentRepo: Couldn't parse url to mongo document");
-            return;
-        }
-        String currentUserUID = UserSession.getInstance().getCurrentUserUID().toString();
-        doc.append("userUID", currentUserUID);
-        MongoClient mongoClient = DatabaseConnection.getMongoClient();
-        assert mongoClient != null;
-        MongoDatabase aimsDB = mongoClient.getDatabase("aims_2023");
-        try{
-            aimsDB.getCollection("transactions").insertOne(doc);
-        } catch (Exception e){
-            System.err.println("PaymentRepo: " + e.getMessage());
-        }
-        mongoClient.close();
-    }
+    public void savePaymentTransaction(URL url);
 
     // get payment transaction by userUID
-    public static Document getPaymentTransactionByUserUID(UUID userUID){
-        MongoClient mongoClient = DatabaseConnection.getMongoClient();
-        assert mongoClient != null;
-        MongoDatabase aimsDB = mongoClient.getDatabase("aims_2023");
-        Document doc = aimsDB.getCollection("transactions").find(new Document("userUID", userUID.toString())).first();
-        mongoClient.close();
-        return doc;
-    }
-
+    public Document getPaymentTransactionByUserUID(UUID userUID);
 }

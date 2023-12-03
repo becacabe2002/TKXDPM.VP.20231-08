@@ -5,6 +5,7 @@ import com.grp08.capstoneprojectg08.entity.order.Invoice;
 import com.grp08.capstoneprojectg08.entity.user.User;
 import com.grp08.capstoneprojectg08.entity.user.UserRole;
 import com.grp08.capstoneprojectg08.repository.UserRepo;
+import com.grp08.capstoneprojectg08.repository.UserRepoImplement;
 
 import java.util.UUID;
 
@@ -69,7 +70,7 @@ public class UserSession {
     }
 
     public UUID getCurrentUserUID(){
-        return UserRepo.findUserByUsername(this.username).getExternalUID();
+        return new UserRepoImplement().findUserByUsername(this.username).getExternalUID();
     }
     public void emptyCart(){
         this.cart = new Cart();

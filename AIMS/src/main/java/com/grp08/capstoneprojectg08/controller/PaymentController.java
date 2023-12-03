@@ -17,8 +17,8 @@ public class PaymentController extends BaseController{
     // clear current userSession's invoice
     public void savePayment(URL url){
         Invoice currentUserInvoice = UserSession.getInstance().getInvoice();
-        OrderRepo.saveInvoice(currentUserInvoice);
-        PaymentRepo.savePaymentTransaction(url);
+        orderRepo.saveInvoice(currentUserInvoice);
+        paymentRepo.savePaymentTransaction(url);
         UserSession.getInstance().emptyInvoice();
     }
 }
