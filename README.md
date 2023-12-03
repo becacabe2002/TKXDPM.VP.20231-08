@@ -1,13 +1,135 @@
-# TKXDPM.VP.20231-08
-Capstone Project cho môn học Thiết kế &amp; xây dựng phần mềm, Nhóm Việt Pháp 08
+# TKXDPM.VN.20231-01
 
-## Sử dụng dbmate để migrate database
-### Cài đặt dbmate
-- Cài đặt dbmate theo hướng dẫn tại [đây](https://github.com/amacneil/dbmate.git)
+This is a Capstone's source code for Software Design and Construction project
 
-### Config dbmate
-* Thay đổi địa chỉ DATABASE_URL trong file .env tương ứng
-* Chạy các lệnh ở folder root của project để tạo database và các bảng:
-    ```bash
-    dbmate up
-    ```
+## Team member
+
+| Name           | Role        |
+| :------------- | :---------- |
+| Ngô Minh Tú    | Team Leader |
+| Dương Nhật Thành| Member      |
+| Nguyễn Quốc Thành| Member      |
+
+## Report Content
+
+<details>
+  <summary>W13: 27/11/2023~02/12/2023 </summary>
+<br>
+<details>
+<summary>Ngô Minh Tú</summary>
+<br>
+
+- Assigned tasks:
+  - Task 1
+  - Task 2
+  - ...
+
+- Implementation details:
+  - Pull Request(s): [Attach links to your pull requests here. You can attach multiple pull requests]()
+  - Specific implementation details:
+    - Describe specific in detail what you did last week
+    - You can attach images if you want
+
+</details>
+
+<details>
+<summary>Team Member 2</summary>
+<br>
+
+- Assigned tasks:
+  - Task 1
+  - Task 2
+  - ...
+
+- Implementation details:
+  - Pull Request(s): [Attach links to your pull requests here. You can attach multiple pull requests]()
+  - Specific implementation details:
+    - Describe specific in detail what you did last week
+    - You can attach images if you want
+
+</details>
+
+</details>
+
+---
+<details>
+  <summary>W4: 01/10/2023~08/10/2023 </summary>
+<br>
+<details>
+<summary>Team Member 1</summary>
+<br>
+
+- Assigned tasks:
+  - Task 1
+  - Task 2
+  - ...
+
+- Implementation details:
+  - Pull Request(s): [Attach links to your pull requests here. You can attach multiple pull requests]()
+  - Specific implementation details:
+    - Describe specific in detail what you did last week
+    - You can attach images if you want
+
+</details>
+
+<details>
+<summary>Team Member 2</summary>
+<br>
+
+- Assigned tasks:
+  - Task 1
+  - Task 2
+  - ...
+
+- Implementation details:
+  - Pull Request(s): [Attach links to your pull requests here. You can attach multiple pull requests]()
+  - Specific implementation details:
+    - Describe specific in detail what you did last week
+    - You can attach images if you want
+
+</details>
+
+</details>
+
+---
+
+<details>
+  <summary>W5: 01/10/2023~08/10/2023 </summary>
+<br>
+<details>
+<summary>Team Member 1</summary>
+<br>
+
+- Assigned tasks:
+  - Task 1
+  - Task 2
+  - ...
+
+- Implementation details:
+  - Pull Request(s): [Attach links to your pull requests here. You can attach multiple pull requests]()
+  - Specific implementation details:
+    - Describe specific in detail what you did last week
+    - You can attach images if you want
+
+</details>
+
+<details>
+<summary>Team Member 2</summary>
+<br>
+
+- Assigned tasks:
+  - Task 1
+  - Task 2
+  - ...
+
+- Implementation details:
+  - Pull Request(s): [Attach links to your pull requests here. You can attach multiple pull requests]()
+  - Specific implementation details:
+    - Describe specific in detail what you did last week
+    - You can attach images if you want
+
+</details>
+
+</details>
+
+---

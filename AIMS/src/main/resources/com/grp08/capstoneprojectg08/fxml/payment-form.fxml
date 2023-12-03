@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.geometry.Insets?>
+<AnchorPane prefHeight="768.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.grp08.capstoneprojectg08.screen_handler.payment.PaymentScreenHandler">
+    <AnchorPane prefHeight="120.0" style="-fx-background-color: #B0926A;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <Label layoutX="82.0" layoutY="45.0" text="AIMS System">
+            <font>
+                <Font name="Arial Rounded MT Bold" size="25.0" />
+            </font>
+        </Label>
+        <ImageView fitHeight="52.0" fitWidth="61.0" layoutX="14.0" layoutY="34.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../assets/shop_icon.png" />
+        </ImageView>
+        <Label layoutX="631.0" layoutY="47.0" text="Payment" textFill="#706233">
+            <font>
+                <Font name="Arial Bold" size="25.0" />
+            </font>
+        </Label>
+        <ImageView fitHeight="70.0" fitWidth="70.0" layoutX="759.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../assets/money.png" />
+        </ImageView>
+    </AnchorPane>
+    <AnchorPane layoutX="293.0" layoutY="139.0" prefHeight="600.0" prefWidth="700.0" style="-fx-background-color: #B3A492; -fx-background-radius: 15;">
+        <GridPane alignment="CENTER_LEFT" hgap="5.0" prefHeight="600.0" prefWidth="700.0" vgap="10.0">
+            <columnConstraints>
+                <ColumnConstraints fillWidth="false" halignment="LEFT" hgrow="NEVER" minWidth="10.0" prefWidth="200.0" />
+                <ColumnConstraints halignment="LEFT" hgrow="ALWAYS" minWidth="10.0" prefWidth="100.0" />
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="50.0" vgrow="NEVER" />
+                <RowConstraints minHeight="10.0" prefHeight="50.0" vgrow="NEVER" />
+                <RowConstraints minHeight="10.0" prefHeight="80.0" vgrow="NEVER" />
+                <RowConstraints minHeight="10.0" prefHeight="50.0" vgrow="NEVER" />
+                <RowConstraints minHeight="10.0" prefHeight="150.0" vgrow="NEVER" />
+            </rowConstraints>
+            <padding>
+                <Insets bottom="10.0" left="20.0" right="20.0" top="5.0" />
+            </padding>
+            <TextField GridPane.columnIndex="1" />
+            <Label text="Card Owner">
+                <font>
+                    <Font name="Arial Bold" size="18.0" />
+                </font>
+            </Label>
+            <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Label text="Card Number" GridPane.rowIndex="1">
+                <font>
+                    <Font name="Arial Bold" size="18.0" />
+                </font>
+            </Label>
+            <Label text="Card Security Code" GridPane.rowIndex="2">
+                <font>
+                    <Font name="Arial Bold" size="18.0" />
+                </font>
+            </Label>
+            <Label text="Card Expire Date" GridPane.rowIndex="3">
+                <font>
+                    <Font name="Arial Bold" size="18.0" />
+                </font>
+            </Label>
+            <DatePicker prefHeight="26.0" prefWidth="200.0" promptText="select time" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <TextField GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <Button alignment="CENTER" mnemonicParsing="false" prefHeight="50.0" prefWidth="136.0" style="-fx-background-color: #96B6C5;" text="Confirm" textAlignment="CENTER" textFill="WHITE" wrapText="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="4">
+                <font>
+                    <Font name="Arial Bold" size="17.0" />
+                </font>
+            </Button>
+        </GridPane>
+    </AnchorPane>
+    <Button alignment="CENTER" layoutX="1197.0" layoutY="689.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="136.0" style="-fx-background-color: E19898;" text="Cancel" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+        <font>
+            <Font name="Arial Bold" size="17.0" />
+        </font>
+    </Button>
+    <AnchorPane layoutX="41.0" layoutY="139.0" prefHeight="600.0" prefWidth="220.0"
+                style="-fx-background-color: #FAE7C9; -fx-background-radius: 15;">
+        <Button alignment="CENTER" layoutX="42.0" layoutY="76.0" mnemonicParsing="false" prefHeight="50.0"
+                prefWidth="136.0" style="-fx-background-color: #B0926A;" text="Credit Card" textAlignment="CENTER"
+                textFill="WHITE" wrapText="true">
+            <font>
+                <Font name="Arial Bold" size="17.0"/>
+            </font>
+        </Button>
+        <Label layoutX="20.0" layoutY="25.0" text="Select Payment Method">
+            <font>
+                <Font name="Arial Bold" size="16.0"/>
+            </font>
+        </Label>
+    </AnchorPane>
+</AnchorPane>

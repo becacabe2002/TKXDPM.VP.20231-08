@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="768.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.grp08.capstoneprojectg08.screen_handler.invoice.InvoiceScreenHandler">
+    <AnchorPane prefHeight="120.0" style="-fx-background-color: #B0926A;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <Label layoutX="82.0" layoutY="45.0" text="AIMS System">
+            <font>
+                <Font name="Arial Rounded MT Bold" size="25.0" />
+            </font>
+        </Label>
+        <ImageView fitHeight="52.0" fitWidth="61.0" layoutX="14.0" layoutY="34.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../assets/shop_icon.png" />
+        </ImageView>
+        <Label layoutX="640.0" layoutY="47.0" text="Invoice" textFill="#706233">
+            <font>
+                <Font name="Arial Bold" size="25.0" />
+            </font>
+        </Label>
+        <ImageView fitHeight="52.0" fitWidth="61.0" layoutX="777.0" layoutY="36.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../assets/invoice.png" />
+        </ImageView>
+    </AnchorPane>
+    <Button alignment="CENTER" layoutX="1198.0" layoutY="689.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="136.0" style="-fx-background-color: #A7D397;" text="Confirm" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+        <font>
+            <Font name="Arial Bold" size="17.0" />
+        </font>
+    </Button>
+    <AnchorPane layoutX="183.0" layoutY="139.0" prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: #B3A492; -fx-background-radius: 15;">
+        <GridPane alignment="CENTER_LEFT" hgap="5.0" prefHeight="600.0" prefWidth="1000.0" vgap="10.0">
+            <columnConstraints>
+                <ColumnConstraints fillWidth="false" halignment="LEFT" hgrow="NEVER" minWidth="10.0" prefWidth="180.0" />
+                <ColumnConstraints halignment="CENTER" hgrow="NEVER" minWidth="10.0" prefWidth="250.0" />
+            <ColumnConstraints halignment="LEFT" hgrow="NEVER" minWidth="10.0" prefWidth="220.0" />
+            <ColumnConstraints halignment="CENTER" hgrow="NEVER" minWidth="10.0" prefWidth="300.0" />
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="50.0" vgrow="NEVER" />
+                <RowConstraints minHeight="10.0" prefHeight="50.0" vgrow="NEVER" />
+                <RowConstraints minHeight="10.0" prefHeight="80.0" vgrow="NEVER" />
+                <RowConstraints minHeight="10.0" prefHeight="50.0" vgrow="NEVER" />
+                <RowConstraints minHeight="10.0" prefHeight="150.0" vgrow="NEVER" />
+                <RowConstraints minHeight="10.0" prefHeight="150.0" vgrow="NEVER" />
+            </rowConstraints>
+            <padding>
+                <Insets bottom="10.0" left="20.0" right="20.0" top="5.0" />
+            </padding>
+            <Label text="Name">
+                <font>
+                    <Font name="Arial Bold" size="18.0" />
+                </font>
+            </Label>
+            <Label text="Phone" GridPane.rowIndex="1">
+                <font>
+                    <Font name="Arial Bold" size="18.0" />
+                </font>
+            </Label>
+            <Label text="Province/City" GridPane.rowIndex="2">
+                <font>
+                    <Font name="Arial Bold" size="18.0" />
+                </font>
+            </Label>
+            <Label text="Detail Address" GridPane.rowIndex="4">
+                <font>
+                    <Font name="Arial Bold" size="18.0" />
+                </font>
+            </Label>
+            <Label text="Shipping Instruction" GridPane.rowIndex="5">
+                <font>
+                    <Font name="Arial Bold" size="18.0" />
+                </font>
+            </Label>
+            <Label text="Shipping Method" GridPane.rowIndex="3">
+                <font>
+                    <Font name="Arial Bold" size="18.0" />
+                </font>
+            </Label>
+              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Include Fast shipping" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                  <font>
+                      <Font size="16.0" />
+                  </font>
+              </Text>
+         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="slkjsahlsjdhfsjncncskjdnkdsjncdncsdncsdncksncckdsnksdncksdncksdjcnskdnc" wrappingWidth="240.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
+            <font>
+               <Font size="16.0" />
+            </font>
+         </Text>
+         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Hanoi" GridPane.columnIndex="1" GridPane.rowIndex="2">
+            <font>
+               <Font size="16.0" />
+            </font>
+         </Text>
+         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="0123456789" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <font>
+               <Font size="16.0" />
+            </font>
+         </Text>
+         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Name" GridPane.columnIndex="1">
+            <font>
+               <Font size="16.0" />
+            </font>
+         </Text>
+         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="akjdhsđslkncncsjncksdncckdncksnjcksncksdncsdnsdjcnjsdcjdn" wrappingWidth="240.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
+            <font>
+               <Font size="16.0" />
+            </font>
+         </Text>
+         <Label text="Fast Delivery Time" GridPane.columnIndex="2">
+            <font>
+               <Font name="Arial Bold" size="18.0" />
+            </font>
+         </Label>
+         <Label text="Fast Delivery Instruction" GridPane.columnIndex="2" GridPane.rowIndex="1">
+            <font>
+               <Font name="Arial Bold" size="18.0" />
+            </font>
+         </Label>
+         <Label text="Subtotal" GridPane.columnIndex="2" GridPane.rowIndex="2">
+            <font>
+               <Font name="Arial Bold" size="18.0" />
+            </font>
+         </Label>
+         <Label text="VAT" GridPane.columnIndex="2" GridPane.rowIndex="3">
+            <font>
+               <Font name="Arial Bold" size="18.0" />
+            </font>
+         </Label>
+         <Label text="Shipping Fee" GridPane.columnIndex="2" GridPane.rowIndex="4">
+            <font>
+               <Font name="Arial Bold" size="18.0" />
+            </font>
+         </Label>
+         <Label text="Total" GridPane.columnIndex="2" GridPane.rowIndex="5">
+            <font>
+               <Font name="Arial Bold" size="18.0" />
+            </font>
+         </Label>
+         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="10:20pm 21/10/2023" GridPane.columnIndex="3">
+            <font>
+               <Font size="16.0" />
+            </font>
+         </Text>
+         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="slkdjflsjflkdsjhfsjdhfldsjfljdflkdsjkjhdafkđsfldsjhf" wrappingWidth="270.0" GridPane.columnIndex="3" GridPane.rowIndex="1">
+            <font>
+               <Font size="16.0" />
+            </font>
+         </Text>
+         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="100.00 $" GridPane.columnIndex="3" GridPane.rowIndex="2">
+            <font>
+               <Font size="16.0" />
+            </font>
+         </Text>
+         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="10.00 $" GridPane.columnIndex="3" GridPane.rowIndex="3">
+            <font>
+               <Font size="16.0" />
+            </font>
+         </Text>
+         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="20.00 $" GridPane.columnIndex="3" GridPane.rowIndex="4">
+            <font>
+               <Font size="16.0" />
+            </font>
+         </Text>
+         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="130.00 $" GridPane.columnIndex="3" GridPane.rowIndex="5">
+            <font>
+               <Font size="16.0" />
+            </font>
+         </Text>
+        </GridPane>
+    </AnchorPane>
+    <Button alignment="CENTER" layoutX="1198.0" layoutY="632.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="136.0" style="-fx-background-color: #96B6C5;" text="Back" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+        <font>
+            <Font name="Arial Bold" size="17.0" />
+        </font>
+    </Button>
+</AnchorPane>
