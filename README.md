@@ -33,12 +33,12 @@ This is a Capstone's source code for Software Design and Construction project
 </details>
 
 <details>
-<summary>Team Member 2</summary>
+<summary>Nguyễn Quốc Thành</summary>
 <br>
 
 - Assigned tasks:
-  - Task 1
-  - Task 2
+  - Làm Screen Handle
+  - (Bonus , cần comment để dê hiểu hơn code của repo và controller )
   - ...
 
 - Implementation details:
