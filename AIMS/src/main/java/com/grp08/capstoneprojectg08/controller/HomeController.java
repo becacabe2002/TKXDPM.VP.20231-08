@@ -42,6 +42,7 @@ public class HomeController extends BaseController{
             }
         }
         return mediaList;
+        // return a List<Media> that contains media together with it`s proper imagepath
     }
 
     // get Media base on its category and name filter
@@ -51,6 +52,7 @@ public class HomeController extends BaseController{
             case DVD -> mediaRepo.findDVDsFilterByTitle(name);
             case CD -> mediaRepo.findCDsFilterByTitle(name);
             default -> mediaRepo.findAllMedias();
+            // get a List<Media> with media fall on one of the three category Book , DVD ,  CD or media in general
         };
     }
 

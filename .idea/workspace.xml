@@ -5,9 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f4bff944-799b-4135-b469-98e691396d64" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/AIMS/.env" beforeDir="false" afterPath="$PROJECT_DIR$/AIMS/.env" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AIMS/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/AIMS/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AIMS/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/AIMS/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AIMS/src/main/java/com/grp08/capstoneprojectg08/controller/HomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/AIMS/src/main/java/com/grp08/capstoneprojectg08/controller/HomeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AIMS/src/main/resources/com/grp08/capstoneprojectg08/fxml/media-item.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/AIMS/src/main/resources/com/grp08/capstoneprojectg08/fxml/media-item.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,17 +29,17 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;develop&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/Program Files/Java/JDK&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.48735633&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "develop__NQT",
+    "last_opened_file_path": "D:/Program Files/Java/JDK",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.48735633"
   }
-}</component>
+}]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
