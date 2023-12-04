@@ -7,22 +7,20 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.VBox;
-import javafx.scene.text.Text;
+
+
 import javafx.scene.image.Image;
 
-import javafx.fxml.Initializable;
 
 
 
-import com.grp08.capstoneprojectg08.controller.HomeController;
+
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
 
-public class MediaItemHandler implements  Initializable {
+public class MediaItemHandler implements Initializable {
     @FXML
     private Button addToCartBtn;
 
@@ -32,8 +30,7 @@ public class MediaItemHandler implements  Initializable {
     @FXML
     private ImageView mediaImage;
 
-    @FXML
-    private VBox vBox;
+
 
     @FXML
     private Label mediaTitleLb;
@@ -55,16 +52,16 @@ public class MediaItemHandler implements  Initializable {
 
     private Media media;
 
-    public void setMedia(Media media) {
-        this.media = media;// Reinitialize the UI with the new Media object
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        // Initialize the UI components with the provided media object
+        initializeMedia();
     }
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
+    private void initializeMedia() {
         if (media != null) {
             mediaTitleLb.setText(media.getTitle());
             mediaCategoryLb.setText(media.getCategory().toString());
-            mediaPriceLb.setText(String.valueOf(media.getPrice()));
+            mediaPriceLb.setText(String.valueOf(media.getPrice()) + " $");
             mediaStockLb.setText(String.valueOf(media.getStockQuantity()));
 
             // Initialize ImageView with the image URL
@@ -72,9 +69,16 @@ public class MediaItemHandler implements  Initializable {
                 Image image = new Image(media.getImageUrl());
                 mediaImage.setImage(image);
             }
-
-
         }
+    }
+
+    public void setMedia(Media media) {
+        this.media = media;
+        initializeMedia();
+    }
+
+    public Media getMedia() {
+        return media;
     }
 
 
