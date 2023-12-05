@@ -23,7 +23,7 @@ public class ImageRepoImplement implements ImageRepo{
         String imageName = StringProcess.fromNameToImageName(media);
         MongoClient mongoClient = DatabaseConnection.getMongoClient();
         assert mongoClient != null;
-        MongoDatabase aimsDB = mongoClient.getDatabase(dotenv.get("IMAGE_DB"));
+        MongoDatabase aimsDB = mongoClient.getDatabase(dotenv.get("MONGO_DB"));
         Document doc = new Document();
         String imageBase64 = ImageBase64.encodeImage(filePath);
         if(imageBase64 == null){
@@ -39,7 +39,7 @@ public class ImageRepoImplement implements ImageRepo{
                 String updateScript = "update Media set imageUrl = ? where title = ?;";
                 try{
                     ppStatement = Objects.requireNonNull(DatabaseConnection.getConnectionMySQL()).prepareStatement(updateScript);
-                    ppStatement.setString(1, "/assets/MediaImages/" + imageName);
+                    ppStatement.setString(1, "target/classes/com/grp08/capstoneprojectg08/assets/MediaImages/" + imageName);
                     ppStatement.setString(2, media.getTitle());
                     ppStatement.executeUpdate();
                 } catch (SQLException e){
@@ -73,7 +73,7 @@ public class ImageRepoImplement implements ImageRepo{
             return null;
         } else {
             String imageBase64 = doc.getString("stringBase64");
-            String imagePath = "/assets/MediaImages/" + imageName;
+            String imagePath = "target/classes/com/grp08/capstoneprojectg08/assets/MediaImages/" + imageName;
             ImageBase64.decodeImage(imageBase64, imagePath);
             mongoClient.close();
             return imagePath;
