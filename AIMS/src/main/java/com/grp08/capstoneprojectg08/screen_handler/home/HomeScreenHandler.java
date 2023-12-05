@@ -88,7 +88,7 @@ public class HomeScreenHandler implements Initializable {
         for (Media media : mediaList) {
             try {
                 // Load the media-item.fxml for each Media object
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("src/main/resources/com/grp08/capstoneprojectg08/fxml/media-item.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/grp08/capstoneprojectg08/fxml/media-item.fxml"));
                 Parent mediaItemRoot = loader.load();
 
                 // Access the controller instance to set the Media object

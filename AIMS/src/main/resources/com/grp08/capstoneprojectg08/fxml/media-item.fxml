@@ -11,31 +11,31 @@
 <?import javafx.scene.text.Text?>
 
 <AnchorPane prefHeight="200.0" prefWidth="450.0" style="-fx-background-color: #BFB29E; -fx-border-radius: 10; -fx-background-radius: 10;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.grp08.capstoneprojectg08.screen_handler.home.MediaItemHandler">
-    <Button id="addToCartBtn" alignment="CENTER" layoutX="307.0" layoutY="135.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="120.0" style="-fx-background-color: #B3A492;" text="Add to Cart" textAlignment="CENTER" wrapText="true">
+    <Button fx:id="addToCartBtn" alignment="CENTER" layoutX="307.0" layoutY="135.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="120.0" style="-fx-background-color: #B3A492;" text="Add to Cart" textAlignment="CENTER" wrapText="true">
         <font>
             <Font size="15.0" />
         </font>
     </Button>
-    <Button id="toProductDetailBtn" alignment="CENTER" layoutX="30.0" layoutY="135.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="120.0" style="-fx-background-color: #B3A492;" text="View Detail" textAlignment="CENTER" wrapText="true">
+    <Button fx:id="toProductDetailBtn" alignment="CENTER" layoutX="30.0" layoutY="135.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="120.0" style="-fx-background-color: #B3A492;" text="View Detail" textAlignment="CENTER" wrapText="true">
         <font>
             <Font size="15.0" />
         </font>
     </Button>
-    <ImageView id="MediaImage" fitHeight="90.0" fitWidth="82.0" layoutX="49.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
+    <ImageView fx:id="MediaImage" fitHeight="90.0" fitWidth="82.0" layoutX="49.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
         <Image url="@../assets/sample_product_icon.png" />
     </ImageView>
-    <VBox layoutX="178.0" layoutY="29.0" spacing="8.0">
-        <Label id="mediaTitleLb" text="MUSIC CD 1">
+    <VBox layoutX="137.0" layoutY="20.0" prefWidth="175.0" spacing="8.0">
+        <Label fx:id="mediaTitleLb" text="MUSIC CD 1" textOverrun="WORD_ELLIPSIS">
             <font>
                 <Font name="Arial Bold Italic" size="20.0" />
             </font>
         </Label>
-        <Label id="mediaCategoryLb" text="author 1">
+        <Label fx:id="mediaCategoryLb" text="author 1">
             <font>
                 <Font name="Arial Italic" size="16.0" />
             </font>
         </Label>
-        <Label id="mediaPriceLb" style="-fx-text-fill: #46a12a;" text="1.00 $" textFill="#46a12a">
+        <Label fx:id="mediaPriceLb" style="-fx-text-fill: #46a12a;" text="1.00 $" textFill="#46a12a">
             <font>
                 <Font size="25.0" />
             </font>
@@ -46,10 +46,10 @@
             <Font name="Arial Bold" size="18.0" />
         </font>
     </Label>
-    <Text id="mediaStockLb" fontSmoothingType="LCD" layoutX="356.0" layoutY="84.0" strokeType="OUTSIDE" strokeWidth="0.0" text="15" textAlignment="CENTER">
+    <Text fx:id="mediaStockLb" fontSmoothingType="LCD" layoutX="356.0" layoutY="84.0" strokeType="OUTSIDE" strokeWidth="0.0" text="15" textAlignment="CENTER">
         <font>
             <Font size="20.0" />
         </font>
     </Text>
-    <TextField id="cartitemQuantityInput" alignment="CENTER" layoutX="166.0" layoutY="147.0" prefHeight="26.0" prefWidth="117.0" promptText="input number" style="-fx-background-color: FFFFFF; -fx-background-radius: 10;" />=
+    <TextField fx:id="cartitemQuantityInput" alignment="CENTER" layoutX="166.0" layoutY="147.0" prefHeight="26.0" prefWidth="117.0" promptText="input number" style="-fx-background-color: FFFFFF; -fx-background-radius: 10;" />
 </AnchorPane>

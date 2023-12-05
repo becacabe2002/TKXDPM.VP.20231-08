@@ -22,7 +22,7 @@ public class HomeController extends BaseController{
         // check if image exist in local storage in form of: "src/main/resources/com/grp08/capstoneprojectg08/assets/" + imageName
         String imageName = StringProcess.fromNameToImageName(media);
         // check in file path
-        String imagePath = "src/main/resources/com/grp08/capstoneprojectg08/assets/" + imageName;
+        String imagePath = getClass().getResource("/com/grp08/capstoneprojectg08" + media.getImageUrl()).toString();
         return new File(imagePath).exists();
     }
 
@@ -52,6 +52,7 @@ public class HomeController extends BaseController{
             case DVD -> mediaRepo.findDVDsFilterByTitle(name);
             case CD -> mediaRepo.findCDsFilterByTitle(name);
             default -> mediaRepo.findAllMedias();
+            // TODO: findMediasFilterByTitle(name)
             // get a List<Media> with media fall on one of the three category Book , DVD ,  CD or media in general
         };
     }

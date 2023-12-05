@@ -10,10 +10,7 @@ import javafx.scene.image.ImageView;
 
 
 import javafx.scene.image.Image;
-
-
-
-
+import javafx.scene.text.Text;
 
 
 import java.net.URL;
@@ -21,6 +18,7 @@ import java.util.ResourceBundle;
 
 
 public class MediaItemHandler implements Initializable {
+
     @FXML
     private Button addToCartBtn;
 
@@ -28,7 +26,7 @@ public class MediaItemHandler implements Initializable {
     private Button toProductDetailBtn;
 
     @FXML
-    private ImageView mediaImage;
+    private ImageView MediaImage;
 
 
 
@@ -42,10 +40,10 @@ public class MediaItemHandler implements Initializable {
     private Label mediaPriceLb;
 
     @FXML
-    private Label mediaStockLb;
+    private Text mediaStockLb;
 
-    @FXML
-    private Label stockLabel;
+//    @FXML
+//    private Label stockLabel;
 
     @FXML
     private TextField cartitemQuantityInput;
@@ -66,8 +64,8 @@ public class MediaItemHandler implements Initializable {
 
             // Initialize ImageView with the image URL
             if (media.getImageUrl() != null && !media.getImageUrl().isEmpty()) {
-                Image image = new Image(media.getImageUrl());
-                mediaImage.setImage(image);
+                Image image = new Image(getClass().getResource("/com/grp08/capstoneprojectg08" + media.getImageUrl()).toString());
+                MediaImage.setImage(image);
             }
         }
     }
