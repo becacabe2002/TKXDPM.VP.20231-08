@@ -71,4 +71,9 @@ public class HomeController extends BaseController{
             infomationAlert.showAndWait();
         }
     }
+
+    public List<Media> getAllMedia() {
+        return mediaRepo.findAllMedias();
+        // Return a List<Media> containing all media items from the repository
+    }
 }
