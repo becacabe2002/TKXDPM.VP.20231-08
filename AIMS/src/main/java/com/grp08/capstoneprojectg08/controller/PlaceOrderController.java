@@ -17,6 +17,8 @@ public class PlaceOrderController extends BaseController{
         super();
     }
 
+    // TODO: check if cart item is still available, return list of unavailable cart items
+
     // create invoice, attach order to it and set it to user session
     // check if user is logged in and is customer
     public void createOrder(){

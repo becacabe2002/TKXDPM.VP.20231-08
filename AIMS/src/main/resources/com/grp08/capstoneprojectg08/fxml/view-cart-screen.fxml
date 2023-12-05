@@ -28,7 +28,7 @@
                 <Font name="Arial Bold" size="25.0" />
             </font>
         </Label>
-       <Button alignment="CENTER" layoutX="1189.0" layoutY="31.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="144.0" style="-fx-background-color: #96B6C5;" text="Return Home" textAlignment="CENTER" textFill="#3876bf" wrapText="true">
+       <Button fx:id="backHomeBtn" alignment="CENTER" layoutX="1189.0" layoutY="31.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="144.0" style="-fx-background-color: #96B6C5;" text="Return Home" textAlignment="CENTER" textFill="#3876bf" wrapText="true">
            <font>
                <Font name="Arial Bold" size="17.0" />
            </font>

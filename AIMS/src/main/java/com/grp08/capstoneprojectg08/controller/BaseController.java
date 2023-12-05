@@ -3,12 +3,19 @@ package com.grp08.capstoneprojectg08.controller;
 import com.grp08.capstoneprojectg08.entity.cart.Cart;
 import com.grp08.capstoneprojectg08.entity.cart.CartItem;
 import com.grp08.capstoneprojectg08.entity.media.Media;
+import com.grp08.capstoneprojectg08.repository.*;
 import com.grp08.capstoneprojectg08.util.UserSession;
 import javafx.scene.control.Alert;
 
 import java.util.List;
 
 public class BaseController {
+    protected DeliveryRepo deliveryRepo = new DeliveryRepoImplement();
+    protected ImageRepo imageRepo = new ImageRepoImplement();
+    protected MediaRepo mediaRepo = new MediaRepoImplement();
+    protected OrderRepo orderRepo = new OrderRepoImplement();
+    protected PaymentRepo paymentRepo = new PaymentRepoImplement();
+    protected UserRepo userRepo = new UserRepoImplement();
     protected Alert infomationAlert = new Alert(Alert.AlertType.INFORMATION);
     protected Alert errorAlert = new Alert(Alert.AlertType.ERROR);
     protected Alert warningAlert = new Alert(Alert.AlertType.WARNING);
@@ -36,4 +43,6 @@ public class BaseController {
     public Cart getCart(){
         return UserSession.getInstance().getCart();
     }
+
+    // TODO: get cart item numbers
 }

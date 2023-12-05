@@ -2,7 +2,8 @@ package com.grp08.capstoneprojectg08.entity.media;
 
 public class Media {
     protected int ID;
-    protected MediaCategory category;
+
+    protected MediaCategory category; // falls into one of three Book , CD , DVD
     protected int price; // gia ca
     protected int stockQuantity; //stock
     protected String title;

@@ -22,35 +22,39 @@ public class HomeController extends BaseController{
         // check if image exist in local storage in form of: "src/main/resources/com/grp08/capstoneprojectg08/assets/" + imageName
         String imageName = StringProcess.fromNameToImageName(media);
         // check in file path
-        String imagePath = "src/main/resources/com/grp08/capstoneprojectg08/assets/" + imageName;
+        String imagePath = "target/classes/com/grp08/capstoneprojectg08/assets/MediaImages/" + imageName;
         return new File(imagePath).exists();
     }
 
     // get Media and its image from database
     public List<Media> getMediaAndImage(){
-        List<Media> mediaList = MediaRepo.findAllMedias();
+        List<Media> mediaList = mediaRepo.findAllMedias();
         // check
         for (Media m : mediaList){
             String imagePath = null;
             // if image not exist in local storage
             if(!checkImageExist(m)){
                 // get image from database and save to local storage
-                imagePath = ImageRepo.getMediaImage(m);
+                imagePath = imageRepo.getMediaImage(m);
             }
             if(m.getImageUrl() == null && imagePath != null){
                 m.setImageUrl(imagePath);
             }
         }
         return mediaList;
+        // return a List<Media> that contains media together with it`s proper imagepath
     }
 
     // get Media base on its category and name filter
     public List<? extends Media> getMediaByCategoryAndName(MediaCategory mediaCategory, String name){
         return switch (mediaCategory) {
-            case Book -> MediaRepo.findBooksFilterByTitle(name);
-            case DVD -> MediaRepo.findDVDsFilterByTitle(name);
-            case CD -> MediaRepo.findCDsFilterByTitle(name);
-            default -> MediaRepo.findAllMedias();
+            case Book -> mediaRepo.findBooksFilterByTitle(name);
+            case DVD -> mediaRepo.findDVDsFilterByTitle(name);
+            case CD -> mediaRepo.findCDsFilterByTitle(name);
+            default -> mediaRepo.findAllMedias();
+            // TODO: findMediasFilterByTitle(name)
+            // but
+            // get a List<Media> with media fall on one of the three category Book , DVD ,  CD or media in general
         };
     }
 
@@ -66,5 +70,10 @@ public class HomeController extends BaseController{
             infomationAlert.setContentText("This item is already in your cart!");
             infomationAlert.showAndWait();
         }
+    }
+
+    public List<Media> getAllMedia() {
+        return mediaRepo.findAllMedias();
+        // Return a List<Media> containing all media items from the repository
     }
 }

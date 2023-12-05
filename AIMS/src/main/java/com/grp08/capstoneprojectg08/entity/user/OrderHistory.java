@@ -3,6 +3,7 @@ package com.grp08.capstoneprojectg08.entity.user;
 import com.grp08.capstoneprojectg08.entity.order.Invoice;
 import com.grp08.capstoneprojectg08.entity.order.Order;
 import com.grp08.capstoneprojectg08.repository.OrderRepo;
+import com.grp08.capstoneprojectg08.repository.OrderRepoImplement;
 
 import java.util.UUID;
 
@@ -17,7 +18,7 @@ public class OrderHistory {
     public Invoice getOrderInvoice(){
         if (order == null) return null;
         else{
-            return OrderRepo.findInvoiceOfOrderId(order.getId());
+            return new OrderRepoImplement().findInvoiceOfOrderId(order.getId());
         }
     }
 

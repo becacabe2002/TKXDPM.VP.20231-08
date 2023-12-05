@@ -17,70 +17,10 @@ import java.sql.SQLException;
 import java.util.Base64;
 import java.util.Objects;
 
-public class ImageRepo {
-    private static PreparedStatement ppStatement = null;
-    private static Dotenv dotenv = Dotenv.load();
-
+public interface ImageRepo extends BaseRepo{
     // save image to database
-    public static boolean saveMediaImage(String filePath, Media media){// if media Image URL is null, update it with image path
-        String imageName = StringProcess.fromNameToImageName(media);
-        MongoClient mongoClient = DatabaseConnection.getMongoClient();
-        assert mongoClient != null;
-        MongoDatabase aimsDB = mongoClient.getDatabase(dotenv.get("IMAGE_DB"));
-        Document doc = new Document();
-        String imageBase64 = ImageBase64.encodeImage(filePath);
-        if(imageBase64 == null){
-            System.err.println("Couldn't find aims_2023 database");
-            mongoClient.close();
-            return false;
-        } else {
-            try{
-                doc.append("name", imageName);
-                doc.append("stringBase64", imageBase64);
-                aimsDB.getCollection("media_images").insertOne(doc);
-                mongoClient.close();
-                String updateScript = "update Media set imageUrl = ? where title = ?;";
-                try{
-                    ppStatement = Objects.requireNonNull(DatabaseConnection.getConnectionMySQL()).prepareStatement(updateScript);
-                    ppStatement.setString(1, "src/main/resources/com/grp08/capstoneprojectg08/assets/MediaImages" + imageName);
-                    ppStatement.setString(2, media.getTitle());
-                    ppStatement.executeUpdate();
-                } catch (SQLException e){
-                    System.err.println("MediaRepo: " + e.getMessage());
-                }
-                return true;
-            } catch (Exception e){
-                System.err.println("ImageRepo: " + e.getMessage());
-                mongoClient.close();
-                return false;
-            }
-        }
-    }
+    public boolean saveMediaImage(String filePath, Media media);
 
     // get image from db and save to local storage if not exist
-    public static String getMediaImage(Media media){
-        String imageName = StringProcess.fromNameToImageName(media);
-        MongoClient mongoClient = DatabaseConnection.getMongoClient();
-        assert mongoClient != null;
-        MongoDatabase imageBase64DB = mongoClient.getDatabase(dotenv.get("IMAGE_DB"));
-        Document doc = null;
-        try{
-            doc = imageBase64DB.getCollection("media_images").find(Filters.eq("name", imageName)).first();
-        } catch (Exception e){
-            System.err.println("ImageRepo: " + e.getMessage());
-        }
-        if(doc == null){
-            System.err.println("ImageRepo: Couldn't find image in database");
-            mongoClient.close();
-            return null;
-        } else {
-            String imageBase64 = doc.getString("stringBase64");
-            String imagePath = "src/main/resources/com/grp08/capstoneprojectg08/assets/MediaImages/" + imageName;
-            ImageBase64.decodeImage(imageBase64, imagePath);
-            mongoClient.close();
-            return imagePath;
-        }
-    }
-
-
+    public String getMediaImage(Media media);
 }

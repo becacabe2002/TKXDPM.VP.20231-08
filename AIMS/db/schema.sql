@@ -111,7 +111,7 @@ CREATE TABLE `media` (
   `quantity` int NOT NULL,
   `title` varchar(45) NOT NULL,
   `value` int NOT NULL,
-  `imageUrl` varchar(45) DEFAULT NULL,
+  `imageUrl` varchar(200) DEFAULT NULL,
   `fastShipping` tinyint(1) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;

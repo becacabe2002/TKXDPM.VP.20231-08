@@ -2,6 +2,7 @@ package com.grp08.capstoneprojectg08.entity.cart;
 
 import com.grp08.capstoneprojectg08.entity.media.Media;
 import com.grp08.capstoneprojectg08.repository.MediaRepo;
+import com.grp08.capstoneprojectg08.repository.MediaRepoImplement;
 
 public class CartItem {
     private int mediaId;
@@ -11,7 +12,7 @@ public class CartItem {
 
     public CartItem(int mediaId, int quantity) {
         try{
-            media = MediaRepo.findMediaById(mediaId);
+            media = new MediaRepoImplement().findMediaById(mediaId);
             if(media == null) throw new NullPointerException("Media not found");
             this.mediaId = mediaId;
             this.quantity = quantity;
