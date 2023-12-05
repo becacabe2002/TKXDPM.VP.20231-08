@@ -38,9 +38,9 @@ public class HomeScreenHandler implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         // Initialize category filter options
         initializeCategories();
-
+        List<Media> mediaList = homeController.getMediaAndImage();
         // Load and display a list of Media objects initially
-        loadMediaList(homeController.getMediaAndImage());
+        loadMediaList(mediaList);
 
         // Add event handler for the Search button
         searchBtn.setOnAction(event -> handleSearch());
