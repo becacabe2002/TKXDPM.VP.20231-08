@@ -13,6 +13,7 @@ import javafx.scene.image.Image;
 import javafx.scene.text.Text;
 
 
+import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -56,16 +57,16 @@ public class MediaItemHandler implements Initializable {
     }
 
     private void initializeMedia() {
-        if (media != null) {
-            mediaTitleLb.setText(media.getTitle());
-            mediaCategoryLb.setText(media.getCategory().toString());
-            mediaPriceLb.setText(String.valueOf(media.getPrice()) + " $");
-            mediaStockLb.setText(String.valueOf(media.getStockQuantity()));
+        if (this.media != null) {
+            mediaTitleLb.setText(this.media.getTitle());
+            mediaCategoryLb.setText(this.media.getCategory().toString());
+            mediaPriceLb.setText(this.media.getPrice() + " $");
+            mediaStockLb.setText(String.valueOf(this.media.getStockQuantity()));
 
             // Initialize ImageView with the image URL
-            if (media.getImageUrl() != null && !media.getImageUrl().isEmpty()) {
-                if (getClass().getResource(media.getImageUrl()) != null){
-                    Image image = new Image(getClass().getResource(media.getImageUrl()).toString());
+            if (this.media.getImageUrl() != null) {
+                if (new File(this.media.getImageUrl()).exists()){
+                    Image image = new Image(new File(this.media.getImageUrl()).toURI().toString());
                     MediaImage.setImage(image);
                 }
             }

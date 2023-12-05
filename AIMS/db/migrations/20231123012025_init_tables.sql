@@ -9,7 +9,7 @@ CREATE TABLE Media(
                       quantity INT NOT NULL,
                       title VARCHAR(45) NOT NULL,
                       value INT NOT NULL,
-                      imageUrl VARCHAR(45) NOT NULL,
+                      imageUrl VARCHAR(200) NOT NULL,
                       fastShipping BOOLEAN NOT NULL
 );
 

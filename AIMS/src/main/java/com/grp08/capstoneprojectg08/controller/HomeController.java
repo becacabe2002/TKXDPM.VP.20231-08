@@ -22,7 +22,7 @@ public class HomeController extends BaseController{
         // check if image exist in local storage in form of: "src/main/resources/com/grp08/capstoneprojectg08/assets/" + imageName
         String imageName = StringProcess.fromNameToImageName(media);
         // check in file path
-        String imagePath = "src/main/resources/com/grp08/capstoneprojectg08/assets/" + imageName;
+        String imagePath = "target/classes/com/grp08/capstoneprojectg08/assets/MediaImages/" + imageName;
         return new File(imagePath).exists();
     }
 

@@ -1,7 +1,7 @@
 -- migrate:up
 alter table `media`
      modify `category` ENUM('Book','CD','DVD') NOT NULL DEFAULT 'Book',
-     modify `imageUrl` VARCHAR(45) null;
+     modify `imageUrl` VARCHAR(200) null;
 
 alter table `dvd`
     modify `discType` ENUM('HD_DVD','Blu_ray') NOT NULL DEFAULT 'HD_DVD';

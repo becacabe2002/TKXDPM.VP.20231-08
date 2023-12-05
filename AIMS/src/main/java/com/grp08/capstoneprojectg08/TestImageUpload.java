@@ -13,11 +13,11 @@ public class TestImageUpload {
         ImageRepo imageRepo = new ImageRepoImplement();
         for (int i = 1; i <= 30; i++){
             Media media = mediaRepo.findMediaById(i);
-//            boolean upload = imageRepo.saveMediaImage("src/main/resources/com/grp08/capstoneprojectg08/assets/ImportImages/"+ i + ".jpg", media);
-//            System.out.println(upload);
-            System.out.println(StringProcess.fromNameToImageName(media));
-            String imagePath = imageRepo.getMediaImage(media);
-            System.out.println(imagePath);
+            boolean upload = imageRepo.saveMediaImage("target/classes/com/grp08/capstoneprojectg08/assets/MediaImages/"+ StringProcess.fromNameToImageName(media), media);
+            System.out.println(upload);
+//            System.out.println(StringProcess.fromNameToImageName(media));
+//            String imagePath = imageRepo.getMediaImage(media);
+//            System.out.println(imagePath);
         }
     }
 }
