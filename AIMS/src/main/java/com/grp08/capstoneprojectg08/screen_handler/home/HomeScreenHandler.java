@@ -48,9 +48,12 @@ public class HomeScreenHandler implements Initializable {
 
     private void initializeCategories() {
         // Create menu items for each category
+        MenuItem clearFilterItem = new MenuItem("Clear");
         MenuItem bookItem = new MenuItem(MediaCategory.Book.toString());
         MenuItem cdItem = new MenuItem(MediaCategory.CD.toString());
         MenuItem dvdItem = new MenuItem(MediaCategory.DVD.toString());
+
+        clearFilterItem.setOnAction(event -> handleClearFilter());
 
         // Set actions for each category
         bookItem.setOnAction(event -> handleCategoryFilter(MediaCategory.Book));
@@ -58,7 +61,7 @@ public class HomeScreenHandler implements Initializable {
         dvdItem.setOnAction(event -> handleCategoryFilter(MediaCategory.DVD));
 
         // Add items to the SplitMenuButton
-        categoryFilter.getItems().addAll(bookItem, cdItem, dvdItem);
+        categoryFilter.getItems().addAll(clearFilterItem,bookItem, cdItem, dvdItem);
     }
 
     private void handleCategoryFilter(MediaCategory selectedCategory) {
@@ -109,5 +112,18 @@ public class HomeScreenHandler implements Initializable {
                 row++;
             }
         }
+    }
+
+    private void handleClearFilter() {
+        categoryFilter.setText("All"); // Set the default text
+
+        // Fetch all media without applying any filter
+        List<? extends Media> allMedia = homeController.getAllMedia();
+
+        // Clear existing items from the GridPane
+        mediaListPane.getChildren().clear();
+
+        // Load and add media-item.fxml for the new list of Media objects to the GridPane
+        loadMediaList((List<Media>) allMedia);
     }
 }

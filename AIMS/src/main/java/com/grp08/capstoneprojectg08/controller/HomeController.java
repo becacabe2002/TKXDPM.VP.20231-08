@@ -22,7 +22,7 @@ public class HomeController extends BaseController{
         // check if image exist in local storage in form of: "src/main/resources/com/grp08/capstoneprojectg08/assets/" + imageName
         String imageName = StringProcess.fromNameToImageName(media);
         // check in file path
-        String imagePath = getClass().getResource("/com/grp08/capstoneprojectg08" + media.getImageUrl()).toString();
+        String imagePath = "src/main/resources/com/grp08/capstoneprojectg08/assets/MediaImages" + imageName;
         return new File(imagePath).exists();
     }
 
@@ -69,5 +69,10 @@ public class HomeController extends BaseController{
             infomationAlert.setContentText("This item is already in your cart!");
             infomationAlert.showAndWait();
         }
+    }
+
+    public List<Media> getAllMedia() {
+        return mediaRepo.findAllMedias();
+        // Return a List<Media> containing all media items from the repository
     }
 }
