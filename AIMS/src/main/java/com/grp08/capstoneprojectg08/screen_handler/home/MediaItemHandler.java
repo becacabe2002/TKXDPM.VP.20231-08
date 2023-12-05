@@ -64,8 +64,10 @@ public class MediaItemHandler implements Initializable {
 
             // Initialize ImageView with the image URL
             if (media.getImageUrl() != null && !media.getImageUrl().isEmpty()) {
-                Image image = new Image(getClass().getResource("/com/grp08/capstoneprojectg08" + media.getImageUrl()).toString());
-                MediaImage.setImage(image);
+                if (getClass().getResource(media.getImageUrl()) != null){
+                    Image image = new Image(getClass().getResource(media.getImageUrl()).toString());
+                    MediaImage.setImage(image);
+                }
             }
         }
     }
