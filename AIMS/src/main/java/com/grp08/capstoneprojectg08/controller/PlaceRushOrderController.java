@@ -20,6 +20,7 @@ public class PlaceRushOrderController extends BaseController{
 
     // get the list of fast shipping supported order items
     // for display purpose
+    // TODO: change to return OrderItem
     public List<Integer> getFastShippingSupportedOrderItems(){
         List<Integer> supportedOrderItems = new ArrayList<>();
         List<OrderItem> orderItems = UserSession.getInstance().getInvoice().getOrder().getOrderItems();
@@ -62,6 +63,7 @@ public class PlaceRushOrderController extends BaseController{
         for(Integer mediaId : supportedOrderItems){
             feeMap.put(mediaId, feeMap.get(mediaId) * 1.3);
         }
+        // TODO: update fast shipping fee to invoice
     }
 
     // update rush order information

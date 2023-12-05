@@ -43,4 +43,6 @@ public class BaseController {
     public Cart getCart(){
         return UserSession.getInstance().getCart();
     }
+
+    // TODO: get cart item numbers
 }
