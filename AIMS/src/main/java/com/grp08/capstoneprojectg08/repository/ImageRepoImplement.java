@@ -8,6 +8,7 @@ import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.model.Filters;
 import io.github.cdimascio.dotenv.Dotenv;
+import javafx.scene.image.Image;
 import org.bson.Document;
 
 import java.sql.PreparedStatement;
@@ -56,7 +57,7 @@ public class ImageRepoImplement implements ImageRepo{
 
     // get image from db and save to local storage if not exist
     @Override
-    public String getMediaImage(Media media){
+    public Image getMediaImage(Media media){
         String imageName = StringProcess.fromNameToImageName(media);
         MongoClient mongoClient = DatabaseConnection.getMongoClient();
         assert mongoClient != null;
@@ -73,10 +74,8 @@ public class ImageRepoImplement implements ImageRepo{
             return null;
         } else {
             String imageBase64 = doc.getString("stringBase64");
-            String imagePath = "target/classes/com/grp08/capstoneprojectg08/assets/MediaImages/" + imageName;
-            ImageBase64.decodeImage(imageBase64, imagePath);
             mongoClient.close();
-            return imagePath;
+            return ImageBase64.fromBase64toJavaFXImage(imageBase64);
         }
     }
 }

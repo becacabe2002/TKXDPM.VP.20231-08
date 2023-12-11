@@ -10,6 +10,7 @@ import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.model.Filters;
 import io.github.cdimascio.dotenv.Dotenv;
+import javafx.scene.image.Image;
 import org.bson.Document;
 
 import java.sql.PreparedStatement;
@@ -22,5 +23,5 @@ public interface ImageRepo extends BaseRepo{
     public boolean saveMediaImage(String filePath, Media media);
 
     // get image from db and save to local storage if not exist
-    public String getMediaImage(Media media);
+    public Image getMediaImage(Media media);
 }

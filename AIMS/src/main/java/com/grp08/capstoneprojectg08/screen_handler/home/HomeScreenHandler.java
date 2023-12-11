@@ -38,9 +38,9 @@ public class HomeScreenHandler implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         // Initialize category filter options
         initializeCategories();
-        List<Media> mediaList = homeController.getMediaAndImage();
+//        List<Media> mediaList = homeController.getMediaAndImage();
         // Load and display a list of Media objects initially
-        loadMediaList(mediaList);
+//        loadMediaList(mediaList);
 
         // Add event handler for the Search button
         searchBtn.setOnAction(event -> handleSearch());
@@ -71,18 +71,18 @@ public class HomeScreenHandler implements Initializable {
     }
 
     private void handleSearch() {
-        // Fetch the selected category and search name
-        MediaCategory selectedCategory = MediaCategory.valueOf(categoryFilter.getText());
-        String searchName = titleInputTf.getText().trim();
-
-        // Fetch the list of Media based on category and name
-        List<? extends Media> filteredMedia = homeController.getMediaByCategoryAndName(selectedCategory, searchName);
-
-        // Clear existing items from the GridPane
-        mediaListPane.getChildren().clear();
-
-        // Load and add media-item.fxml for the new list of filtered Media object to the GridPane
-        loadMediaList((List<Media>) filteredMedia);
+//        // Fetch the selected category and search name
+//        MediaCategory selectedCategory = MediaCategory.valueOf(categoryFilter.getText());
+//        String searchName = titleInputTf.getText().trim();
+//
+//        // Fetch the list of Media based on category and name
+//        List<? extends Media> filteredMedia = homeController.getMediaByCategoryAndName(selectedCategory, searchName);
+//
+//        // Clear existing items from the GridPane
+//        mediaListPane.getChildren().clear();
+//
+//        // Load and add media-item.fxml for the new list of filtered Media object to the GridPane
+//        loadMediaList((List<Media>) filteredMedia);
     }
 
     private void loadMediaList(List<Media> mediaList) {
@@ -115,15 +115,15 @@ public class HomeScreenHandler implements Initializable {
     }
 
     private void handleClearFilter() {
-        categoryFilter.setText("All"); // Set the default text
-
-        // Fetch all media without applying any filter
-        List<? extends Media> allMedia = homeController.getAllMedia();
-
-        // Clear existing items from the GridPane
-        mediaListPane.getChildren().clear();
-
-        // Load and add media-item.fxml for the new list of Media objects to the GridPane
-        loadMediaList((List<Media>) allMedia);
+//        categoryFilter.setText("All"); // Set the default text
+//
+//        // Fetch all media without applying any filter
+//        List<? extends Media> allMedia = homeController.getAllMedia();
+//
+//        // Clear existing items from the GridPane
+//        mediaListPane.getChildren().clear();
+//
+//        // Load and add media-item.fxml for the new list of Media objects to the GridPane
+//        loadMediaList((List<Media>) allMedia);
     }
 }

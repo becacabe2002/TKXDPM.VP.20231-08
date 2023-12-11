@@ -13,15 +13,20 @@ public interface MediaRepo extends BaseRepo{
 
     public Media findMediaById(int id);
 
-    public Media findMediaByTitle(String title);
+    public List<Media> findAllMediaByTitle(String title);
 
     // find medias by category and search string
     // * Books
     public List<Book> findBooksFilterByTitle(String title);
+    public Book findBookById(int id);
+
     // * CDs
     public List<CD> findCDsFilterByTitle(String title);
+    public CD findCDById(int id);
+
     // * DVDs
     public List<DVD> findDVDsFilterByTitle(String title);
+    public DVD findDVDById(int id);
 
     // TODO: add media (for admin), also set mediaUrl to under MediaImages folder
     // * Book
