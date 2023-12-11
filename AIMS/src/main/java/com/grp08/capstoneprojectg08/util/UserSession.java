@@ -17,7 +17,7 @@ public class UserSession {
     private Cart cart = null; // for storing temporary cart
 
     private Invoice invoice = null;
-    public UserSession(){
+    private UserSession(){
         this.cart = new Cart();
     }
 
