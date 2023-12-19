@@ -3,6 +3,8 @@ package com.grp08.capstoneprojectg08.entity.order;
 import com.grp08.capstoneprojectg08.entity.cart.Cart;
 import com.grp08.capstoneprojectg08.entity.cart.CartItem;
 import com.grp08.capstoneprojectg08.entity.delivery.DeliveryInfo;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -57,4 +59,16 @@ public class Order {
         }
     }
 
+    public JSONObject toJSON(){
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("id", this.id);
+        jsonObject.put("shippingFees", this.shippingFees);
+        jsonObject.put("deliveryInfo", this.deliveryInfo.toJSON());
+        JSONArray jsonArray = new JSONArray();
+        for(OrderItem orderItem : this.orderItems){
+            jsonArray.put(orderItem.toJSON());
+        }
+        jsonObject.put("orderItems", jsonArray);
+        return jsonObject;
+    }
 }

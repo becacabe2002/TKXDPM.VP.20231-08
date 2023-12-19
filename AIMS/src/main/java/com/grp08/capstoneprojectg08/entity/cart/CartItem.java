@@ -3,13 +3,15 @@ package com.grp08.capstoneprojectg08.entity.cart;
 import com.grp08.capstoneprojectg08.entity.media.Media;
 import com.grp08.capstoneprojectg08.repository.MediaRepo;
 import com.grp08.capstoneprojectg08.repository.MediaRepoImplement;
+import org.json.JSONObject;
 
 public class CartItem {
     private int mediaId;
     private int quantity;
     private int subPrice;// = media.price * quantity
     private Media media = null;
-
+    public CartItem(){
+    }
     public CartItem(int mediaId, int quantity) {
         try{
             media = new MediaRepoImplement().findMediaById(mediaId);
@@ -38,12 +40,16 @@ public class CartItem {
         return media;
     }
 
-    public void addQuantity(){
-        this.quantity += 1;
+    public void changeQuantity(int change){
+        this.quantity += change;
         this.subPrice = this.quantity * media.getPrice();
     }
-    public void minusQuantity(){
-        this.quantity -= 1;
-        this.subPrice = this.quantity * media.getPrice();
+
+    public JSONObject toJSON(){
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("media", this.media.toJSON());
+        jsonObject.put("quantity", this.quantity);
+        jsonObject.put("subPrice", this.subPrice);
+        return jsonObject;
     }
 }

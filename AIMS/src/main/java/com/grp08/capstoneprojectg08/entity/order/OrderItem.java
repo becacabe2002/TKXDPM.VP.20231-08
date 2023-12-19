@@ -1,6 +1,7 @@
 package com.grp08.capstoneprojectg08.entity.order;
 
 import com.grp08.capstoneprojectg08.entity.cart.CartItem;
+import org.json.JSONObject;
 
 // entity for table orderInfo
 public class OrderItem {
@@ -39,5 +40,12 @@ public class OrderItem {
 
     public void setSubPrice(int subPrice) {
         this.subPrice = subPrice;
+    }
+    public JSONObject toJSON(){
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("mediaId", this.mediaId);
+        jsonObject.put("quantity", this.quantity);
+        jsonObject.put("subPrice", this.subPrice);
+        return jsonObject;
     }
 }

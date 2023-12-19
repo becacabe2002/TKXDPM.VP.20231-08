@@ -1,5 +1,8 @@
 package com.grp08.capstoneprojectg08.entity.cart;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -51,7 +54,7 @@ public class Cart {
         this.total = subTotal + vat;
     }
 
-    private void addItem(int itemId, int quantity){
+    public void addItem(int itemId, int quantity){
         boolean check = false;
         for(CartItem cartItem : cartItems){
             if(cartItem.getMediaId() == itemId){
@@ -65,7 +68,7 @@ public class Cart {
             calculate();
         }
     }
-    private void removeItem(int itemId){
+    public void removeItem(int itemId){
         for(CartItem cartItem : cartItems){
             if(cartItem.getMediaId() == itemId){
                 cartItems.remove(cartItem);
@@ -73,5 +76,18 @@ public class Cart {
             }
         }
         calculate();
+    }
+    public JSONObject toJson(){
+        JSONObject cartJson = new JSONObject();
+        JSONArray jsonArray = new JSONArray();
+        if(!cartItems.isEmpty()){
+            for(CartItem cartItem : cartItems){
+                jsonArray.put(cartItem.toJSON());
+            }
+        }
+        cartJson.put("subTotal", subTotal);
+        cartJson.put("vat", vat);
+        cartJson.put("total", total);
+        return cartJson;
     }
 }

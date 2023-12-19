@@ -1,6 +1,7 @@
 package com.grp08.capstoneprojectg08.entity.order;
 
 import com.grp08.capstoneprojectg08.entity.cart.Cart;
+import org.json.JSONObject;
 
 public class Invoice {
     private int totalAmount = 0;
@@ -32,5 +33,11 @@ public class Invoice {
             this.totalAmount += orderItem.getSubPrice();
         }
         this.totalAmount = (int) cart.getTotal() + order.getShippingFees();
+    }
+    public JSONObject toJSON(){
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("totalAmount", this.totalAmount);
+        jsonObject.put("order", this.order.toJSON());
+        return jsonObject;
     }
 }

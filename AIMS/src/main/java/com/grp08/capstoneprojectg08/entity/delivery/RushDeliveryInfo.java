@@ -1,6 +1,8 @@
 package com.grp08.capstoneprojectg08.entity.delivery;
 
 
+import org.json.JSONObject;
+
 import java.sql.Date;
 
 
@@ -29,5 +31,11 @@ public class RushDeliveryInfo {
 
     public void setRushDeliveryInstructions(String rushDeliveryInstructions) {
         this.rushDeliveryInstructions = rushDeliveryInstructions;
+    }
+    public JSONObject toJSON(){
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("shippingTime", this.shippingTime.toString());
+        jsonObject.put("rushDeliveryInstructions", this.rushDeliveryInstructions);
+        return jsonObject;
     }
 }

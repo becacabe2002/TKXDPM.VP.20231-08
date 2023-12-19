@@ -1,5 +1,7 @@
 package com.grp08.capstoneprojectg08.entity.delivery;
 
+import org.json.JSONObject;
+
 public class DeliveryInfo {
     private int id;
     private String address;
@@ -73,5 +75,19 @@ public class DeliveryInfo {
 
     public void setRushDeliveryInfo(RushDeliveryInfo rushDeliveryInfo) {
         this.rushDeliveryInfo = rushDeliveryInfo;
+    }
+
+    public JSONObject toJSON(){
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("id", this.id);
+        jsonObject.put("address", this.address);
+        jsonObject.put("instructions", this.instructions);
+        jsonObject.put("province", this.province);
+        jsonObject.put("name", this.name);
+        jsonObject.put("phone", this.phone);
+        if(rushDeliveryInfo != null) {
+            jsonObject.put("rushDeliveryInfo", rushDeliveryInfo.toJSON());
+        }
+        return jsonObject;
     }
 }

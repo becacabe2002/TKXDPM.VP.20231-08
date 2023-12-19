@@ -7,6 +7,7 @@ module com.grp08.capstoneprojectg08 {
     requires javafx.web;
     requires mongo.java.driver;
     requires java.dotenv;
+    requires org.json;
 //    requires javax.servlet.api;
 
 

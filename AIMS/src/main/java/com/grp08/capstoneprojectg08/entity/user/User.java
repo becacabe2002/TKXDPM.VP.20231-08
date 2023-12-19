@@ -1,6 +1,8 @@
 package com.grp08.capstoneprojectg08.entity.user;
 
 
+import org.json.JSONObject;
+
 import java.sql.Timestamp;
 import java.util.List;
 import java.util.UUID;
@@ -55,6 +57,14 @@ public class User {
 
     public void genUID(){
         this.externalUID = UUID.randomUUID();
+    }
+
+    public JSONObject toJSON(){
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("uname", this.uname);
+        jsonObject.put("userRole", this.userRole.toString());
+        jsonObject.put("externalUID", this.externalUID.toString());
+        return jsonObject;
     }
 
 }
