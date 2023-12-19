@@ -13,22 +13,22 @@ This is a Capstone's source code for Software Design and Construction project
 ## Report Content
 
 <details>
-  <summary>W13: 27/11/2023~02/12/2023 </summary>
+  <summary>W10: 27/11/2023~03/12/2023 </summary>
 <br>
 <details>
 <summary>Ngô Minh Tú</summary>
 <br>
 
 - Assigned tasks:
-  - Task 1
-  - Task 2
-  - ...
+  - Create tests for specific functions
 
 - Implementation details:
-  - Pull Request(s): [Attach links to your pull requests here. You can attach multiple pull requests]()
+  - Pull Request(s): [Request 1](https://github.com/becacabe2002/TKXDPM.VP.20231-08/pull/3)
   - Specific implementation details:
-    - Describe specific in detail what you did last week
-    - You can attach images if you want
+    - Create specific class for each test (ImageUpload, MediaRepo, WebView)
+      - ImageUpload: test ImageRepo to upload and pull image from local to mongodb database (**Deprecated**)
+      - MediaRepo: test query actions with Media Table in MySQL database
+      - WebView: test view for payment portal (VNPay)
 
 </details>
 
@@ -53,22 +53,30 @@ This is a Capstone's source code for Software Design and Construction project
 
 ---
 <details>
-  <summary>W4: 01/10/2023~08/10/2023 </summary>
+  <summary>W11: 04/12/2023~10/12/2023 </summary>
 <br>
 <details>
-<summary>Team Member 1</summary>
+<summary>Ngô Minh Tú</summary>
 <br>
 
 - Assigned tasks:
-  - Task 1
-  - Task 2
-  - ...
+  - migrate db
+  - refactor repositories to reduce coupling
+  - fix image unable to load error
 
 - Implementation details:
-  - Pull Request(s): [Attach links to your pull requests here. You can attach multiple pull requests]()
-  - Specific implementation details:
-    - Describe specific in detail what you did last week
-    - You can attach images if you want
+  - [PR1](https://github.com/becacabe2002/TKXDPM.VP.20231-08/pull/4)
+    - add migrate tool for mysql database, import sample data
+    - create controller package for controller classes
+    - disable `@lombok` annotations (error)
+
+  - [PR2](https://github.com/becacabe2002/TKXDPM.VP.20231-08/pull/5)
+    - Refactor repo class -> repo interface
+    - Seperate implementation of that repo to a different file.
+   
+  - [PR3](https://github.com/becacabe2002/TKXDPM.VP.20231-08/pull/10)
+    - fix error cant load image by fetching and saving image locally (**deprecated**)
+
 
 </details>
 
@@ -94,22 +102,25 @@ This is a Capstone's source code for Software Design and Construction project
 ---
 
 <details>
-  <summary>W5: 01/10/2023~08/10/2023 </summary>
+  <summary>W12: 11/12/2023~17/10/2023 </summary>
 <br>
 <details>
-<summary>Team Member 1</summary>
+<summary>Ngô Minh Tú</summary>
 <br>
 
 - Assigned tasks:
-  - Task 1
-  - Task 2
-  - ...
+  - Change Interaction between Frontend and Backend
+  - New way to store images temporary (not by saving to local storage)
+  - Seperate `Controllers` and `Services`
 
 - Implementation details:
-  - Pull Request(s): [Attach links to your pull requests here. You can attach multiple pull requests]()
+  - Pull Request(s): [PR](https://github.com/becacabe2002/TKXDPM.VP.20231-08/pull/12)
   - Specific implementation details:
-    - Describe specific in detail what you did last week
-    - You can attach images if you want
+    - Create package response, request, service
+    - New class ImageSession for store image temporary while app is running
+    - Change interaction between Frontend and Backend:
+	    - Now Frontend needs to create request, sends it to controller and handle returned response.
+
 
 </details>
 
