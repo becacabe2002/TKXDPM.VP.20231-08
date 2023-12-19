@@ -42,7 +42,7 @@ This is a Capstone's source code for Software Design and Construction project
   - ...
 
 - Implementation details:
-  - Pull Request(s): [Attach links to your pull requests here. You can attach multiple pull requests]()
+  - Pull Request(s): [Request](https://github.com/becacabe2002/TKXDPM.VP.20231-08/pull/7)
   - Specific implementation details:
     - Describe specific in detail what you did last week
     - You can attach images if you want
@@ -92,8 +92,9 @@ This is a Capstone's source code for Software Design and Construction project
 - Implementation details:
   - Pull Request(s): [Attach links to your pull requests here. You can attach multiple pull requests]()
   - Specific implementation details:
-    - Describe specific in detail what you did last week
-    - You can attach images if you want
+    - Frontend , HomeScreenHandler and MediaScrennHandler
+    - FXML
+    - 
 
 </details>
 
