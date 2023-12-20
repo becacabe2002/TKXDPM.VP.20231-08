@@ -49,6 +49,22 @@ This is a Capstone's source code for Software Design and Construction project
 
 </details>
 
+
+<details>
+<summary>Dương Nhật Thành</summary>
+<br>
+
+- Assigned tasks:
+  - Sửa Screen Handler
+
+- Implementation details:
+  - Pull Request(s): [Request](https://github.com/becacabe2002/TKXDPM.VP.20231-08/pull/9)
+  - Specific implementation details:
+   - Thêm chức năng xóa filter trong homescreen
+
+</details>
+
+
 </details>
 
 ---
