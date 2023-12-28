@@ -8,7 +8,10 @@ import com.grp08.capstoneprojectg08.util.UserSession;
 
 import java.sql.*;
 
-// Used for query on table orderInfo, orderMedia, invoice
+/**
+ * @author <a href="https://github.com/becacabe2002">becacabe2002</a>
+ * <br> Used for query on table orderInfo, orderMedia, invoice
+ */
 public interface OrderRepo extends BaseRepo{
 
     public int saveOrder(Order order);

@@ -3,7 +3,11 @@ package com.grp08.capstoneprojectg08.entity.order;
 import com.grp08.capstoneprojectg08.entity.cart.CartItem;
 import org.json.JSONObject;
 
-// entity for table orderInfo
+
+/**
+ * @author <a href="https://github.com/becacabe2002">becacabe2002</a>
+ * <br> Entity for table orderInfo
+ */
 public class OrderItem {
     // convert from CartItem to OrderItem
     private int mediaId;

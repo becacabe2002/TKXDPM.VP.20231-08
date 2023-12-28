@@ -7,6 +7,9 @@ import java.sql.Timestamp;
 import java.util.List;
 import java.util.UUID;
 
+/**
+ * @author <a href="https://github.com/becacabe2002">becacabe2002</a>
+ */
 public class User {
     private String uname;
     private UserRole userRole;

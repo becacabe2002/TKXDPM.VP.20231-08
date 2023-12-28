@@ -5,6 +5,9 @@ import org.json.JSONObject;
 
 import java.util.Date;
 
+/**
+ * @author <a href="https://github.com/becacabe2002">becacabe2002</a>
+ */
 public class Book extends Media{
     private String author;
     private CoverType coverType;

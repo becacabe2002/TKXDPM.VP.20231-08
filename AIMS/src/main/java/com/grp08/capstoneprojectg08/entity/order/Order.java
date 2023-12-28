@@ -9,7 +9,9 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-
+/**
+ * @author <a href="https://github.com/becacabe2002">becacabe2002</a>
+ */
 public class Order {
     // Order contains OrderItems, DeliveryInfo and Invoice
     private int id;

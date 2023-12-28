@@ -5,7 +5,9 @@ import org.json.JSONObject;
 
 import java.sql.Date;
 
-
+/**
+ * @author <a href="https://github.com/becacabe2002">becacabe2002</a>
+ */
 public class RushDeliveryInfo {
     private Date shippingTime;
     private String rushDeliveryInstructions;

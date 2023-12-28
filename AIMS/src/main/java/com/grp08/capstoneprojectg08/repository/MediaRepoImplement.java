@@ -7,6 +7,9 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @author <a href="https://github.com/becacabe2002">becacabe2002</a>
+ */
 public class MediaRepoImplement implements MediaRepo{
     private static Connection mysqlConnection = DatabaseConnection.getConnectionMySQL();
     private static PreparedStatement ppStatement = null;

@@ -2,6 +2,9 @@ package com.grp08.capstoneprojectg08.util;
 
 import com.grp08.capstoneprojectg08.entity.media.Media;
 
+/**
+ * @author <a href="https://github.com/becacabe2002">becacabe2002</a>
+ */
 public class StringProcess {
     public static String fromNameToImageName(Media media){
         // trim space at the beginning and end of name

@@ -6,15 +6,19 @@ import com.grp08.capstoneprojectg08.util.UserSession;
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoDatabase;
 import org.bson.Document;
+import org.json.JSONObject;
 
 import java.net.URL;
 import java.util.UUID;
 
+/**
+ * @author <a href="https://github.com/becacabe2002">becacabe2002</a>
+ */
 public class PaymentRepoImplement implements PaymentRepo{
 
     @Override
-    public void savePaymentTransaction(URL url){
-        Document doc = VNPayTransaction.fromUrlToMongoDocument(url);
+    public void savePaymentTransaction(JSONObject jsonObject){
+        Document doc = Document.parse(jsonObject.toString());
         if (doc == null){
             System.err.println("PaymentRepo: Couldn't parse url to mongo document");
             return;

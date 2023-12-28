@@ -9,8 +9,12 @@ import com.grp08.capstoneprojectg08.repository.UserRepoImplement;
 
 import java.util.UUID;
 
+/**
+ * @author <a href="https://github.com/becacabe2002">becacabe2002</a>
+ * <br>Implement singleton pattern for storing temporary user session
+ */
 public class UserSession {
-    private static UserSession instance;
+    private static volatile UserSession instance; // thread safety
     private UserRole role = null;
     private String username = null;
 
@@ -27,14 +31,17 @@ public class UserSession {
     }
 
     public static UserSession getInstance(){
-        if(instance == null){
-            instance = new UserSession();
+        // enhance performance
+        UserSession result = instance; // -> access volatile variable only once time by using local variable
+        if(result == null){
+            synchronized (UserSession.class){
+                result = instance;
+                if(result == null){
+                    instance = result = new UserSession();
+                }
+            }
         }
-        return instance;
-    }
-
-    public static void setInstance(UserSession instance) {
-        UserSession.instance = instance;
+        return result;
     }
 
     public UserRole getRole() {

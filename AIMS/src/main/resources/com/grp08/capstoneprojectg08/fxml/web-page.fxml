@@ -8,7 +8,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.web.WebView?>
 
-<AnchorPane prefHeight="768.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.grp08.capstoneprojectg08.subsystem.WebViewHandler">
+<AnchorPane prefHeight="768.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.grp08.capstoneprojectg08.screen_handler.payment.WebViewHandler">
     <AnchorPane prefHeight="90.0" style="-fx-background-color: #B0926A;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <Label layoutX="82.0" layoutY="30.0" text="AIMS System">
             <font>

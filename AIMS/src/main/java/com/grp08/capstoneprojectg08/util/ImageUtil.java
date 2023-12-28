@@ -3,6 +3,9 @@ package com.grp08.capstoneprojectg08.util;
 import com.grp08.capstoneprojectg08.entity.media.Media;
 import javafx.scene.image.Image;
 
+/**
+ * @author <a href="https://github.com/becacabe2002">becacabe2002</a>
+ */
 public class ImageUtil {
     public static Image getMediaImage(Media media){
         Image image;

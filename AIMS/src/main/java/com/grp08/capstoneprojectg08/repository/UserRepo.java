@@ -10,7 +10,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-// Used on table User, orderHistory
+/**
+ * @author <a href="https://github.com/becacabe2002">becacabe2002</a>
+ * <br> Used on table User, orderHistory
+ */
 public interface UserRepo extends BaseRepo{
 
     //get all Order History of a user -> next, use OrderRepo.findOrderById() to get Order

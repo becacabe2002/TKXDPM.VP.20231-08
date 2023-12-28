@@ -6,6 +6,9 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+/**
+ * @author <a href="https://github.com/becacabe2002">becacabe2002</a>
+ */
 public class TestWebView extends Application{
 
     @Override

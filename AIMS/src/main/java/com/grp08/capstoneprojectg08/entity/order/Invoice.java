@@ -3,6 +3,9 @@ package com.grp08.capstoneprojectg08.entity.order;
 import com.grp08.capstoneprojectg08.entity.cart.Cart;
 import org.json.JSONObject;
 
+/**
+ * @author <a href="https://github.com/becacabe2002">becacabe2002</a>
+ */
 public class Invoice {
     private int totalAmount = 0;
     private Order order = null;

@@ -8,7 +8,9 @@ import org.json.JSONObject;
 
 import java.util.UUID;
 
-
+/**
+ * @author <a href="https://github.com/becacabe2002">becacabe2002</a>
+ */
 public class OrderHistory {
     private Order order = null;
     private UUID externalUID;
