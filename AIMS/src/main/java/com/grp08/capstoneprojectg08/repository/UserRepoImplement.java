@@ -10,6 +10,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
+/**
+ * @author <a href="https://github.com/becacabe2002">becacabe2002</a>
+ */
 public class UserRepoImplement implements UserRepo{
     private static Connection mysqlConnection = DatabaseConnection.getConnectionMySQL();
     private static PreparedStatement ppStatement = null;

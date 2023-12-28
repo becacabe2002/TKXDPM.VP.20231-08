@@ -1,7 +1,12 @@
 package com.grp08.capstoneprojectg08.entity.media;
 
+import org.json.JSONObject;
+
 import java.util.Date;
 
+/**
+ * @author <a href="https://github.com/becacabe2002">becacabe2002</a>
+ */
 public class CD extends Media{
     private String artist;
     private String recordLabel; // hang ghi am
@@ -50,15 +55,23 @@ public class CD extends Media{
 
     @Override
     public String toString(){
-        StringBuilder sb = new StringBuilder();
         // no need title, price, quantity, imageUrl, fastShipping
-        sb.append("ID: ").append(this.ID).append("\n");
-        sb.append("Category: ").append(this.category).append("\n");
-        sb.append("Artist: ").append(this.artist).append("\n");
-        sb.append("Record Label: ").append(this.recordLabel).append("\n");
-        sb.append("Music Type: ").append(this.musicType).append("\n");
-        sb.append("Released Date: ").append(this.releasedDate.toString()).append("\n");
-        return sb.toString();
+        return "ID: " + this.ID + "\n" +
+                "Category: " + this.category + "\n" +
+                "Artist: " + this.artist + "\n" +
+                "Record Label: " + this.recordLabel + "\n" +
+                "Music Type: " + this.musicType + "\n" +
+                "Released Date: " + this.releasedDate.toString() + "\n";
+    }
+
+    @Override
+    public JSONObject toJSON(){
+        JSONObject jsonObject = super.toJSON();
+        jsonObject.put("artist", this.artist);
+        jsonObject.put("recordLabel", this.recordLabel);
+        jsonObject.put("musicType", this.musicType);
+        jsonObject.put("releasedDate", this.releasedDate.toString());
+        return jsonObject;
     }
 
 }

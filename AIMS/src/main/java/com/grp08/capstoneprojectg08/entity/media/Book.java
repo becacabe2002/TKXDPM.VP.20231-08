@@ -1,8 +1,13 @@
 package com.grp08.capstoneprojectg08.entity.media;
 
 
+import org.json.JSONObject;
+
 import java.util.Date;
 
+/**
+ * @author <a href="https://github.com/becacabe2002">becacabe2002</a>
+ */
 public class Book extends Media{
     private String author;
     private CoverType coverType;
@@ -81,17 +86,28 @@ public class Book extends Media{
 
     @Override
     public String toString(){
-        StringBuilder sb = new StringBuilder();
         // no need title, price, quantity, imageUrl, fastShipping
-        sb.append("ID: ").append(this.ID).append("\n");
-        sb.append("Category: ").append(this.category).append("\n");
-        sb.append("Book Category: ").append(this.bookCategory).append("\n");
-        sb.append("Author: ").append(this.author).append("\n");
-        sb.append("Cover Type: ").append(this.coverType).append("\n");
-        sb.append("Publisher: ").append(this.publisher).append("\n");
-        sb.append("Published Date: ").append(this.publishedDate.toString()).append("\n");
-        sb.append("Number of Pages: ").append(this.numOfPages).append("\n");
-        sb.append("Language: ").append(this.language).append("\n");
-        return sb.toString();
+        return "ID: " + this.ID + "\n" +
+                "Category: " + this.category + "\n" +
+                "Book Category: " + this.bookCategory + "\n" +
+                "Author: " + this.author + "\n" +
+                "Cover Type: " + this.coverType + "\n" +
+                "Publisher: " + this.publisher + "\n" +
+                "Published Date: " + this.publishedDate.toString() + "\n" +
+                "Number of Pages: " + this.numOfPages + "\n" +
+                "Language: " + this.language + "\n";
+    }
+
+    @Override
+    public JSONObject toJSON() {
+        JSONObject jsonObject = super.toJSON();
+        jsonObject.put("author", this.author);
+        jsonObject.put("coverType", this.coverType);
+        jsonObject.put("publisher", this.publisher);
+        jsonObject.put("publishedDate", this.publishedDate.toString());
+        jsonObject.put("numOfPages", this.numOfPages);
+        jsonObject.put("language", this.language);
+        jsonObject.put("bookCategory", this.bookCategory);
+        return jsonObject;
     }
 }

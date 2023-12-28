@@ -7,6 +7,11 @@ public class LoadHomeInfoRequest {
     public LoadHomeInfoRequest() {
     }
 
+    public LoadHomeInfoRequest(String category, String name) {
+        this.category = category;
+        this.name = name;
+    }
+
     public String getCategory() {
         return category;
     }

@@ -1,7 +1,12 @@
 package com.grp08.capstoneprojectg08.entity.media;
 
+import org.json.JSONObject;
+
 import java.util.Date;
 
+/**
+ * @author <a href="https://github.com/becacabe2002">becacabe2002</a>
+ */
 public class DVD extends Media{
     private DiscType discType;
     private String director;
@@ -71,16 +76,26 @@ public class DVD extends Media{
     //override toString method
     @Override
     public String toString(){
-        StringBuilder sb = new StringBuilder();
         // no need title, price, quantity, imageUrl, fastShipping
-        sb.append("ID: ").append(this.ID).append("\n");
-        sb.append("Category: ").append(this.category).append("\n");
-        sb.append("Disc Type: ").append(this.discType).append("\n");
-        sb.append("Director: ").append(this.director).append("\n");
-        sb.append("Runtime: ").append(this.runtime).append("\n");
-        sb.append("Studio: ").append(this.studio).append("\n");
-        sb.append("Subtitle: ").append(this.subtitle).append("\n");
-        sb.append("Release Date: ").append(this.releaseDate.toString()).append("\n");
-        return sb.toString();
+        return "ID: " + this.ID + "\n" +
+                "Category: " + this.category + "\n" +
+                "Disc Type: " + this.discType + "\n" +
+                "Director: " + this.director + "\n" +
+                "Runtime: " + this.runtime + "\n" +
+                "Studio: " + this.studio + "\n" +
+                "Subtitle: " + this.subtitle + "\n" +
+                "Release Date: " + this.releaseDate.toString() + "\n";
+    }
+
+    @Override
+    public JSONObject toJSON(){
+        JSONObject jsonObject = super.toJSON();
+        jsonObject.put("discType", this.discType);
+        jsonObject.put("director", this.director);
+        jsonObject.put("runtime", this.runtime);
+        jsonObject.put("studio", this.studio);
+        jsonObject.put("subtitle", this.subtitle);
+        jsonObject.put("releaseDate", this.releaseDate.toString());
+        return jsonObject;
     }
 }

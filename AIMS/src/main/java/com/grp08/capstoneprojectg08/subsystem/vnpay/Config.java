@@ -1,4 +1,4 @@
-package com.grp08.capstoneprojectg08.subsystem;
+package com.grp08.capstoneprojectg08.subsystem.vnpay;
 
 import java.io.UnsupportedEncodingException;
 import java.nio.charset.StandardCharsets;
@@ -14,6 +14,9 @@ import java.util.Random;
  import javax.crypto.Mac;
  import javax.crypto.spec.SecretKeySpec;
 
+/**
+ * @author <a href="https://github.com/becacabe2002">becacabe2002</a>
+ */
 public class Config {
     public static String vnp_PayUrl = "https://sandbox.vnpayment.vn/paymentv2/vpcpay.html";
     public static String vnp_ReturnUrl = "https://airflow.apache.org/";

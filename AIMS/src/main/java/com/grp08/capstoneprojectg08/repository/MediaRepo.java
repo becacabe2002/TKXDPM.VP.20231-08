@@ -7,7 +7,10 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-// Use for query on tables media, book, cd, dvd
+/**
+ * @author <a href="https://github.com/becacabe2002">becacabe2002</a>
+ * <br> Used for query on tables media, book, cd, dvd
+ */
 public interface MediaRepo extends BaseRepo{
     public List<Media> findAllMedias();
 

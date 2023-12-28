@@ -1,4 +1,4 @@
-package com.grp08.capstoneprojectg08.subsystem;
+package com.grp08.capstoneprojectg08.screen_handler.payment;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -14,6 +14,9 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+/**
+ * @author <a href="https://github.com/becacabe2002">becacabe2002</a>
+ */
 public class WebViewHandler implements Initializable {
     private URL passedUrl;
     private WebEngine engine;

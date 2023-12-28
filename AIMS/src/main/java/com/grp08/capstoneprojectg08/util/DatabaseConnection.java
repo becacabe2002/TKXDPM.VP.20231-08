@@ -10,6 +10,9 @@ import java.sql.SQLException;
 
 import io.github.cdimascio.dotenv.Dotenv;
 
+/**
+ * @author <a href="https://github.com/becacabe2002">becacabe2002</a>
+ */
 public class DatabaseConnection {
     private static Dotenv dotenv = Dotenv.load();
     public static Connection getConnectionMySQL(){
