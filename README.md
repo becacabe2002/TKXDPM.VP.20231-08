@@ -119,7 +119,7 @@ This is a Capstone's source code for Software Design and Construction project
 ---
 
 <details>
-  <summary>W12: 11/12/2023~17/10/2023 </summary>
+  <summary>W12: 11/12/2023~17/12/2023 </summary>
 <br>
 <details>
 <summary>Ngô Minh Tú</summary>
@@ -161,3 +161,44 @@ This is a Capstone's source code for Software Design and Construction project
 </details>
 
 ---
+<details>
+  <summary>W12: 18/12/2023~24/12/2023 </summary>
+<br>
+<details>
+<summary>Ngô Minh Tú</summary>
+<br>
+
+- Assigned tasks:
+  - Update communication between frontend and backend
+
+- Implementation details:
+  - Pull Request(s): [PR](https://github.com/becacabe2002/TKXDPM.VP.20231-08/pull/13)
+  - Specific implementation details:
+    - Screen handlers in frontend side will create baseRequest, pass in parameter and send to EndpointRegister
+    - EndpointRegister will redirect that request to corresponse controller, process it and return BaseResponse
+    - Screen handlers will parse that response and display data
+
+
+</details>
+
+<details>
+<summary>Team Member 2</summary>
+<br>
+
+- Assigned tasks:
+  - Task 1
+  - Task 2
+  - ...
+
+- Implementation details:
+  - Pull Request(s): [Attach links to your pull requests here. You can attach multiple pull requests]()
+  - Specific implementation details:
+    - Describe specific in detail what you did last week
+    - You can attach images if you want
+
+</details>
+
+</details>
+
+---
+
