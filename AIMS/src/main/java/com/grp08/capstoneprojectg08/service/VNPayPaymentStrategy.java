@@ -6,6 +6,8 @@ import org.json.JSONObject;
  * @author <a href="https://github.com/becacabe2002">becacabe2002</a>
  */
 public class VNPayPaymentStrategy implements PaymentStrategy{
+
+    // TODO: create paymentURL from user session invoice
     @Override
     public JSONObject processPayment() {
         // TODO: implement processPayment of VNPay
