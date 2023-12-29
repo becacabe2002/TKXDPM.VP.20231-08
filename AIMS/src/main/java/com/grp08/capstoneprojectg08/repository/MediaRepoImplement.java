@@ -71,11 +71,12 @@ public class MediaRepoImplement implements MediaRepo{
         List<Media> listMedia = new ArrayList<>();
         String lowerTitle = title.toLowerCase();
         String script = "Select * from Media where lower(title) like ?;";
+
         try{
             ppStatement = mysqlConnection.prepareStatement(script);
             ppStatement.setString(1, "%" + lowerTitle + "%");
             resultSet = ppStatement.executeQuery();
-            if(resultSet.next()){
+            while(resultSet.next()){
                 Media temp = new Media(
                         resultSet.getInt("id"),
                         MediaCategory.valueOf(resultSet.getString("category")),

@@ -64,7 +64,7 @@ public class PlaceOrderController extends BaseController{
 //        UserSession.getInstance().setInvoice(new Invoice(getCart()));
     }
 
-    // validate input: name, phone, address, shipping instructions, (shipping time and Fast shipping instructions)
+// validate input: name, phone, address, shipping instructions, (shipping time and Fast shipping instructions)
 //    public boolean validateInputName(String name){
 //        if (name.trim().isEmpty()){
 //            warningAlert.setHeaderText("Invalid name");
