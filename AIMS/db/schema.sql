@@ -25,34 +25,34 @@ CREATE TABLE `book` (
   `language` varchar(45) NOT NULL,
   `bookCategory` varchar(45) NOT NULL,
   PRIMARY KEY (`id`),
-  CONSTRAINT `book_ibfk_1` FOREIGN KEY (`id`) REFERENCES `media` (`id`) ON DELETE CASCADE
+  CONSTRAINT `book_ibfk_1` FOREIGN KEY (`id`) REFERENCES `Media` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Table structure for table `cd`
+-- Table structure for table `CD`
 --
 
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `cd` (
+CREATE TABLE `CD` (
   `id` int NOT NULL,
   `artist` varchar(45) NOT NULL,
   `recordLabel` varchar(45) NOT NULL,
   `musicType` varchar(45) NOT NULL,
   `releasedDate` date DEFAULT NULL,
   PRIMARY KEY (`id`),
-  CONSTRAINT `cd_ibfk_1` FOREIGN KEY (`id`) REFERENCES `media` (`id`) ON DELETE CASCADE
+  CONSTRAINT `cd_ibfk_1` FOREIGN KEY (`id`) REFERENCES `Media` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Table structure for table `deliveryinfo`
+-- Table structure for table `DeliveryInfo`
 --
 
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `deliveryinfo` (
+CREATE TABLE `DeliveryInfo` (
   `id` int NOT NULL AUTO_INCREMENT,
   `name` varchar(45) DEFAULT NULL,
   `phone` varchar(10) DEFAULT NULL,
@@ -78,23 +78,23 @@ CREATE TABLE `dvd` (
   `subtitle` varchar(45) NOT NULL,
   `releasedDate` date DEFAULT NULL,
   PRIMARY KEY (`id`),
-  CONSTRAINT `dvd_ibfk_1` FOREIGN KEY (`id`) REFERENCES `media` (`id`) ON DELETE CASCADE
+  CONSTRAINT `dvd_ibfk_1` FOREIGN KEY (`id`) REFERENCES `Media` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Table structure for table `invoice`
+-- Table structure for table `Invoice`
 --
 
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `invoice` (
+CREATE TABLE `Invoice` (
   `id` int NOT NULL,
   `totalAmount` int NOT NULL,
   `orderId` int NOT NULL,
   PRIMARY KEY (`id`),
   KEY `orderId` (`orderId`),
-  CONSTRAINT `invoice_ibfk_1` FOREIGN KEY (`orderId`) REFERENCES `orderinfo` (`id`)
+  CONSTRAINT `invoice_ibfk_1` FOREIGN KEY (`orderId`) REFERENCES `OrderInfo` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -118,12 +118,12 @@ CREATE TABLE `media` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Table structure for table `orderhistory`
+-- Table structure for table `orderHistory`
 --
 
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `orderhistory` (
+CREATE TABLE `orderHistory` (
   `id` int NOT NULL AUTO_INCREMENT,
   `uid` char(36) NOT NULL,
   `orderId` int NOT NULL,
@@ -131,42 +131,42 @@ CREATE TABLE `orderhistory` (
   PRIMARY KEY (`id`,`uid`,`orderId`),
   KEY `uid` (`uid`),
   KEY `orderId` (`orderId`),
-  CONSTRAINT `orderhistory_ibfk_1` FOREIGN KEY (`uid`) REFERENCES `users` (`externalUID`),
-  CONSTRAINT `orderhistory_ibfk_2` FOREIGN KEY (`orderId`) REFERENCES `orderinfo` (`id`)
+  CONSTRAINT `orderhistory_ibfk_1` FOREIGN KEY (`uid`) REFERENCES `Users` (`externalUID`),
+  CONSTRAINT `orderhistory_ibfk_2` FOREIGN KEY (`orderId`) REFERENCES `OrderInfo` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Table structure for table `orderinfo`
+-- Table structure for table `OrderInfo`
 --
 
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `orderinfo` (
+CREATE TABLE `OrderInfo` (
   `id` int NOT NULL AUTO_INCREMENT,
   `shippingFees` int DEFAULT NULL,
   `DeliveryInfoId` int NOT NULL,
   PRIMARY KEY (`id`,`DeliveryInfoId`),
   KEY `DeliveryInfoId` (`DeliveryInfoId`),
-  CONSTRAINT `orderinfo_ibfk_1` FOREIGN KEY (`DeliveryInfoId`) REFERENCES `deliveryinfo` (`id`)
+  CONSTRAINT `orderinfo_ibfk_1` FOREIGN KEY (`DeliveryInfoId`) REFERENCES `DeliveryInfo` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Table structure for table `ordermedia`
+-- Table structure for table `OrderMedia`
 --
 
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `ordermedia` (
+CREATE TABLE `OrderMedia` (
   `orderID` int NOT NULL,
   `price` int NOT NULL,
   `quantity` int NOT NULL,
   `mediaId` int NOT NULL,
   PRIMARY KEY (`orderID`,`mediaId`),
   KEY `mediaId` (`mediaId`),
-  CONSTRAINT `ordermedia_ibfk_1` FOREIGN KEY (`orderID`) REFERENCES `orderinfo` (`id`),
-  CONSTRAINT `ordermedia_ibfk_2` FOREIGN KEY (`mediaId`) REFERENCES `media` (`id`)
+  CONSTRAINT `ordermedia_ibfk_1` FOREIGN KEY (`orderID`) REFERENCES `OrderInfo` (`id`),
+  CONSTRAINT `ordermedia_ibfk_2` FOREIGN KEY (`mediaId`) REFERENCES `Media` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -181,7 +181,7 @@ CREATE TABLE `rushdeliveryinfo` (
   `shippingTime` date DEFAULT NULL,
   `rushDeliveryInstructions` varchar(200) DEFAULT NULL,
   PRIMARY KEY (`id`),
-  CONSTRAINT `rushdeliveryinfo_ibfk_1` FOREIGN KEY (`id`) REFERENCES `deliveryinfo` (`id`)
+  CONSTRAINT `rushdeliveryinfo_ibfk_1` FOREIGN KEY (`id`) REFERENCES `DeliveryInfo` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
