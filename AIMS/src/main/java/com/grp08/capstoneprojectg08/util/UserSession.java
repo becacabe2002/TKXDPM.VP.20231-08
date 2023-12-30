@@ -7,6 +7,8 @@ import com.grp08.capstoneprojectg08.entity.user.UserRole;
 import com.grp08.capstoneprojectg08.repository.UserRepo;
 import com.grp08.capstoneprojectg08.repository.UserRepoImplement;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.UUID;
 
 /**
@@ -21,8 +23,13 @@ public class UserSession {
     private Cart cart = null; // for storing temporary cart
 
     private Invoice invoice = null;
+
+    private Map<Integer, Double> feeMap = null;
     private UserSession(){
         this.cart = new Cart();
+        this.username = "user1";
+        this.role = UserRole.user;
+        this.feeMap = new HashMap<>();
     }
 
     public void setUser(User user){
@@ -79,11 +86,19 @@ public class UserSession {
     public UUID getCurrentUserUID(){
         return new UserRepoImplement().findUserByUsername(this.username).getExternalUID();
     }
+    public Map<Integer, Double> getFeeMap(){
+        return this.feeMap;
+    }
+    public void setFeeMap(Map<Integer, Double> feeMap){
+        this.feeMap = feeMap;
+    }
+
     public void emptyCart(){
         this.cart = new Cart();
     }
 
     public void emptyInvoice(){
         this.invoice = null;
+        this.feeMap = new HashMap<>();
     }
 }

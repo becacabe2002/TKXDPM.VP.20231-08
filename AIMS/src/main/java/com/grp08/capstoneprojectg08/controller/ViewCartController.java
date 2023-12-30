@@ -2,7 +2,13 @@ package com.grp08.capstoneprojectg08.controller;
 
 import com.grp08.capstoneprojectg08.entity.cart.CartItem;
 import com.grp08.capstoneprojectg08.entity.media.Media;
+import com.grp08.capstoneprojectg08.request.BaseRequest;
+import com.grp08.capstoneprojectg08.response.BaseResponse;
+import com.grp08.capstoneprojectg08.response.ResponseCode;
 import com.grp08.capstoneprojectg08.util.UserSession;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,28 +21,69 @@ public class ViewCartController extends BaseController{
         super();
     }
 
-    // change quantity of a cart item, then recalculate price
-    // TODO: already refactor to CartService
-    //  -> receive BaseRequest which contain mediaId and change
-    // return BaseResponse success
-    public void increaseQuantity(int mediaId){
-        cartService.changeMediaItemQuantityInCart(mediaId, 1);
-    }
-    public void decreaseQuantity(int mediaId){
-        cartService.changeMediaItemQuantityInCart(mediaId, -1);
+    // return info of cart
+    public BaseResponse getCartInfo(){
+        BaseResponse response = new BaseResponse();
+        response.setResponseCode(ResponseCode.OK);
+        response.setResponseMessage("");
+        JSONObject cartJSON = UserSession.getInstance().getCart().toJson();
+        response.setBody(cartJSON);
+        return response;
     }
 
-    // return the list of CartItem is not available (quantity > stock)
-    // if size of list is 0, all items are available -> proceed to checkout
-    // if size of list is bigger than 0 -> display error message, user can't checkout
-    // TODO: refactor to CartService
-    public List<CartItem> checkAvailability(){
-        List<CartItem> unavailableItemList = new ArrayList<>();
-        for(CartItem cartItem : UserSession.getInstance().getCart().getCartItems()){
-            if(cartItem.getQuantity() <=  cartItem.getMedia().getStockQuantity()){
-                unavailableItemList.add(cartItem);
-            }
+    // change quantity of a cart item, then recalculate price
+    // receive BaseRequest which contain mediaId and change
+    public BaseResponse changeCartItemQuantity(BaseRequest request){
+        JSONObject jsonObject = request.getBody();
+        try{
+            int mediaId = jsonObject.getInt("mediaId");
+            int change = jsonObject.getInt("change");
+            cartService.changeMediaItemQuantityInCart(mediaId, change);
+            return new BaseResponse(ResponseCode.OK, "Success");
+        } catch (Exception e){
+            return new BaseResponse(ResponseCode.BAD_REQUEST, "Invalid request body");
         }
-        return unavailableItemList;
+    }
+
+    public BaseResponse addItemToCart(BaseRequest request){
+        JSONObject jsonObject = request.getBody();
+        try{
+            int mediaId = jsonObject.getInt("mediaId");
+            int quantity = jsonObject.getInt("quantity");
+            if(cartService.addMediaToCart(mediaId, quantity)){
+                return new BaseResponse(ResponseCode.OK, "Success");
+            } else {
+                return new BaseResponse(ResponseCode.ITEM_ALREADY_EXIST, "Media item is already in cart");
+            }
+        } catch (JSONException e){
+            return new BaseResponse(ResponseCode.BAD_REQUEST, "Invalid request body");
+        }
+    }
+
+    // check if cart item is still available, return list of unavailable cart items
+    public BaseResponse checkCartItemsAvailability(){
+        List<CartItem> unavailableCartItems = cartService.checkUnavailableMediaItemsInCart();
+        JSONArray unavailableList = new JSONArray();
+        for(CartItem cartItem: unavailableCartItems){
+            JSONObject unavailableItem = cartItem.toJSON();
+            unavailableList.put(unavailableItem);
+        }
+        JSONObject returnJSON = new JSONObject();
+        returnJSON.put("unavailableList", unavailableList);
+        BaseResponse response = new BaseResponse(ResponseCode.OK, "");
+        response.setBody(returnJSON);
+        return response;
+    }
+
+    // remove item from cart
+    public BaseResponse removeItemFromCart(BaseRequest request){
+        JSONObject jsonObject = request.getBody();
+        try{
+            int mediaId = jsonObject.getInt("mediaId");
+            cartService.removeMediaItemFromCart(mediaId);
+            return new BaseResponse(ResponseCode.OK, "Item removed from cart");
+        } catch (JSONException e){
+            return new BaseResponse(ResponseCode.BAD_REQUEST, "Invalid request body");
+        }
     }
 }

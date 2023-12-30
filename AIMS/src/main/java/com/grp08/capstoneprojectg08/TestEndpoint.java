@@ -14,8 +14,8 @@ public class TestEndpoint {
         baseRequest.setEndpoint("/home/medias");
         baseRequest.setMethod(RequestMethod.GET);
         JSONObject jsonObject = new JSONObject();
-        jsonObject.put("category", "All");
-        jsonObject.put("name", "");
+        jsonObject.put("category", "CD");
+        jsonObject.put("name", "stick");
         baseRequest.setBody(jsonObject);
         BaseResponse response = endpointRegister.handleRequest(baseRequest);
         System.out.println(response.getResponseCode());
