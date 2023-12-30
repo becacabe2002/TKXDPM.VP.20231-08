@@ -32,7 +32,6 @@ public class EndpointRegister {
                 return paymentController.processPayment(baseRequest);
             }
 
-<<<<<<< HEAD
             /*
              * Add an item to cart
              */
@@ -45,10 +44,6 @@ public class EndpointRegister {
              */
             if(baseRequest.getEndpoint().equals("/order/create-order")) {
                 return placeOrderController.createOrder();
-=======
-            if(baseRequest.getEndpoint().equals("/order/add-to-cart")){
-                return homeController.addMediaToCart(baseRequest);
->>>>>>> f286dd2 (gitignore + add some screen handler)
             }
 
         } else if(requestMethod == RequestMethod.GET){
