@@ -17,11 +17,20 @@ public class PaymentController extends BaseController{
         super();
     }
 
-    // save payment, order, invoice to database (only when payment success)
-    // clear current userSession's invoice
-    // receive BaseRequest, return BaseResponse
-    // BaseRequest contains PaymentStrategy
-
+    /**
+     * Process payment, if success:
+     * <ul>
+     *     <li>Save payment, order, invoice to database</li>
+     *     <li>Clear current UserSession's invoice, cart, FeeMap</li>
+     *     <li>Delete media item stock base on user order</li>
+     * </ul>
+     * @param request - contain paymentType: PAYPAL or VNPAY
+     * @return response:
+     * <ul>
+     *     <li>if success: responseCode = OK, responseMessage = "Payment successful", body = {total, paymentMethod, deliveryAddress}</li>
+     *     <li>if not success: responseCode = UNACCEPTABLE (406), responseMessage = "Payment failed, please try again!";</li>
+     * </ul>
+     */
     public BaseResponse processPayment(BaseRequest request){
         JSONObject jsonObject = request.getBody();
         try{

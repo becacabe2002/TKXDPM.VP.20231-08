@@ -11,18 +11,19 @@ public class TestEndpoint {
     private static EndpointRegister endpointRegister = new EndpointRegister();
     public static void main(String[] args) {
         BaseRequest baseRequest = new BaseRequest();
-        baseRequest.setEndpoint("/home/medias");
+        baseRequest.setEndpoint("/home/media-details");
         baseRequest.setMethod(RequestMethod.GET);
         JSONObject jsonObject = new JSONObject();
-        jsonObject.put("category", "CD");
-        jsonObject.put("name", "stick");
+        jsonObject.put("mediaId", 2);
         baseRequest.setBody(jsonObject);
         BaseResponse response = endpointRegister.handleRequest(baseRequest);
         System.out.println(response.getResponseCode());
         System.out.println(response.getResponseMessage());
-        JSONArray jsonArray = response.getBody().getJSONArray("mediaItems");
-        for(int i = 0; i < jsonArray.length(); i++){
-            System.out.println(jsonArray.getJSONObject(i).toString());
-        }
+//        JSONArray jsonArray = response.getBody().getJSONArray("mediaItems");
+//        for(int i = 0; i < jsonArray.length(); i++){
+//            System.out.println(jsonArray.getJSONObject(i).toString());
+//        }
+        JSONObject jsonObject1 = response.getBody();
+        System.out.println(jsonObject1.toString());
     }
 }

@@ -21,7 +21,16 @@ public class ViewCartController extends BaseController{
         super();
     }
 
-    // return info of cart
+    /**
+     * Return info of cart:
+     * <ul>
+     *     <li>number of cart items: "numberOfItems"</li>
+     *     <li>list of cart items: "cartItems"</li>
+     *     <li>subtotal price: "subTotal"</li>
+     *     <li>vat: "vat"</li>
+     *     <li>total (subtotal + vat): "total"</li>
+     * </ul>
+     */
     public BaseResponse getCartInfo(){
         BaseResponse response = new BaseResponse();
         response.setResponseCode(ResponseCode.OK);
@@ -31,8 +40,16 @@ public class ViewCartController extends BaseController{
         return response;
     }
 
-    // change quantity of a cart item, then recalculate price
-    // receive BaseRequest which contain mediaId and change
+    /**
+     * change quantity of a cart item, then recalculate price
+     * @param request body contains: mediaId(int), change(int)
+     * @return response, can be used to display dialog
+     * <ul>
+     *     <li>{@link ResponseCode#OK} -> Quantity changed</li>
+     *     <li>{@link ResponseCode#BAD_REQUEST} -> passed request body is invalid</li>
+     * </ul>
+     */
+
     public BaseResponse changeCartItemQuantity(BaseRequest request){
         JSONObject jsonObject = request.getBody();
         try{
@@ -45,6 +62,16 @@ public class ViewCartController extends BaseController{
         }
     }
 
+    /**
+     * Add item to cart
+     * @param request body contains: mediaId(int), quantity(int)
+     * @return response
+     * <ul>
+     *     <li>{@link ResponseCode#OK} -> Media Item added to cart</li>
+     *     <li>{@link ResponseCode#ITEM_ALREADY_EXIST} -> Media Item already in cart</li>
+     *     <li>{@link ResponseCode#BAD_REQUEST} -> passed request body is invalid</li>
+     * </ul>
+     */
     public BaseResponse addItemToCart(BaseRequest request){
         JSONObject jsonObject = request.getBody();
         try{
@@ -60,7 +87,11 @@ public class ViewCartController extends BaseController{
         }
     }
 
-    // check if cart item is still available, return list of unavailable cart items
+    /**
+     * Check if items in cart are still available
+     * <br> Need to called before create order
+     * @return response which body contains list of unavailable cart items ("unavailableList")
+     */
     public BaseResponse checkCartItemsAvailability(){
         List<CartItem> unavailableCartItems = cartService.checkUnavailableMediaItemsInCart();
         JSONArray unavailableList = new JSONArray();
@@ -76,6 +107,12 @@ public class ViewCartController extends BaseController{
     }
 
     // remove item from cart
+
+    /**
+     * Remove item from cart
+     * @param request body contains: mediaId(int)
+     * @return response: OK (item removed from cart), BAD_REQUEST (invalid request body)
+     */
     public BaseResponse removeItemFromCart(BaseRequest request){
         JSONObject jsonObject = request.getBody();
         try{

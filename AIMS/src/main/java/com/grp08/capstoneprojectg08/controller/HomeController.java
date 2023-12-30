@@ -87,7 +87,16 @@ public class HomeController extends BaseController{
         }
     }
 
-    // get detail of a media
+    /**
+     * get detail of a media, even it is a book, a cd or a dvd
+     * @param request contains mediaId(int)
+     * @return response:
+     * <ul>
+     *     <li>If mediaId is valid -> return {@link ResponseCode#OK}, body:{"media":{{@link JSONObject} -
+     *     contains normal info of that media}, "detail":(String)}</li>
+     *     <li>If mediaId is invalid -> return {@link ResponseCode#BAD_REQUEST}, message: "Invalid request body"</li>
+     * </ul>
+     */
     public BaseResponse getMediaDetails(BaseRequest request){
         JSONObject jsonObject = request.getBody();
         try{

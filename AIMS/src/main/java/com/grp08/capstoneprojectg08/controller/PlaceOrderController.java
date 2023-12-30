@@ -9,6 +9,7 @@ import com.grp08.capstoneprojectg08.entity.user.UserRole;
 import com.grp08.capstoneprojectg08.request.BaseRequest;
 import com.grp08.capstoneprojectg08.response.BaseResponse;
 import com.grp08.capstoneprojectg08.response.ResponseCode;
+import com.grp08.capstoneprojectg08.service.CartService;
 import com.grp08.capstoneprojectg08.service.OrderService;
 import com.grp08.capstoneprojectg08.util.UserSession;
 import org.json.JSONArray;
@@ -29,10 +30,21 @@ public class PlaceOrderController extends BaseController{
         super();
     }
 
-    // create Order from Cart first
-    // check if all items in cart are still available
-    // create invoice, attach order to it and set it to user session
-    // check if user is logged in and is customer
+    /**
+     * Create order from cart, should be called before
+     * {@link #calculateShippingFee()} and {@link #updateNormalDeliveryInfo(BaseRequest)}
+     * <ul>
+     *    <li>Check if all items in cart are still available (need to implement {@link CartService#checkUnavailableMediaItemsInCart()} beforehand)</li>
+     *    <li>Check if user is logged in and is customer (default login as "user1")</li>
+     *    <li>Create invoice, attach order to it and set it to user's session</li>
+     * </ul>
+     * @return response
+     * <ul>
+     *     <li>{@link ResponseCode#OK} -> Order created successfully</li>
+     *     <li>{@link ResponseCode#BAD_REQUEST} -> Cart is empty</li>
+     *     <li>{@link ResponseCode#UNAUTHORIZED} -> User is not logged in or is not customer</li>
+     * </ul>
+     */
     public BaseResponse createOrder(){
         UserSession userSession = UserSession.getInstance();
         if(userSession.getUsername() != null
@@ -54,6 +66,19 @@ public class PlaceOrderController extends BaseController{
     }
 
     // update invoice with normal delivery info
+
+    /**
+     * Update invoice with normal delivery info
+     * <br><b><i> Fields need to be validated in the FE before updating !!</i></b>
+     * @param baseRequest body contains:
+     * <ul>
+     *     <li>phone: "phone"</li>
+     *     <li>province: "province"</li>
+     *     <li>address: "address"</li>
+     *     <li>shippingInstructions: "shippingInstructions"</li>
+     * </ul>
+     * @return
+     */
     public BaseResponse updateNormalDeliveryInfo(BaseRequest baseRequest){
         JSONObject jsonObject = baseRequest.getBody();
         try{
@@ -69,7 +94,24 @@ public class PlaceOrderController extends BaseController{
         }
     }
 
-    // get details of Invoice
+    /**
+     * Get invoice details
+     * @return response which contains:
+     * <ul>
+     *     <li>name: "name"</li>
+     *     <li>phone: "phone"</li>
+     *     <li>province: "province"</li>
+     *     <li>shippingMethod: "shippingMethod"</li>
+     *     <li>detailAddress: "detailAddress"</li>
+     *     <li>shippingInstruction: "shippingInstruction"</li>
+     *     <li>fastDeliveryDate: "fastDeliveryDate"</li>
+     *     <li>fastDeliveryInstruction: "fastDeliveryInstruction"</li>
+     *     <li>subTotal: "subTotal"</li>
+     *     <li>vat: "vat"</li>
+     *     <li>shippingFee: "shippingFee"</li>
+     *     <li>total: "total"</li>
+     * </ul>
+     */
     public BaseResponse getInvoiceDetails(){
         UserSession userSession = UserSession.getInstance();
         Invoice invoice = userSession.getInvoice();
