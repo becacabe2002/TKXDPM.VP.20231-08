@@ -56,12 +56,7 @@ public class EndpointRegister {
             }
 
             /*
-             * Get current user cart info:
-             * - number of cart items: "numberOfItems"
-             * - list of cart items: "cartItems"
-             * - subtotal price: "subTotal"
-             * - vat: "vat"
-             * - total (subtotal + vat): "total"
+             * Get current user cart info
              */
             if(baseRequest.getEndpoint().equals("/cart/info")){
                 return viewCartController.getCartInfo();
@@ -144,7 +139,7 @@ public class EndpointRegister {
         else{
             baseResponse = new BaseResponse();
             baseResponse.setResponseCode(ResponseCode.BAD_REQUEST);
-            baseResponse.setResponseMessage("Invalid request");
+            baseResponse.setResponseMessage("Invalid endpoint, please try again!");
             baseResponse.setBody(null);
         }
         return baseResponse;

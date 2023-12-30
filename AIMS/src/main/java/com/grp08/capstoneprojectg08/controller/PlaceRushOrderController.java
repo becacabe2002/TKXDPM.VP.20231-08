@@ -27,7 +27,11 @@ public class PlaceRushOrderController extends BaseController{
         super();
     }
 
-    // get the list of fast shipping supported order items
+
+    /**
+     * Get the list of fast shipping supported order items
+     * @return response: JSONArray of media items that support fast shipping under "fastShippingSupportedItems"
+     */
     public BaseResponse getFastShippingSupportedItems(){
         List<Media> supportList = orderService.getFastShippingSupportedOrderItems();
         BaseResponse response = new BaseResponse();
@@ -49,11 +53,15 @@ public class PlaceRushOrderController extends BaseController{
         orderService.updateFastShippingFee();
         return new BaseResponse(ResponseCode.OK, "Updated fast shipping fee");
     }
-
-
-    // refactor to OrderService
     // update rush order information
     // input: Order reference, shipping time, rush delivery instructions
+
+    /**
+     * Update rush delivery info
+     * <br><b><i> Fields need to be validated in the FE before updating !!</i></b>
+     * @param baseRequest body contains: time(String), instructions(String)
+     * @return response
+     */
     public BaseResponse updateFastShippingInfo(BaseRequest baseRequest){
         try{
             JSONObject body = baseRequest.getBody();
