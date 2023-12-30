@@ -1,4 +1,4 @@
-package com.grp08.capstoneprojectg08.screen_handler.payment;
+package com.grp08.capstoneprojectg08.subsystem.vnpay;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -18,7 +18,9 @@ import java.util.ResourceBundle;
  * @author <a href="https://github.com/becacabe2002">becacabe2002</a>
  */
 public class WebViewHandler implements Initializable {
-    private URL passedUrl;
+    private URL paymentUrl;
+
+    private URL redirectUrl;
     private WebEngine engine;
 
     @FXML
@@ -48,11 +50,11 @@ public class WebViewHandler implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         engine = webDisplay.getEngine();
         try {
-            passedUrl = new URL("https://sandbox.vnpayment.vn/tryitnow/Home/CreateOrder");
+            paymentUrl = new URL("https://sandbox.vnpayment.vn/tryitnow/Home/CreateOrder");
         } catch (MalformedURLException e) {
             throw new RuntimeException(e);
         }
-        engine.load(passedUrl.toString());
+        engine.load(paymentUrl.toString());
         engine.locationProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observableValue, String oldLoc, String newLoc) {

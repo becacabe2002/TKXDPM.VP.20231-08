@@ -87,6 +87,23 @@ public class HomeController extends BaseController{
         }
     }
 
+    // get detail of a media
+    public BaseResponse getMediaDetails(BaseRequest request){
+        JSONObject jsonObject = request.getBody();
+        try{
+            int mediaId = jsonObject.getInt("mediaId");
+            Media media = mediaService.getMediaById(mediaId);
+            JSONObject returnJSON = new JSONObject();
+            returnJSON.put("media", media.toJSON());
+            returnJSON.put("detail", mediaService.getMediaDetails(mediaId));
+            BaseResponse response =  new BaseResponse(ResponseCode.OK, "Success");
+            response.setBody(returnJSON);
+            return response;
+        } catch (JSONException e){
+            return new BaseResponse(ResponseCode.BAD_REQUEST, "Invalid request body");
+        }
+    }
+
     // get number of items inside user cart
     public BaseResponse getNumberCartItems(){
         int number = cartService.getNumberOfCartItems();

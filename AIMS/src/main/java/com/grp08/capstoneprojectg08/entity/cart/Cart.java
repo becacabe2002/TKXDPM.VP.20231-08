@@ -88,6 +88,8 @@ public class Cart {
                 jsonArray.put(cartItem.toJSON());
             }
         }
+        cartJson.put("cartItems", jsonArray);
+        cartJson.put("numberOfItems", cartItems.size());
         cartJson.put("subTotal", subTotal);
         cartJson.put("vat", vat);
         cartJson.put("total", total);
