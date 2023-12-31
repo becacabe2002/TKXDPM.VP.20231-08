@@ -12,6 +12,7 @@ import java.util.List;
  */
 public class PaymentService {
     private UserSession userSession = UserSession.getInstance();
+    private MediaService mediaService = new MediaService();
     public PaymentService() {
     }
     public JSONObject processPayment(PaymentType type){
@@ -35,7 +36,6 @@ public class PaymentService {
                 // if payment success, delete media item number stock in database based on invoice
                 List<OrderItem> orderItemList = userSession.getInvoice().getOrder().getOrderItems();
                 for(OrderItem orderItem : orderItemList){
-                    MediaService mediaService = new MediaService();
                     mediaService.updateMediaItemStock(orderItem.getMediaId(), orderItem.getQuantity());
                 }
                 //  and clear user session
@@ -46,6 +46,4 @@ public class PaymentService {
         }
         return result;
     }
-
-    // TODO: if payment success, delete media item number stock in database based on invoice
 }
