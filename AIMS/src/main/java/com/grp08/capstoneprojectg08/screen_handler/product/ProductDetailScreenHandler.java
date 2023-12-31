@@ -7,6 +7,7 @@ import com.grp08.capstoneprojectg08.request.RequestMethod;
 import com.grp08.capstoneprojectg08.response.BaseResponse;
 import com.grp08.capstoneprojectg08.response.ResponseCode;
 import com.grp08.capstoneprojectg08.util.ImageUtil;
+import javafx.animation.TranslateTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -24,6 +25,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
+import javafx.util.Duration;
 import org.json.JSONObject;
 
 import javax.swing.*;
@@ -98,21 +100,25 @@ public class ProductDetailScreenHandler implements Initializable {
         System.out.println("Close button clicked");
 
         try {
+            // Load the FXML file for the home screen
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/grp08/capstoneprojectg08/fxml/home-screen.fxml"));
             Parent root = loader.load();
 
+            // Create a new stage for the home screen
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
-            stage.show();
 
-            // Get the current stage (product detail screen)
-            Stage currentStage = (Stage) mainAnchorPane.getScene().getWindow();
+            // Close the current product detail stage
+            Stage currentStage = (Stage) closeButton.getScene().getWindow();
             currentStage.close();
+
+            // Show the home screen
+            stage.show();
         } catch (IOException e) {
             e.printStackTrace();
             // Handle the exception accordingly
         }
-        }
+    }
 
     @FXML
     private void handleAddToCartButtonClick() {

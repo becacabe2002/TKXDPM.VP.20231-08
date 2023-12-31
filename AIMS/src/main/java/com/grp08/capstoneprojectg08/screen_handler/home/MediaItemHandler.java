@@ -7,10 +7,13 @@ import com.grp08.capstoneprojectg08.request.RequestMethod;
 import com.grp08.capstoneprojectg08.response.BaseResponse;
 import com.grp08.capstoneprojectg08.response.ResponseCode;
 import com.grp08.capstoneprojectg08.util.ImageUtil;
+import javafx.animation.KeyValue;
+import javafx.animation.TranslateTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -18,12 +21,17 @@ import javafx.scene.image.ImageView;
 
 
 import javafx.scene.image.Image;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.StackPane;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
+import javafx.util.Duration;
 import org.json.JSONObject;
 
 
 import javax.swing.*;
 import java.io.File;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -105,8 +113,11 @@ public class MediaItemHandler implements Initializable {
                 requestBody.put("mediaId", mediaId);
                 requestBody.put("quantity", quantity);
 
+                // Set the endpoint for adding an item to the cart
+                String cartEndpoint = "/cart/add-item"; // Replace this with your actual cart endpoint
+
                 // Create a BaseRequest for the endpoint
-                BaseRequest baseRequest = new BaseRequest(RequestMethod.POST, "/cart/add-item", requestBody);
+                BaseRequest baseRequest = new BaseRequest(RequestMethod.POST, cartEndpoint, requestBody);
 
                 // Use the EndpointRegister to handle the request
                 EndpointRegister endpointRegister = new EndpointRegister();
@@ -140,16 +151,21 @@ public class MediaItemHandler implements Initializable {
     private void redirectToProductDetail() {
         if (media != null) {
             try {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/grp08/capstoneprojectg08/fxml/productDetail.fxml"));
+                // Load the FXML file
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/grp08/capstoneprojectg08/fxml/product-detail-screen.fxml"));
                 Parent root = loader.load();
 
-                // Get the controller associated with the loaded FXML
-                ProductDetailController productDetailController = loader.getController();
-                productDetailController.setMedia(media);
+                // Get the current stage
+                Stage currentStage = (Stage) toProductDetailBtn.getScene().getWindow();
 
-                // Create a new stage and display the product detail view
+                // Create a new stage for the product detail screen
                 Stage stage = new Stage();
                 stage.setScene(new Scene(root));
+
+                // Close the current stage
+                currentStage.close();
+
+                // Show the new stage
                 stage.show();
             } catch (IOException e) {
                 e.printStackTrace();

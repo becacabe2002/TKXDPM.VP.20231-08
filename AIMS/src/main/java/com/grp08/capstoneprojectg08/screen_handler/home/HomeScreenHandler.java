@@ -57,15 +57,18 @@ public class HomeScreenHandler implements Initializable {
 
     private void initializeCategories() {
         MenuItem clearFilterItem = new MenuItem("Clear");
-        MenuItem bookItem = new MenuItem(MediaCategory.Book.toString());
-        MenuItem cdItem = new MenuItem(MediaCategory.CD.toString());
-        MenuItem dvdItem = new MenuItem(MediaCategory.DVD.toString());
+//        MenuItem bookItem = new MenuItem(MediaCategory.Book.toString());
+//        MenuItem cdItem = new MenuItem(MediaCategory.CD.toString());
+//        MenuItem dvdItem = new MenuItem(MediaCategory.DVD.toString());
 
-        clearFilterItem.setOnAction(event -> handleClearFilter());
-
-        bookItem.setOnAction(event -> handleCategoryFilter(MediaCategory.Book));
-        cdItem.setOnAction(event -> handleCategoryFilter(MediaCategory.CD));
-        dvdItem.setOnAction(event -> handleCategoryFilter(MediaCategory.DVD));
+        clearFilterItem.setOnAction(event -> handleFilterAll());
+//        bookItem.setOnAction(event -> handleCategoryFilter(MediaCategory.Book));
+//        cdItem.setOnAction(event -> handleCategoryFilter(MediaCategory.CD));
+//        dvdItem.setOnAction(event -> handleCategoryFilter(MediaCategory.DVD));
+        MenuItem bookItem = createCategoryMenuItem(MediaCategory.Book);
+        MenuItem cdItem = createCategoryMenuItem(MediaCategory.CD);
+        MenuItem dvdItem = createCategoryMenuItem(MediaCategory.DVD);
+        MenuItem allItem = createCategoryMenuItem(MediaCategory.All);
 
         categoryFilter.getItems().addAll(clearFilterItem, bookItem, cdItem, dvdItem);
     }
@@ -144,13 +147,41 @@ public class HomeScreenHandler implements Initializable {
     private void handleCategoryFilter(MediaCategory selectedCategory) {
         categoryFilter.setText(selectedCategory.toString());
         handleSearch();
+        if (selectedCategory == MediaCategory.All) {
+            handleFilterAll();
+        } else {
+            List<Media> filteredItems = fetchFilteredMediaItems(selectedCategory);
+            loadMediaList(filteredItems);
+        }
+    }
+
+    private List<Media> fetchFilteredMediaItems(MediaCategory selectedCategory) {
+        // Implement logic to fetch media items based on the selected category
+        // For instance, make a request to fetch items related to the selected category
+        // Replace this with your actual logic to filter media items based on the category
+        List<Media> allMediaItems = fetchMediaItems();
+        List<Media> filteredItems = new ArrayList<>();
+        for (Media media : allMediaItems) {
+            if (media.getCategory() == selectedCategory) {
+                filteredItems.add(media);
+            }
+        }
+        return filteredItems;
     }
 
     private void handleSearch() {
         // Your implementation of handling search functionality
     }
 
-    private void handleClearFilter() {
+    private void handleFilterAll() {
         // Your implementation of clearing filters
+        List<Media> allMediaItems = fetchMediaItems(); // Implement this method to fetch all media items
+        loadMediaList(allMediaItems); // Load all media items in the UI
+    }
+
+    private MenuItem createCategoryMenuItem(MediaCategory category) {
+        MenuItem categoryItem = new MenuItem(category.toString());
+        categoryItem.setOnAction(event -> handleCategoryFilter(category));
+        return categoryItem;
     }
 }
