@@ -6,6 +6,7 @@ import com.grp08.capstoneprojectg08.entity.user.User;
 import com.grp08.capstoneprojectg08.entity.user.UserRole;
 import com.grp08.capstoneprojectg08.repository.UserRepo;
 import com.grp08.capstoneprojectg08.repository.UserRepoImplement;
+import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -25,6 +26,8 @@ public class UserSession {
     private Invoice invoice = null;
 
     private Map<Integer, Double> feeMap = null;
+
+    private String resultPaymentAddress = null;
     private UserSession(){
         this.cart = new Cart();
         this.username = "user1";
@@ -93,12 +96,17 @@ public class UserSession {
         this.feeMap = feeMap;
     }
 
-    public void emptyCart(){
-        this.cart = new Cart();
+    public String getResultPaymentAddress() {
+        return resultPaymentAddress;
     }
 
-    public void emptyInvoice(){
+    public void setResultPaymentAddress(String resultPaymentAddress) {
+        this.resultPaymentAddress = resultPaymentAddress;
+    }
+    public void clearCurrentUser(){
+        this.cart = new Cart();
         this.invoice = null;
         this.feeMap = new HashMap<>();
+        this.resultPaymentAddress = null;
     }
 }

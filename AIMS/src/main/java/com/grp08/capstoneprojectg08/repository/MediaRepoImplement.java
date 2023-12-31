@@ -230,4 +230,17 @@ public class MediaRepoImplement implements MediaRepo{
         }
         return null;
     }
+
+    @Override
+    public void reduceMediaQuantity(int mediaId, int quantity) {
+        String script = "Update Media set quantity = quantity - ? where id = ?;";
+        try{
+            ppStatement = mysqlConnection.prepareStatement(script);
+            ppStatement.setInt(1, quantity);
+            ppStatement.setInt(2, mediaId);
+            ppStatement.executeUpdate();
+        } catch (SQLException e){
+            System.err.println(e.getMessage());
+        }
+    }
 }
