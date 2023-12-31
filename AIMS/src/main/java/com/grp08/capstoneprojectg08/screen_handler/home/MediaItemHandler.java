@@ -1,8 +1,19 @@
 package com.grp08.capstoneprojectg08.screen_handler.home;
 
+import com.grp08.capstoneprojectg08.controller.EndpointRegister;
 import com.grp08.capstoneprojectg08.entity.media.Media;
+import com.grp08.capstoneprojectg08.request.BaseRequest;
+import com.grp08.capstoneprojectg08.request.RequestMethod;
+import com.grp08.capstoneprojectg08.response.BaseResponse;
+import com.grp08.capstoneprojectg08.response.ResponseCode;
+import com.grp08.capstoneprojectg08.util.ImageUtil;
+import javafx.animation.KeyValue;
+import javafx.animation.TranslateTransition;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -10,10 +21,17 @@ import javafx.scene.image.ImageView;
 
 
 import javafx.scene.image.Image;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.StackPane;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
+import javafx.util.Duration;
+import org.json.JSONObject;
 
 
+import javax.swing.*;
 import java.io.File;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -29,7 +47,8 @@ public class MediaItemHandler implements Initializable {
     @FXML
     private ImageView MediaImage;
 
-
+    @FXML
+    private TextField inputNumberTextField;
 
     @FXML
     private Label mediaTitleLb;
@@ -64,12 +83,8 @@ public class MediaItemHandler implements Initializable {
             mediaStockLb.setText(String.valueOf(this.media.getStockQuantity()));
 
             // Initialize ImageView with the image URL
-            if (this.media.getImageUrl() != null) {
-                if (new File(this.media.getImageUrl()).exists()){
-                    Image image = new Image(new File(this.media.getImageUrl()).toURI().toString());
-                    MediaImage.setImage(image);
-                }
-            }
+            Image image = ImageUtil.getMediaImage(this.media);
+            MediaImage.setImage(image);
         }
     }
 
@@ -84,6 +99,96 @@ public class MediaItemHandler implements Initializable {
 
 
     //TODO : addToCartBtn to add media to cart
+    @FXML
+    private void addToCart() {
+        int quantity = handleInputNumberChange();
+
+        if (quantity > 0 && media != null) {
+            try {
+                // Retrieve the media ID
+                int mediaId = media.getID(); // Replace this with the actual way to get media ID
+
+                // Create a JSON request body with media ID and quantity
+                JSONObject requestBody = new JSONObject();
+                requestBody.put("mediaId", mediaId);
+                requestBody.put("quantity", quantity);
+
+                // Set the endpoint for adding an item to the cart
+                String cartEndpoint = "/cart/add-item"; // Replace this with your actual cart endpoint
+
+                // Create a BaseRequest for the endpoint
+                BaseRequest baseRequest = new BaseRequest(RequestMethod.POST, cartEndpoint, requestBody);
+
+                // Use the EndpointRegister to handle the request
+                EndpointRegister endpointRegister = new EndpointRegister();
+                BaseResponse response = endpointRegister.handleRequest(baseRequest);
+
+                // Process the response
+                if (response != null && response.getResponseCode() == ResponseCode.OK) {
+                    // Handle success
+                    // Show a success message (you can use a dialog, toast, or any UI component)
+                    System.out.println("Item added to cart successfully!");
+                } else {
+                    // Handle failure
+                    // Show an error message (you can use a dialog, toast, or any UI component)
+                    System.out.println("Failed to add item to cart. Message: " + response.getResponseMessage());
+                }
+
+                // Clear the input field after adding to cart
+                inputNumberTextField.clear();
+            } catch (NumberFormatException e) {
+                // Handle parsing errors or invalid input format
+                System.out.println("Invalid quantity format. Please enter a valid number.");
+            }
+        } else {
+            // Handle a situation where the quantity is invalid
+            System.out.println("Invalid quantity value or no media selected.");
+        }
+    }
 
     // TODO : toProductDetailBtn to see the detail of the media
+    @FXML
+    private void redirectToProductDetail() {
+        if (media != null) {
+            try {
+                // Load the FXML file
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/grp08/capstoneprojectg08/fxml/product-detail-screen.fxml"));
+                Parent root = loader.load();
+
+                // Get the current stage
+                Stage currentStage = (Stage) toProductDetailBtn.getScene().getWindow();
+
+                // Create a new stage for the product detail screen
+                Stage stage = new Stage();
+                stage.setScene(new Scene(root));
+
+                // Close the current stage
+                currentStage.close();
+
+                // Show the new stage
+                stage.show();
+            } catch (IOException e) {
+                e.printStackTrace();
+                // Handle the exception accordingly
+            }
+        }
+    }
+
+    @FXML
+    private int handleInputNumberChange() {
+        String enteredNumber = inputNumberTextField.getText();
+        try {
+            int quantity = Integer.parseInt(enteredNumber);
+            return quantity > 0 ? quantity : -1; // Ensure the quantity is a positive value
+        } catch (NumberFormatException e) {
+            // Handle invalid input: show an error message
+            showAlert("Error", "Invalid quantity format. Please enter a valid number.", JOptionPane.ERROR_MESSAGE);
+            return -1;
+        }
+    }
+
+    private void showAlert(String title, String message, int messageType) {
+        JFrame frame = new JFrame(title);
+        JOptionPane.showMessageDialog(frame, message, title, messageType);
+    }
 }

@@ -16,7 +16,7 @@ public class Media {
     protected String imageUrl = null; // in form: "@../assets/MediaImages/<image_name>.png"
     protected boolean fastShipping; // if the media support shipping or not
 
-    public Media(){
+    public Media(int ID, MediaCategory category, int price, int stockQuantity, String title, int value, boolean fastShipping){
     }
 
     public Media(int id, MediaCategory category, int price, int quantity, String title, int value, String imageUrl, boolean fastShipping) {

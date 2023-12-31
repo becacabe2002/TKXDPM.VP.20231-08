@@ -11,12 +11,12 @@
 <?import javafx.scene.text.Text?>
 
 <AnchorPane prefHeight="200.0" prefWidth="450.0" style="-fx-background-color: #BFB29E; -fx-border-radius: 10; -fx-background-radius: 10;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.grp08.capstoneprojectg08.screen_handler.home.MediaItemHandler">
-    <Button fx:id="addToCartBtn" alignment="CENTER" layoutX="307.0" layoutY="135.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="120.0" style="-fx-background-color: #B3A492;" text="Add to Cart" textAlignment="CENTER" wrapText="true">
+    <Button fx:id="addToCartBtn" onAction="#addToCart" alignment="CENTER" layoutX="307.0" layoutY="135.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="120.0" style="-fx-background-color: #B3A492;" text="Add to Cart" textAlignment="CENTER" wrapText="true">
         <font>
             <Font size="15.0" />
         </font>
     </Button>
-    <Button fx:id="toProductDetailBtn" alignment="CENTER" layoutX="30.0" layoutY="135.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="120.0" style="-fx-background-color: #B3A492;" text="View Detail" textAlignment="CENTER" wrapText="true">
+    <Button fx:id="toProductDetailBtn" onAction="#redirectToProductDetail" alignment="CENTER" layoutX="30.0" layoutY="135.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="120.0" style="-fx-background-color: #B3A492;" text="View Detail" textAlignment="CENTER" wrapText="true">
         <font>
             <Font size="15.0" />
         </font>
@@ -51,5 +51,5 @@
             <Font size="20.0" />
         </font>
     </Text>
-    <TextField fx:id="cartitemQuantityInput" alignment="CENTER" layoutX="166.0" layoutY="147.0" prefHeight="26.0" prefWidth="117.0" promptText="input number" style="-fx-background-color: FFFFFF; -fx-background-radius: 10;" />
+    <TextField fx:id="cartitemQuantityInput" onKeyReleased="#handleInputNumberChange" alignment="CENTER" layoutX="166.0" layoutY="147.0" prefHeight="26.0" prefWidth="117.0" promptText="input number" style="-fx-background-color: FFFFFF; -fx-background-radius: 10;" />
 </AnchorPane>
