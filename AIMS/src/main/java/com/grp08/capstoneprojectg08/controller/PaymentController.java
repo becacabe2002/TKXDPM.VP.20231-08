@@ -27,7 +27,7 @@ public class PaymentController extends BaseController{
      * @param request - contain paymentType: PAYPAL or VNPAY
      * @return response:
      * <ul>
-     *     <li>if success: responseCode = OK, responseMessage = "Payment successful", body = {total, paymentMethod, deliveryAddress}</li>
+     *     <li>if success: responseCode = OK, responseMessage = "Payment successful", body = {total, paymentMethod, shippingAddress, username, paymentStatus, invoiceId}</li>
      *     <li>if not success: responseCode = UNACCEPTABLE (406), responseMessage = "Payment failed, please try again!";</li>
      * </ul>
      */
@@ -37,9 +37,13 @@ public class PaymentController extends BaseController{
             PaymentType paymentType = PaymentType.valueOf(jsonObject.getString("paymentType"));
             PaymentService paymentService = new PaymentService();
             JSONObject returnJSON = paymentService.processPayment(paymentType);
-            BaseResponse returnResponse = new BaseResponse(ResponseCode.OK, "");
-            returnResponse.setBody(returnJSON);
-            return returnResponse;
+            if (returnJSON == null){
+                return new BaseResponse(ResponseCode.UNACCEPTABLE, "Payment failed, please try again!");
+            } else{
+                BaseResponse returnResponse = new BaseResponse(ResponseCode.OK, "Payment successful");
+                returnResponse.setBody(returnJSON);
+                return returnResponse;
+            }
         } catch (JSONException e){
             return new BaseResponse(ResponseCode.BAD_REQUEST, "Invalid request body");
         }

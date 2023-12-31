@@ -31,6 +31,8 @@ public interface MediaRepo extends BaseRepo{
     public List<DVD> findDVDsFilterByTitle(String title);
     public DVD findDVDById(int id);
 
+    public void reduceMediaQuantity(int mediaId, int quantity);
+
     // TODO: add media (for admin), also set mediaUrl to under MediaImages folder
     // * Book
     // * CD

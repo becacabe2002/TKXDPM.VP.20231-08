@@ -8,7 +8,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.web.WebView?>
 
-<AnchorPane prefHeight="768.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.grp08.capstoneprojectg08.subsystem.vnpay.WebViewHandler">
+<AnchorPane prefHeight="768.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.grp08.capstoneprojectg08.subsystem.vnpay.VNPayPortalHandler">
     <AnchorPane prefHeight="90.0" style="-fx-background-color: #B0926A;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <Label layoutX="82.0" layoutY="30.0" text="AIMS System">
             <font>
@@ -23,12 +23,7 @@
                 <Font name="Arial Bold" size="25.0" />
             </font>
         </Label>
-       <Button fx:id="btnHome" alignment="CENTER" layoutX="1252.0" layoutY="25.0" mnemonicParsing="false" onAction="#goHome" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: #A7D397;" text="Home" textAlignment="CENTER" textFill="WHITE" wrapText="true">
-           <font>
-               <Font name="Arial Bold" size="17.0" />
-           </font>
-       </Button>
-       <Button fx:id="btnBack" alignment="CENTER" layoutX="1130.0" layoutY="25.0" mnemonicParsing="false" onAction="#goBack" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: #96B6C5;" text="Back" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+       <Button fx:id="btnBack" alignment="CENTER" layoutX="1249.0" layoutY="25.0" mnemonicParsing="false" onAction="#goBack" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: #96B6C5;" text="Back" textAlignment="CENTER" textFill="WHITE" wrapText="true">
            <font>
                <Font name="Arial Bold" size="17.0" />
            </font>

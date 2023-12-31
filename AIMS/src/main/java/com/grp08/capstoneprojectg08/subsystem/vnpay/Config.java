@@ -1,6 +1,8 @@
 package com.grp08.capstoneprojectg08.subsystem.vnpay;
 
 import java.io.UnsupportedEncodingException;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -109,18 +111,17 @@ public class Config {
         }
     }
 
-//    public static String getIpAddress(HttpServletRequest request) {
-//        String ipAdress;
-//        try {
-//            ipAdress = request.getHeader("X-FORWARDED-FOR");
-//            if (ipAdress == null) {
-//                ipAdress = request.getRemoteAddr();
-//            }
-//        } catch (Exception e) {
-//            ipAdress = "Invalid IP:" + e.getMessage();
-//        }
-//        return ipAdress;
-//    }
+    public static String getIpAddress() {
+        String ipAddress;
+        try {
+            InetAddress ip = InetAddress.getLocalHost();
+            ipAddress = ip.getHostAddress();
+        } catch (UnknownHostException e) {
+            System.out.println("Error: " + e.getMessage());
+            ipAddress = null;
+        }
+        return ipAddress;
+    }
 
     public static String getRandomNumber(int len) {
         Random rnd = new Random();

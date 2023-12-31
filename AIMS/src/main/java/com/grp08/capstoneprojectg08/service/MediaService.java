@@ -52,4 +52,7 @@ public class MediaService {
         return mediaRepo.findMediaById(mediaId);
     }
 
+    public void updateMediaItemStock(int mediaId, int quantity) {
+        mediaRepo.reduceMediaQuantity(mediaId, quantity);
+    }
 }
