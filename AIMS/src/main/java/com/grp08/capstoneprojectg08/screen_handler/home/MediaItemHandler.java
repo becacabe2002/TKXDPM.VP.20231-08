@@ -6,8 +6,11 @@ import com.grp08.capstoneprojectg08.request.BaseRequest;
 import com.grp08.capstoneprojectg08.request.RequestMethod;
 import com.grp08.capstoneprojectg08.response.BaseResponse;
 import com.grp08.capstoneprojectg08.response.ResponseCode;
+import com.grp08.capstoneprojectg08.util.ImageUtil;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -72,12 +75,8 @@ public class MediaItemHandler implements Initializable {
             mediaStockLb.setText(String.valueOf(this.media.getStockQuantity()));
 
             // Initialize ImageView with the image URL
-            if (this.media.getImageUrl() != null) {
-                if (new File(this.media.getImageUrl()).exists()){
-                    Image image = new Image(new File(this.media.getImageUrl()).toURI().toString());
-                    MediaImage.setImage(image);
-                }
-            }
+            Image image = ImageUtil.getMediaImage(this.media);
+            MediaImage.setImage(image);
         }
     }
 
@@ -94,80 +93,86 @@ public class MediaItemHandler implements Initializable {
     //TODO : addToCartBtn to add media to cart
     @FXML
     private void addToCart() {
-//        System.out.println("Add to Cart button clicked");
-//
-//        // Create a JSON object for the request body
-//        JSONObject requestBody = new JSONObject();
-//
-//        // Retrieve the quantity from handleInputNumberChange() method
-//        int quantity = handleInputNumberChange();
-//
-//        if (quantity != -1) {
-//            try {
-//                // Get the media ID from your Media object
-//                Media media = new Media();
-//                int mediaId = media.getID(); // Replace this with the actual way to get media ID
-//
-//                // Fill the JSON request body with media ID and quantity
-//                requestBody.put("mediaId", mediaId);
-//                requestBody.put("quantity", quantity);
-//
-//                // Create a BaseRequest for the endpoint
-//                BaseRequest baseRequest = new BaseRequest(RequestMethod.POST, "/order/add-to-cart", requestBody);
-//
-//                // Use the EndpointRegister to handle the request
-//                EndpointRegister endpointRegister = new EndpointRegister();
-//                BaseResponse response = endpointRegister.handleRequest(baseRequest);
-//
-//                // Process the response as needed
-//                if (response == null) {
-//                    // Handle the case where the response is null
-//                    System.out.println("No response received.");
-//                } else {
-//                    // Process the response as needed
-//                    if (response.getResponseCode() == ResponseCode.OK) {
-//                        // Handle success (e.g., display a success message)
-//                        JFrame frame = new JFrame("JOptionPane showMessageDialog success");
-//                        JOptionPane.showMessageDialog(frame,"Item added to cart successfully!","Success",JOptionPane.INFORMATION_MESSAGE);
-//                        System.out.println("Item added to cart successfully!");
-//                    } else {
-//                        JFrame frame = new JFrame("JOptionPane showMessageDialog success");
-//                        JOptionPane.showMessageDialog(frame,"Failed to add item to cart.","Error", JOptionPane.ERROR_MESSAGE);
-//                        // Handle failure (e.g., display an error message)
-//                        System.out.println("Failed to add item to cart. Message: " + response.getResponseMessage());
-//                    }
-//                }
-//
-//                // Clear the input field after adding to cart
-//                inputNumberTextField.clear();
-//
-//            } catch (NumberFormatException e) {
-//                // Handle parsing errors or invalid input format
-//                System.out.println("Invalid quantity format. Please enter a valid number.");
-//                // Display an error message or perform error handling related to input format
-//            }
-//        } else {
-//            // Handle a situation where the quantity is invalid from handleInputNumberChange()
-//            System.out.println("Invalid quantity value.");
-//        }
+        int quantity = handleInputNumberChange();
+
+        if (quantity > 0 && media != null) {
+            try {
+                // Retrieve the media ID
+                int mediaId = media.getID(); // Replace this with the actual way to get media ID
+
+                // Create a JSON request body with media ID and quantity
+                JSONObject requestBody = new JSONObject();
+                requestBody.put("mediaId", mediaId);
+                requestBody.put("quantity", quantity);
+
+                // Create a BaseRequest for the endpoint
+                BaseRequest baseRequest = new BaseRequest(RequestMethod.POST, "/cart/add-item", requestBody);
+
+                // Use the EndpointRegister to handle the request
+                EndpointRegister endpointRegister = new EndpointRegister();
+                BaseResponse response = endpointRegister.handleRequest(baseRequest);
+
+                // Process the response
+                if (response != null && response.getResponseCode() == ResponseCode.OK) {
+                    // Handle success
+                    // Show a success message (you can use a dialog, toast, or any UI component)
+                    System.out.println("Item added to cart successfully!");
+                } else {
+                    // Handle failure
+                    // Show an error message (you can use a dialog, toast, or any UI component)
+                    System.out.println("Failed to add item to cart. Message: " + response.getResponseMessage());
+                }
+
+                // Clear the input field after adding to cart
+                inputNumberTextField.clear();
+            } catch (NumberFormatException e) {
+                // Handle parsing errors or invalid input format
+                System.out.println("Invalid quantity format. Please enter a valid number.");
+            }
+        } else {
+            // Handle a situation where the quantity is invalid
+            System.out.println("Invalid quantity value or no media selected.");
+        }
     }
 
     // TODO : toProductDetailBtn to see the detail of the media
     @FXML
     private void redirectToProductDetail() {
         if (media != null) {
-            // TODO: Implement logic to navigate to the detailed view of the media item
-            // For example:
-            // Navigate to a new scene or view displaying detailed information about 'media'
-            System.out.println("View Detail: " + media.getTitle());
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/grp08/capstoneprojectg08/fxml/productDetail.fxml"));
+                Parent root = loader.load();
+
+                // Get the controller associated with the loaded FXML
+                ProductDetailController productDetailController = loader.getController();
+                productDetailController.setMedia(media);
+
+                // Create a new stage and display the product detail view
+                Stage stage = new Stage();
+                stage.setScene(new Scene(root));
+                stage.show();
+            } catch (IOException e) {
+                e.printStackTrace();
+                // Handle the exception accordingly
+            }
         }
     }
 
     @FXML
     private int handleInputNumberChange() {
-        // Handle input number change event
         String enteredNumber = inputNumberTextField.getText();
-        int quantity = Integer.parseInt(enteredNumber);
-        return quantity;
+        try {
+            int quantity = Integer.parseInt(enteredNumber);
+            return quantity > 0 ? quantity : -1; // Ensure the quantity is a positive value
+        } catch (NumberFormatException e) {
+            // Handle invalid input: show an error message
+            showAlert("Error", "Invalid quantity format. Please enter a valid number.", JOptionPane.ERROR_MESSAGE);
+            return -1;
+        }
+    }
+
+    private void showAlert(String title, String message, int messageType) {
+        JFrame frame = new JFrame(title);
+        JOptionPane.showMessageDialog(frame, message, title, messageType);
     }
 }

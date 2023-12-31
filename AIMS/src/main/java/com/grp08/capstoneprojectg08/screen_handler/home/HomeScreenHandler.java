@@ -101,15 +101,15 @@ public class HomeScreenHandler implements Initializable {
         // Ensure proper exception handling and object creation
 //        return null; // Replace null with your Media object
         int ID = mediaJson.getInt("ID");
-        MediaCategory category = MediaCategory.valueOf(mediaJson.getString("category"));
+        MediaCategory category = mediaJson.getEnum(MediaCategory.class,"category");
         int price = mediaJson.getInt("price");
         int stockQuantity = mediaJson.getInt("stockQuantity");
         String title = mediaJson.getString("title");
         int value = mediaJson.getInt("value");
-//        String imageUrl = mediaJson.getString("imageUrl");
+        String imageUrl = mediaJson.getString("imageUrl");
         boolean fastShipping = mediaJson.getBoolean("fastShipping");
 
-        return new Media(ID, category, price, stockQuantity, title, value,fastShipping);
+        return new Media(ID, category, price, stockQuantity, title, value, imageUrl, fastShipping);
     }
 
     private void loadMediaList(List<Media> mediaList) {
