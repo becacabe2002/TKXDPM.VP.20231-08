@@ -3,10 +3,14 @@ package com.grp08.capstoneprojectg08.util;
 import com.grp08.capstoneprojectg08.entity.media.Media;
 import javafx.scene.image.Image;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * @author <a href="https://github.com/becacabe2002">becacabe2002</a>
  */
 public class ImageUtil {
+    private static Map<String, Image> imageMap = new HashMap<>();
     public static Image getMediaImage(Media media){
         Image image;
         if (media.getImageUrl() == null){
@@ -17,8 +21,9 @@ public class ImageUtil {
                 case All -> new Image("https://cdn-icons-png.flaticon.com/512/151/151279.png");
             };
         } else{
-            // get image from URL
-            image = new Image(media.getImageUrl());
+            if(!imageMap.containsKey(media.getImageUrl()))
+                imageMap.put(media.getImageUrl(), new Image(media.getImageUrl()));
+            image = imageMap.get(media.getImageUrl());
         }
         return image;
     }
