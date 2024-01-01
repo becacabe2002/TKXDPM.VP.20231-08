@@ -120,9 +120,11 @@ public class HomeScreenHandler implements Initializable {
         int col = 0;
         for (Media media : mediaList) {
             try {
+                long startTime = System.currentTimeMillis();
                 // Load the media-item.fxml for each Media object
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/grp08/capstoneprojectg08/fxml/media-item.fxml"));
                 Parent mediaItemRoot = loader.load();
+                System.out.println("Media item loaded successfully!");
 
                 // Access the controller instance to set the Media object
                 MediaItemHandler mediaItemController = loader.getController();
@@ -130,7 +132,8 @@ public class HomeScreenHandler implements Initializable {
 
                 // Add the loaded root node to the GridPane
                 mediaListPane.add(mediaItemRoot, col, row);
-
+                long endTime = System.currentTimeMillis();
+                System.out.println("Time taken to load media item: " + (endTime - startTime));
             } catch (IOException e) {
                 e.printStackTrace(); // Handle the exception appropriately
             }

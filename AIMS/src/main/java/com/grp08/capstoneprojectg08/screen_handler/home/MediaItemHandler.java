@@ -83,8 +83,12 @@ public class MediaItemHandler implements Initializable {
             mediaStockLb.setText(String.valueOf(this.media.getStockQuantity()));
 
             // Initialize ImageView with the image URL
+            long startTime = System.currentTimeMillis();
             Image image = ImageUtil.getMediaImage(this.media);
             MediaImage.setImage(image);
+            long endTime = System.currentTimeMillis();
+            long duration = (endTime - startTime);
+            System.out.println("Image retrieval time: " + duration);
         }
     }
 
