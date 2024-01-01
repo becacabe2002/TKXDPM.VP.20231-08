@@ -6,12 +6,12 @@ import com.grp08.capstoneprojectg08.request.BaseRequest;
 import com.grp08.capstoneprojectg08.request.RequestMethod;
 import com.grp08.capstoneprojectg08.response.BaseResponse;
 import com.grp08.capstoneprojectg08.response.ResponseCode;
+import com.grp08.capstoneprojectg08.service.MediaService;
 import com.grp08.capstoneprojectg08.util.ImageUtil;
 import javafx.animation.TranslateTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.fxml.FXMLLoader;
@@ -21,8 +21,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
+
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
@@ -67,33 +66,73 @@ public class ProductDetailScreenHandler implements Initializable {
 
     // Other fields and methods...
     private Media media;
+    private MediaService mediaService;
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         // Initialization code can go here if needed
-
+        name.setText("");
+//        price.setText("");
+//        stockQuantity.setText("");
+        addToCartButton.setOnAction(event -> handleAddToCartButtonClick());
     }
 
-    public void setMedia(Media media) {
-        this.media = media;
-        initializeMedia();
+    public void setMediaService(MediaService mediaService) {
+        this.mediaService = mediaService;
     }
 
-    private void initializeMedia() {
-        if (this.media != null) {
-            name.setText(this.media.getTitle());
-            author.setText(this.media.getCategory().toString());
-            price.setText(this.media.getPrice() + " $");
-            stockQuantity.setText(String.valueOf(this.media.getStockQuantity()));
+    public void loadMediaDetails(BaseResponse response) {
+        if (response != null && response.getResponseCode() == ResponseCode.OK) {
+            JSONObject responseBody = response.getBody();
 
-            // Initialize ImageView with the image URL
-            Image image = ImageUtil.getMediaImage(this.media);
-            imageUrl.setImage(image);
+            if (responseBody != null && responseBody.has("media") && responseBody.has("detail")) {
+                JSONObject mediaDetails = responseBody.getJSONObject("media");
+
+                // Extract media details from JSON and update UI elements
+                name.setText(mediaDetails.getString("title"));
+                price.setText(mediaDetails.getDouble("price") + " $");
+                stockQuantity.setText(String.valueOf(mediaDetails.getInt("stockQuantity")));
+
+                // For example, if 'author' is present in the JSON response
+                if (mediaDetails.has("author")) {
+                    author.setText(mediaDetails.getString("author"));
+                }
+
+                // Load the image if 'imageUrl' is present in the JSON response
+                if (mediaDetails.has("imageUrl")) {
+                    String imageUrl = mediaDetails.getString("imageUrl");
+                    // Load the image using imageUrl and set it to your ImageView component
+                    // Example: imageView.setImage(new Image(imageUrl));
+                }
+
+                // Set media details to TextArea or other UI element
+                String mediaDetail = responseBody.getString("detail");
+                detail.setText(mediaDetail);
+            }
+        } else {
+            // Handle response failure or other cases
+            System.out.println("Failed to load media details");
         }
     }
 
-    public Media getMedia() {
-        return media;
-    }
+//    public void setMedia(Media media) {
+//        this.media = media;
+//        initializeMedia();
+//    }
+//
+//    private void initializeMedia() {
+//        if (this.media != null) {
+//            name.setText(this.media.getTitle());
+////            author.setText(this.media.getCategory().toString());
+//            price.setText(this.media.getPrice() + " $");
+//            stockQuantity.setText(String.valueOf(this.media.getStockQuantity()));
+//
+//            // Initialize ImageView with the image URL
+//            Image image = ImageUtil.getMediaImage(this.media);
+//            imageUrl.setImage(image);
+//        }
+//    }
+
+
     @FXML
     private void handleCloseButtonClick() {
         // Handle close button click event
@@ -122,43 +161,48 @@ public class ProductDetailScreenHandler implements Initializable {
 
     @FXML
     private void handleAddToCartButtonClick() {
-        System.out.println("Add to Cart button clicked");
-
         int quantity = handleInputNumberChange();
 
         if (quantity > 0 && media != null) {
             try {
+                // Retrieve the media ID
                 int mediaId = media.getID(); // Replace this with the actual way to get media ID
 
+                // Create a JSON request body with media ID and quantity
                 JSONObject requestBody = new JSONObject();
                 requestBody.put("mediaId", mediaId);
                 requestBody.put("quantity", quantity);
 
-                BaseRequest baseRequest = new BaseRequest(RequestMethod.POST, "/order/add-to-cart", requestBody);
+                // Set the endpoint for adding an item to the cart
+                String cartEndpoint = "/cart/add-item"; // Replace this with your actual cart endpoint
 
+                // Create a BaseRequest for the endpoint
+                BaseRequest baseRequest = new BaseRequest(RequestMethod.POST, cartEndpoint, requestBody);
+
+                // Use the EndpointRegister to handle the request
                 EndpointRegister endpointRegister = new EndpointRegister();
                 BaseResponse response = endpointRegister.handleRequest(baseRequest);
 
+                // Process the response
                 if (response != null && response.getResponseCode() == ResponseCode.OK) {
+                    // Handle success
+                    // Show a success message (you can use a dialog, toast, or any UI component)
                     System.out.println("Item added to cart successfully!");
-                    // Update UI or show a success message
-                    showAlert("Success", "Item added to cart successfully!", JOptionPane.INFORMATION_MESSAGE);
                 } else {
+                    // Handle failure
+                    // Show an error message (you can use a dialog, toast, or any UI component)
                     System.out.println("Failed to add item to cart. Message: " + response.getResponseMessage());
-                    // Update UI or show an error message
-                    showAlert("Error", "Failed to add item to cart.", JOptionPane.ERROR_MESSAGE);
                 }
 
+                // Clear the input field after adding to cart
                 inputNumberTextField.clear();
             } catch (NumberFormatException e) {
+                // Handle parsing errors or invalid input format
                 System.out.println("Invalid quantity format. Please enter a valid number.");
-                // Handle the error: show an error message to the user
-                showAlert("Error", "Invalid quantity format. Please enter a valid number.", JOptionPane.ERROR_MESSAGE);
             }
         } else {
+            // Handle a situation where the quantity is invalid
             System.out.println("Invalid quantity value or no media selected.");
-            // Handle the error: show an error message to the user
-            showAlert("Error", "Invalid quantity value or no media selected.", JOptionPane.ERROR_MESSAGE);
         }
     }
 
@@ -167,18 +211,25 @@ public class ProductDetailScreenHandler implements Initializable {
         String enteredNumber = inputNumberTextField.getText();
         try {
             int quantity = Integer.parseInt(enteredNumber);
-            return quantity > 0 ? quantity : -1; // Ensure the quantity is a positive value
+            if (quantity > 0) {
+                return quantity;
+            } else {
+                showAlert("Error", "Quantity should be a positive value.", Alert.AlertType.ERROR);
+                return -1;
+            }
         } catch (NumberFormatException e) {
-            // Handle invalid input: show an error message
-            showAlert("Error", "Invalid quantity format. Please enter a valid number.", JOptionPane.ERROR_MESSAGE);
+            showAlert("Error", "Invalid quantity format. Please enter a valid number.", Alert.AlertType.ERROR);
             return -1;
         }
     }
 
     // Method to show a dialog box based on the JOptionPane
-    private void showAlert(String title, String message, int messageType) {
-        JFrame frame = new JFrame(title);
-        JOptionPane.showMessageDialog(frame, message, title, messageType);
+    private void showAlert(String title, String message, Alert.AlertType alertType) {
+        Alert alert = new Alert(alertType);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
     }
         // Add logic to process the entered number (e.g., validation, parsing
 }

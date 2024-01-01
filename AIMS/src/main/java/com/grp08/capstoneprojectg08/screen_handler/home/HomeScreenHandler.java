@@ -10,11 +10,14 @@ import com.grp08.capstoneprojectg08.response.ResponseCode;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.Parent;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.fxml.FXMLLoader;
 
+import javafx.stage.Stage;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -56,12 +59,10 @@ public class HomeScreenHandler implements Initializable {
     }
 
     private void initializeCategories() {
-        MenuItem clearFilterItem = new MenuItem("Clear");
 //        MenuItem bookItem = new MenuItem(MediaCategory.Book.toString());
 //        MenuItem cdItem = new MenuItem(MediaCategory.CD.toString());
 //        MenuItem dvdItem = new MenuItem(MediaCategory.DVD.toString());
 
-        clearFilterItem.setOnAction(event -> handleFilterAll());
 //        bookItem.setOnAction(event -> handleCategoryFilter(MediaCategory.Book));
 //        cdItem.setOnAction(event -> handleCategoryFilter(MediaCategory.CD));
 //        dvdItem.setOnAction(event -> handleCategoryFilter(MediaCategory.DVD));
@@ -70,7 +71,7 @@ public class HomeScreenHandler implements Initializable {
         MenuItem dvdItem = createCategoryMenuItem(MediaCategory.DVD);
         MenuItem allItem = createCategoryMenuItem(MediaCategory.All);
 
-        categoryFilter.getItems().addAll(clearFilterItem, bookItem, cdItem, dvdItem);
+        categoryFilter.getItems().addAll(allItem, bookItem, cdItem, dvdItem);
     }
 
     private List<Media> fetchMediaItems() {
@@ -99,7 +100,7 @@ public class HomeScreenHandler implements Initializable {
         return mediaList;
     }
 
-    private Media createMediaFromJson(JSONObject mediaJson) {
+    public Media createMediaFromJson(JSONObject mediaJson) {
         // Your implementation of creating Media from JSON
         // Ensure proper exception handling and object creation
 //        return null; // Replace null with your Media object
@@ -169,8 +170,56 @@ public class HomeScreenHandler implements Initializable {
         return filteredItems;
     }
 
+    @FXML
     private void handleSearch() {
-        // Your implementation of handling search functionality
+        String searchText = titleInputTf.getText().toLowerCase();
+
+        // Perform search operation based on the searchText
+        List<Media> allMediaItems = fetchMediaItems();
+
+        if (!searchText.isEmpty()) {
+            List<Media> searchResults = new ArrayList<>();
+
+            for (Media media : allMediaItems) {
+                String title = media.getTitle().toLowerCase();
+                if (title.contains(searchText)) {
+                    searchResults.add(media);
+                }
+            }
+
+            displayMediaList(searchResults); // Display search results in mediaListPane
+        } else {
+            // If the search field is empty, display all available media items
+            displayMediaList(allMediaItems);
+        }
+    }
+
+    private void displayMediaList(List<Media> mediaList) {
+        // Clear mediaListPane before adding media items
+        mediaListPane.getChildren().clear();
+
+        // Load and display media items in mediaListPane
+        int row = 0;
+        int col = 0;
+        for (Media media : mediaList) {
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/grp08/capstoneprojectg08/fxml/media-item.fxml"));
+                Parent mediaItemRoot = loader.load();
+
+                MediaItemHandler mediaItemController = loader.getController();
+                mediaItemController.setMedia(media);
+
+                mediaListPane.add(mediaItemRoot, col, row);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            col++;
+            if (col == 3) {
+                col = 0;
+                row++;
+            }
+        }
     }
 
     private void handleFilterAll() {
@@ -183,5 +232,24 @@ public class HomeScreenHandler implements Initializable {
         MenuItem categoryItem = new MenuItem(category.toString());
         categoryItem.setOnAction(event -> handleCategoryFilter(category));
         return categoryItem;
+    }
+
+    @FXML
+    private void handleCartIconClick(MouseEvent event) {
+        try {
+            // Load the FXML file for the view cart screen
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/grp08/capstoneprojectg08/fxml/view-cart-screen.fxml"));
+            Parent viewCartRoot = loader.load();
+
+            // Create a new stage for the view cart screen
+            Stage viewCartStage = new Stage();
+            viewCartStage.setTitle("View Cart");
+            viewCartStage.setScene(new Scene(viewCartRoot));
+
+            // Show the view cart screen
+            viewCartStage.show();
+        } catch (IOException e) {
+            e.printStackTrace(); // Handle the exception appropriately
+        }
     }
 }
