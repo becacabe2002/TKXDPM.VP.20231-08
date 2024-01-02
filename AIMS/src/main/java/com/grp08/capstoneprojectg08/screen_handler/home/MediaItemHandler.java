@@ -127,10 +127,12 @@ public class MediaItemHandler implements Initializable {
                     // Handle success
                     // Show a success message (you can use a dialog, toast, or any UI component)
                     System.out.println("Item added to cart successfully!");
+                    showAlert("Success", "Item added to cart successfully!", Alert.AlertType.INFORMATION);
                 } else {
                     // Handle failure
                     // Show an error message (you can use a dialog, toast, or any UI component)
                     System.out.println("Failed to add item to cart. Message: " + response.getResponseMessage());
+                    showAlert("Error", "Failed to add item to cart. \nMessage: " + response.getResponseMessage(), Alert.AlertType.ERROR);
                 }
 
                 // Clear the input field after adding to cart
@@ -138,10 +140,12 @@ public class MediaItemHandler implements Initializable {
             } catch (NumberFormatException e) {
                 // Handle parsing errors or invalid input format
                 System.out.println("Invalid quantity format. Please enter a valid number.");
+                showAlert("Error", "Invalid quantity format. Please enter a valid number.", Alert.AlertType.ERROR);
             }
         } else {
             // Handle a situation where the quantity is invalid
             System.out.println("Invalid quantity value or no media selected.");
+            showAlert("Error", "Invalid quantity value or no media selected.", Alert.AlertType.ERROR);
         }
     }
 
@@ -150,39 +154,23 @@ public class MediaItemHandler implements Initializable {
     private void redirectToProductDetail() {
         if (media != null) {
             try {
-                int productId = media.getID(); // Replace this with the actual method to get the product ID
-
-                // Create a JSON object for the request body
+                int productId = media.getID();
                 JSONObject requestBody = new JSONObject();
                 requestBody.put("mediaId", productId);
-
-                // Set the endpoint for sending the JSON request
-                String productDetailEndpoint = "/home/media-details"; // Replace this with your actual product detail endpoint
-
-                // Create a BaseRequest for the endpoint
+                String productDetailEndpoint = "/home/media-details";
                 BaseRequest baseRequest = new BaseRequest(RequestMethod.GET, productDetailEndpoint, requestBody);
-
-                // Use the EndpointRegister to handle the request
                 EndpointRegister endpointRegister = new EndpointRegister();
                 BaseResponse response = endpointRegister.handleRequest(baseRequest);
                 JSONObject bodyResponse = response.getBody();
                 String details = bodyResponse.getString("detail");
                 JSONObject mediaJSON = bodyResponse.getJSONObject("media");
                 Media media = createMediaFromJson(mediaJSON);
-                // Load the FXML file
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/grp08/capstoneprojectg08/fxml/product-detail-screen.fxml"));
                 Parent root = loader.load();
                 ProductDetailScreenHandler controller = loader.getController();
                 controller.setMedia(media, details);
-                // Get the current stage
                 Stage currentStage = (Stage) toProductDetailBtn.getScene().getWindow();
-
-                // Create a new stage for the product detail screen
                 currentStage.setScene(new Scene(root));
-
-                // Close the current stage
-
-                // Show the new stage
                 currentStage.show();
             } catch (IOException e) {
                 e.printStackTrace();
@@ -216,9 +204,6 @@ public class MediaItemHandler implements Initializable {
         alert.showAndWait();
     }
     private Media createMediaFromJson(JSONObject mediaJson) {
-        // Your implementation of creating Media from JSON
-        // Ensure proper exception handling and object creation
-//        return null; // Replace null with your Media object
         int ID = mediaJson.getInt("ID");
         MediaCategory category = mediaJson.getEnum(MediaCategory.class,"category");
         int price = mediaJson.getInt("price");
