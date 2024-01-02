@@ -10,6 +10,9 @@ This is a Capstone's source code for Software Design and Construction project
 | Dương Nhật Thành| Member      |
 | Nguyễn Quốc Thành| Member      |
 
+## Video Demo
+![Video](video_demo.mp4)
+
 ## Report Content
 
 <details>
