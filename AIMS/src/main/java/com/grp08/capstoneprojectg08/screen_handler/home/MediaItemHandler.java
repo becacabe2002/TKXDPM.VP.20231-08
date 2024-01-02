@@ -2,6 +2,7 @@ package com.grp08.capstoneprojectg08.screen_handler.home;
 
 import com.grp08.capstoneprojectg08.controller.EndpointRegister;
 import com.grp08.capstoneprojectg08.entity.media.Media;
+import com.grp08.capstoneprojectg08.entity.media.MediaCategory;
 import com.grp08.capstoneprojectg08.request.BaseRequest;
 import com.grp08.capstoneprojectg08.request.RequestMethod;
 import com.grp08.capstoneprojectg08.response.BaseResponse;
@@ -164,24 +165,25 @@ public class MediaItemHandler implements Initializable {
                 // Use the EndpointRegister to handle the request
                 EndpointRegister endpointRegister = new EndpointRegister();
                 BaseResponse response = endpointRegister.handleRequest(baseRequest);
+                JSONObject bodyResponse = response.getBody();
+                String details = bodyResponse.getString("detail");
+                JSONObject mediaJSON = bodyResponse.getJSONObject("media");
+                Media media = createMediaFromJson(mediaJSON);
                 // Load the FXML file
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/grp08/capstoneprojectg08/fxml/product-detail-screen.fxml"));
                 Parent root = loader.load();
-
+                ProductDetailScreenHandler controller = loader.getController();
+                controller.setMedia(media, details);
                 // Get the current stage
                 Stage currentStage = (Stage) toProductDetailBtn.getScene().getWindow();
 
                 // Create a new stage for the product detail screen
-                Stage stage = new Stage();
-                stage.setScene(new Scene(root));
+                currentStage.setScene(new Scene(root));
 
                 // Close the current stage
-                currentStage.close();
-                ProductDetailScreenHandler controller = new ProductDetailScreenHandler();
-                controller.loadMediaDetails(response);
 
                 // Show the new stage
-                stage.show();
+                currentStage.show();
             } catch (IOException e) {
                 e.printStackTrace();
                 // Handle the exception accordingly
@@ -212,5 +214,20 @@ public class MediaItemHandler implements Initializable {
         alert.setHeaderText(null);
         alert.setContentText(message);
         alert.showAndWait();
+    }
+    private Media createMediaFromJson(JSONObject mediaJson) {
+        // Your implementation of creating Media from JSON
+        // Ensure proper exception handling and object creation
+//        return null; // Replace null with your Media object
+        int ID = mediaJson.getInt("ID");
+        MediaCategory category = mediaJson.getEnum(MediaCategory.class,"category");
+        int price = mediaJson.getInt("price");
+        int stockQuantity = mediaJson.getInt("stockQuantity");
+        String title = mediaJson.getString("title");
+        int value = mediaJson.getInt("value");
+        String imageUrl = mediaJson.getString("imageUrl");
+        boolean fastShipping = mediaJson.getBoolean("fastShipping");
+
+        return new Media(ID, category, price, stockQuantity, title, value, imageUrl, fastShipping);
     }
 }

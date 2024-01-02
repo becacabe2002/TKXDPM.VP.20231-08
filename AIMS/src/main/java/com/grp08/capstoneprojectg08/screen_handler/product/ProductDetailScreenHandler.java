@@ -31,8 +31,9 @@ import javax.swing.*;
 
 public class ProductDetailScreenHandler implements Initializable {
 
-    @FXML
-    private AnchorPane mainAnchorPane;
+//    @FXML
+//    private AnchorPane mainAnchorPane;
+    private EndpointRegister endpointRegister = new EndpointRegister();
 
     @FXML
     private Button closeButton;
@@ -45,7 +46,7 @@ public class ProductDetailScreenHandler implements Initializable {
 
 
     @FXML
-    private Label author;
+    private Label categoryLb;
 
     @FXML
     private TextArea detail;
@@ -66,72 +67,37 @@ public class ProductDetailScreenHandler implements Initializable {
 
     // Other fields and methods...
     private Media media;
-    private MediaService mediaService;
+
+    private String information;
+
+    public Media getMedia() {
+        return media;
+    }
+
+    public void setMedia(Media media, String information) {
+        this.media = media;
+        this.information = information;
+        loadMediaDetails();
+    }
+
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        // Initialization code can go here if needed
-        name.setText("");
-//        price.setText("");
-//        stockQuantity.setText("");
-        addToCartButton.setOnAction(event -> handleAddToCartButtonClick());
+        loadMediaDetails();
+        //addToCartButton.setOnAction(event -> handleAddToCartButtonClick());
     }
 
-    public void setMediaService(MediaService mediaService) {
-        this.mediaService = mediaService;
-    }
-
-    public void loadMediaDetails(BaseResponse response) {
-        if (response != null && response.getResponseCode() == ResponseCode.OK) {
-            JSONObject responseBody = response.getBody();
-
-            if (responseBody != null && responseBody.has("media") && responseBody.has("detail")) {
-                JSONObject mediaDetails = responseBody.getJSONObject("media");
-
-                // Extract media details from JSON and update UI elements
-                name.setText(mediaDetails.getString("title"));
-                price.setText(mediaDetails.getDouble("price") + " $");
-                stockQuantity.setText(String.valueOf(mediaDetails.getInt("stockQuantity")));
-
-                // For example, if 'author' is present in the JSON response
-                if (mediaDetails.has("author")) {
-                    author.setText(mediaDetails.getString("author"));
-                }
-
-                // Load the image if 'imageUrl' is present in the JSON response
-                if (mediaDetails.has("imageUrl")) {
-                    String imageUrl = mediaDetails.getString("imageUrl");
-                    // Load the image using imageUrl and set it to your ImageView component
-                    // Example: imageView.setImage(new Image(imageUrl));
-                }
-
-                // Set media details to TextArea or other UI element
-                String mediaDetail = responseBody.getString("detail");
-                detail.setText(mediaDetail);
-            }
-        } else {
-            // Handle response failure or other cases
-            System.out.println("Failed to load media details");
+    public void loadMediaDetails() {
+        if(media != null){
+            name.setText(media.getTitle());
+            categoryLb.setText(media.getCategory().toString());
+            detail.setText(information);
+            price.setText(String.valueOf(media.getPrice()));
+            stockQuantity.setText(String.valueOf(media.getStockQuantity()));
+            Image image = ImageUtil.getMediaImage(media);
+            imageUrl.setImage(image);
         }
     }
-
-//    public void setMedia(Media media) {
-//        this.media = media;
-//        initializeMedia();
-//    }
-//
-//    private void initializeMedia() {
-//        if (this.media != null) {
-//            name.setText(this.media.getTitle());
-////            author.setText(this.media.getCategory().toString());
-//            price.setText(this.media.getPrice() + " $");
-//            stockQuantity.setText(String.valueOf(this.media.getStockQuantity()));
-//
-//            // Initialize ImageView with the image URL
-//            Image image = ImageUtil.getMediaImage(this.media);
-//            imageUrl.setImage(image);
-//        }
-//    }
-
 
     @FXML
     private void handleCloseButtonClick() {
@@ -144,12 +110,8 @@ public class ProductDetailScreenHandler implements Initializable {
             Parent root = loader.load();
 
             // Create a new stage for the home screen
-            Stage stage = new Stage();
+            Stage stage = (Stage) closeButton.getScene().getWindow();
             stage.setScene(new Scene(root));
-
-            // Close the current product detail stage
-            Stage currentStage = (Stage) closeButton.getScene().getWindow();
-            currentStage.close();
 
             // Show the home screen
             stage.show();
@@ -180,7 +142,6 @@ public class ProductDetailScreenHandler implements Initializable {
                 BaseRequest baseRequest = new BaseRequest(RequestMethod.POST, cartEndpoint, requestBody);
 
                 // Use the EndpointRegister to handle the request
-                EndpointRegister endpointRegister = new EndpointRegister();
                 BaseResponse response = endpointRegister.handleRequest(baseRequest);
 
                 // Process the response

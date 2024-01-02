@@ -46,7 +46,7 @@
                     <Font name="Arial Bold Italic" size="25.0" />
                 </font>
             </Label>
-            <Label fx:id="author" text="author 1">
+            <Label fx:id="categoryLb" text="author 1">
                 <font>
                     <Font name="Arial Italic" size="20.0" />
                 </font>

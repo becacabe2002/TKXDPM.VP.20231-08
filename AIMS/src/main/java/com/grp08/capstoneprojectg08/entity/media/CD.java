@@ -56,12 +56,12 @@ public class CD extends Media{
     @Override
     public String toString(){
         // no need title, price, quantity, imageUrl, fastShipping
-        return "ID: " + this.ID + "\n" +
-                "Category: " + this.category + "\n" +
-                "Artist: " + this.artist + "\n" +
-                "Record Label: " + this.recordLabel + "\n" +
-                "Music Type: " + this.musicType + "\n" +
-                "Released Date: " + this.releasedDate.toString() + "\n";
+        return "ID: " + this.ID + "\n\n" +
+                "Category: " + this.category + "\n\n" +
+                "Artist: " + this.artist + "\n\n" +
+                "Record Label: " + this.recordLabel + "\n\n" +
+                "Music Type: " + this.musicType + "\n\n" +
+                "Released Date: " + this.releasedDate.toString() + "\n\n";
     }
 
     @Override

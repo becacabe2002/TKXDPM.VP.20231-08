@@ -77,14 +77,14 @@ public class DVD extends Media{
     @Override
     public String toString(){
         // no need title, price, quantity, imageUrl, fastShipping
-        return "ID: " + this.ID + "\n" +
-                "Category: " + this.category + "\n" +
-                "Disc Type: " + this.discType + "\n" +
-                "Director: " + this.director + "\n" +
-                "Runtime: " + this.runtime + "\n" +
-                "Studio: " + this.studio + "\n" +
-                "Subtitle: " + this.subtitle + "\n" +
-                "Release Date: " + this.releaseDate.toString() + "\n";
+        return "ID: " + this.ID + "\n\n" +
+                "Category: " + this.category + "\n\n" +
+                "Disc Type: " + this.discType + "\n\n" +
+                "Director: " + this.director + "\n\n" +
+                "Runtime: " + this.runtime + "\n\n" +
+                "Studio: " + this.studio + "\n\n" +
+                "Subtitle: " + this.subtitle + "\n\n" +
+                "Release Date: " + this.releaseDate.toString() + "\n\n";
     }
 
     @Override

@@ -87,15 +87,15 @@ public class Book extends Media{
     @Override
     public String toString(){
         // no need title, price, quantity, imageUrl, fastShipping
-        return "ID: " + this.ID + "\n" +
-                "Category: " + this.category + "\n" +
-                "Book Category: " + this.bookCategory + "\n" +
-                "Author: " + this.author + "\n" +
-                "Cover Type: " + this.coverType + "\n" +
-                "Publisher: " + this.publisher + "\n" +
-                "Published Date: " + this.publishedDate.toString() + "\n" +
-                "Number of Pages: " + this.numOfPages + "\n" +
-                "Language: " + this.language + "\n";
+        return "ID: " + this.ID + "\n\n" +
+                "Category: " + this.category + "\n\n" +
+                "Book Category: " + this.bookCategory + "\n\n" +
+                "Author: " + this.author + "\n\n" +
+                "Cover Type: " + this.coverType + "\n\n" +
+                "Publisher: " + this.publisher + "\n\n" +
+                "Published Date: " + this.publishedDate.toString() + "\n\n" +
+                "Number of Pages: " + this.numOfPages + "\n\n" +
+                "Language: " + this.language + "\n\n";
     }
 
     @Override

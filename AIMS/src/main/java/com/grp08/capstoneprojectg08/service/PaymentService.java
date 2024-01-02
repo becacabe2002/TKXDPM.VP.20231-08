@@ -15,6 +15,10 @@ public class PaymentService {
     private MediaService mediaService = new MediaService();
     public PaymentService() {
     }
+
+    /**
+     * This function uses the strategy pattern to process payment
+     */
     public JSONObject processPayment(PaymentType type){
         PaymentStrategy paymentStrategy;
         JSONObject result = new JSONObject();
