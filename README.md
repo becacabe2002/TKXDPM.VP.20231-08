@@ -201,4 +201,42 @@ This is a Capstone's source code for Software Design and Construction project
 </details>
 
 ---
+<details>
+  <summary>W14: 26/12/2023~02/1/2024 </summary>
+<br>
+<details>
+<summary>Ngô Minh Tú</summary>
+<br>
+
+- Assigned tasks:
+  - Create tests for specific functions
+
+- Implementation details:
+  - Pull Request(s): [Request 1](https://github.com/becacabe2002/TKXDPM.VP.20231-08/pull/3)
+  - Specific implementation details:
+    - Create specific class for each test (ImageUpload, MediaRepo, WebView)
+      - ImageUpload: test ImageRepo to upload and pull image from local to mongodb database (**Deprecated**)
+      - MediaRepo: test query actions with Media Table in MySQL database
+      - WebView: test view for payment portal (VNPay)
+
+</details>
+
+<details>
+<summary>Dương Nhật Thành</summary>
+<br>
+
+- Assigned tasks:
+  - Làm Screen Handler( làm homescreen, product detail screen, cart screen,media item,...)
+
+- Implementation details:
+  - Pull Request(s): [Request](https://github.com/becacabe2002/TKXDPM.VP.20231-08/pull/19)
+  - Specific implementation details:
+   -  filter, thêm thanh tìm kiếm, các button như là giỏ hàng, add to cart, view detail,...)
+
+</details>
+
+
+</details>
+
+---
 
