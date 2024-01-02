@@ -52,7 +52,7 @@ public class HomeScreenHandler implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         initializeCategories();
-        List<Media> mediaList = fetchMediaItems();
+        List<Media> mediaList = fetchMediaItems(null, "All");
 
         loadMediaList(mediaList);
         searchBtn.setOnAction(event -> handleSearch());
@@ -74,7 +74,7 @@ public class HomeScreenHandler implements Initializable {
         categoryFilter.getItems().addAll(allItem, bookItem, cdItem, dvdItem);
     }
 
-    private List<Media> fetchMediaItems() {
+    private List<Media> fetchMediaItems(String searchname, String category) {
         List<Media> mediaList = new ArrayList<>();
 
         BaseRequest baseRequest = new BaseRequest();
@@ -82,8 +82,12 @@ public class HomeScreenHandler implements Initializable {
         baseRequest.setMethod(RequestMethod.GET);
 
         JSONObject jsonObject = new JSONObject();
-        jsonObject.put("category", "All");
-        jsonObject.put("name", "");
+        jsonObject.put("category", category);
+        if (searchname != null && !searchname.isEmpty()) {
+            jsonObject.put("name", searchname);
+        } else {
+            jsonObject.put("name", "");
+        }
         baseRequest.setBody(jsonObject);
 
         BaseResponse response = endpointRegister.handleRequest(baseRequest);
@@ -163,7 +167,7 @@ public class HomeScreenHandler implements Initializable {
         // Implement logic to fetch media items based on the selected category
         // For instance, make a request to fetch items related to the selected category
         // Replace this with your actual logic to filter media items based on the category
-        List<Media> allMediaItems = fetchMediaItems();
+        List<Media> allMediaItems = fetchMediaItems(null, "All");
         List<Media> filteredItems = new ArrayList<>();
         for (Media media : allMediaItems) {
             if (media.getCategory() == selectedCategory) {
@@ -178,7 +182,8 @@ public class HomeScreenHandler implements Initializable {
         String searchText = titleInputTf.getText().toLowerCase();
 
         // Perform search operation based on the searchText
-        List<Media> allMediaItems = fetchMediaItems();
+        String category = categoryFilter.getText();
+        List<Media> allMediaItems = fetchMediaItems(searchText, category);
 
         if (!searchText.isEmpty()) {
             List<Media> searchResults = new ArrayList<>();
@@ -227,7 +232,7 @@ public class HomeScreenHandler implements Initializable {
 
     private void handleFilterAll() {
         // Your implementation of clearing filters
-        List<Media> allMediaItems = fetchMediaItems(); // Implement this method to fetch all media items
+        List<Media> allMediaItems = fetchMediaItems(null, "All"); // Implement this method to fetch all media items
         loadMediaList(allMediaItems); // Load all media items in the UI
     }
 
@@ -245,12 +250,12 @@ public class HomeScreenHandler implements Initializable {
             Parent viewCartRoot = loader.load();
 
             // Create a new stage for the view cart screen
-            Stage viewCartStage = new Stage();
-            viewCartStage.setTitle("View Cart");
-            viewCartStage.setScene(new Scene(viewCartRoot));
+            Stage currentStage = (Stage) mediaListPane.getScene().getWindow();
+            currentStage.setTitle("View Cart");
+            currentStage.setScene(new Scene(viewCartRoot));
 
             // Show the view cart screen
-            viewCartStage.show();
+            currentStage.show();
         } catch (IOException e) {
             e.printStackTrace(); // Handle the exception appropriately
         }

@@ -120,12 +120,12 @@ public class CartScreenHandler {
             Parent root = loader.load();
 
             // Create a new stage for the home screen
-            Stage stage = new Stage();
+            Stage stage = (Stage) backHomeBtn.getScene().getWindow();
             stage.setScene(new Scene(root));
 
             // Close the current product detail stage
-            Stage currentStage = (Stage) backHomeBtn.getScene().getWindow();
-            currentStage.close();
+//            Stage currentStage = (Stage) backHomeBtn.getScene().getWindow();
+//            currentStage.close();
 
             // Show the home screen
             stage.show();
