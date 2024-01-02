@@ -7,6 +7,9 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @author <a href="https://github.com/becacabe2002">becacabe2002</a>
+ */
 public class MediaRepoImplement implements MediaRepo{
     private static Connection mysqlConnection = DatabaseConnection.getConnectionMySQL();
     private static PreparedStatement ppStatement = null;
@@ -64,14 +67,17 @@ public class MediaRepoImplement implements MediaRepo{
     }
 
     @Override
-    public Media findMediaByTitle(String title){
-        String script = "Select * from Media where title = ? limit 1;";
+    public List<Media> findAllMediaByTitle(String title){
+        List<Media> listMedia = new ArrayList<>();
+        String lowerTitle = title.toLowerCase();
+        String script = "Select * from Media where lower(title) like ?;";
+
         try{
             ppStatement = mysqlConnection.prepareStatement(script);
-            ppStatement.setString(1, "%" + title + "%");
+            ppStatement.setString(1, "%" + lowerTitle + "%");
             resultSet = ppStatement.executeQuery();
-            if(resultSet.next()){
-                return new Media(
+            while(resultSet.next()){
+                Media temp = new Media(
                         resultSet.getInt("id"),
                         MediaCategory.valueOf(resultSet.getString("category")),
                         resultSet.getInt("price"),
@@ -81,11 +87,12 @@ public class MediaRepoImplement implements MediaRepo{
                         resultSet.getString("imageUrl"),
                         resultSet.getBoolean("fastShipping")
                 );
-            } else return null;
+                listMedia.add(temp);
+            }
         } catch (SQLException e){
             System.err.println(e.getMessage());
         }
-        return null;
+        return listMedia;
     }
 
     // find medias by category and search string
@@ -194,4 +201,46 @@ public class MediaRepoImplement implements MediaRepo{
         return listDVD;
     }
 
+    public Book findBookById(int id){
+        List<Book> books = findBooksFilterByTitle("");
+        for(Book book : books){
+            if(book.getID() == id){
+                return book;
+            }
+        }
+        return null;
+    }
+
+    public CD findCDById(int id){
+        List<CD> cds = findCDsFilterByTitle("");
+        for(CD cd : cds){
+            if(cd.getID() == id){
+                return cd;
+            }
+        }
+        return null;
+    }
+
+    public DVD findDVDById(int id){
+        List<DVD> dvds = findDVDsFilterByTitle("");
+        for(DVD dvd : dvds){
+            if(dvd.getID() == id){
+                return dvd;
+            }
+        }
+        return null;
+    }
+
+    @Override
+    public void reduceMediaQuantity(int mediaId, int quantity) {
+        String script = "Update Media set quantity = quantity - ? where id = ?;";
+        try{
+            ppStatement = mysqlConnection.prepareStatement(script);
+            ppStatement.setInt(1, quantity);
+            ppStatement.setInt(2, mediaId);
+            ppStatement.executeUpdate();
+        } catch (SQLException e){
+            System.err.println(e.getMessage());
+        }
+    }
 }

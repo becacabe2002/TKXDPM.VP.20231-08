@@ -28,19 +28,19 @@
                 <Font name="Arial Bold" size="25.0" />
             </font>
         </Label>
-       <Button fx:id="backHomeBtn" alignment="CENTER" layoutX="1189.0" layoutY="31.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="144.0" style="-fx-background-color: #96B6C5;" text="Return Home" textAlignment="CENTER" textFill="#3876bf" wrapText="true">
+       <Button fx:id="backHomeBtn" alignment="CENTER" layoutX="1189.0" layoutY="31.0" mnemonicParsing="false" onAction="#handleCloseButtonClick" prefHeight="50.0" prefWidth="144.0" style="-fx-background-color: #96B6C5;" text="Close" textAlignment="CENTER" textFill="#3876bf" wrapText="true">
            <font>
                <Font name="Arial Bold" size="17.0" />
            </font>
        </Button>
     </AnchorPane>
-    <Button alignment="CENTER" layoutX="1087.0" layoutY="581.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="136.0" style="-fx-background-color: #A7D397;" text="Place Order" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+    <Button fx:id="placeOrderBtn" alignment="CENTER" layoutX="1087.0" layoutY="581.0" mnemonicParsing="false" onAction="#handlePlaceOrderButtonClick" prefHeight="44.0" prefWidth="136.0" style="-fx-background-color: #A7D397;" text="Place Order" textAlignment="CENTER" textFill="WHITE" wrapText="true">
         <font>
             <Font name="System Bold" size="20.0" />
         </font>
     </Button>
    <ScrollPane layoutX="8.0" layoutY="132.0" prefHeight="629.0" prefWidth="885.0">
-      <VBox prefWidth="850.0" spacing="10.0" />
+      <VBox fx:id="cartItemsVBox" prefWidth="850.0" spacing="10.0" />
    </ScrollPane>
    <AnchorPane layoutX="983.0" layoutY="197.0" prefHeight="360.0" prefWidth="344.0" style="-fx-background-color: #B3A492; -fx-background-radius: 15;">
       <Label layoutX="21.0" layoutY="29.0" text="Subtotal">

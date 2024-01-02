@@ -7,6 +7,8 @@ module com.grp08.capstoneprojectg08 {
     requires javafx.web;
     requires mongo.java.driver;
     requires java.dotenv;
+    requires org.json;
+    requires java.desktop;
 //    requires javax.servlet.api;
 
 
@@ -17,13 +19,13 @@ module com.grp08.capstoneprojectg08 {
     opens com.grp08.capstoneprojectg08.screen_handler.invoice to javafx.fxml;
     opens com.grp08.capstoneprojectg08.screen_handler.payment to javafx.fxml;
     opens com.grp08.capstoneprojectg08.screen_handler.product to javafx.fxml;
-    opens com.grp08.capstoneprojectg08.subsystem to javafx.fxml;
+    opens com.grp08.capstoneprojectg08.subsystem.vnpay to javafx.fxml;
     opens com.grp08.capstoneprojectg08.fxml to javafx.fxml;
     opens com.grp08.capstoneprojectg08.assets to javafx.fxml;
     opens com.grp08.capstoneprojectg08.assets.MediaImages to javafx.fxml;
     exports com.grp08.capstoneprojectg08 to javafx.graphics;
     exports com.grp08.capstoneprojectg08.screen_handler to javafx.fxml;
-    exports com.grp08.capstoneprojectg08.subsystem to javafx.fxml;
+    exports com.grp08.capstoneprojectg08.subsystem.vnpay to javafx.fxml;
     exports com.grp08.capstoneprojectg08.entity.cart;
     exports com.grp08.capstoneprojectg08.entity.delivery;
     exports com.grp08.capstoneprojectg08.entity.media;
