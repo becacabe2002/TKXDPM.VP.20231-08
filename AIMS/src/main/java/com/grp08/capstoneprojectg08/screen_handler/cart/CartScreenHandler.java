@@ -40,6 +40,8 @@ public class CartScreenHandler {
     @FXML
     private Button backHomeBtn;
     @FXML
+    private Button placeOrderBtn;
+    @FXML
     private VBox cartItemsVBox;
     private final EndpointRegister endpointRegister = new EndpointRegister(); // Initialize your EndpointRegister
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -123,6 +125,32 @@ public class CartScreenHandler {
 
             // Close the current product detail stage
             Stage currentStage = (Stage) backHomeBtn.getScene().getWindow();
+            currentStage.close();
+
+            // Show the home screen
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+            // Handle the exception accordingly
+        }
+    }
+
+    @FXML
+    private void handlePlaceOrderButtonClick() {
+        // Handle close button click event
+        System.out.println("place order button clicked");
+
+        try {
+            // Load the FXML file for the home screen
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/grp08/capstoneprojectg08/fxml/delivery-form.fxml"));
+            Parent root = loader.load();
+
+            // Create a new stage for the home screen
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+
+            // Close the current product detail stage
+            Stage currentStage = (Stage) placeOrderBtn.getScene().getWindow();
             currentStage.close();
 
             // Show the home screen

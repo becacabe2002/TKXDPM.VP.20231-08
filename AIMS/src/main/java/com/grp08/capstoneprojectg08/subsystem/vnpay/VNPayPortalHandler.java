@@ -11,15 +11,18 @@ import javafx.scene.web.WebView;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.stage.Stage;
-import org.json.JSONObject;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.util.Duration;
 
-import java.net.MalformedURLException;
 import java.net.URL;
-import java.net.URLDecoder;
-import java.nio.charset.StandardCharsets;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.ResourceBundle;
+
+
+import java.io.IOException;
 
 /**
  * @author <a href="https://github.com/becacabe2002">becacabe2002</a>
@@ -76,6 +79,27 @@ public class VNPayPortalHandler implements Initializable {
                 }
             }
         });
+    }
+
+    public void displayDelayedScreen() {
+        Duration delay = Duration.seconds(10);
+
+        KeyFrame keyFrame = new KeyFrame(delay, event -> {
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/grp08/capstoneprojectg08/fxml/your_new_screen.fxml"));
+                Parent root = loader.load();
+
+                Stage stage = new Stage();
+                stage.setScene(new Scene(root));
+                stage.show();
+            } catch (IOException e) {
+                e.printStackTrace();
+                // Handle the exception accordingly
+            }
+        });
+
+        Timeline timeline = new Timeline(keyFrame);
+        timeline.play();
     }
 }
 

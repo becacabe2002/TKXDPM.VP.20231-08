@@ -31,7 +31,7 @@
             <Image url="@../assets/invoice.png" />
         </ImageView>
     </AnchorPane>
-    <Button alignment="CENTER" layoutX="1198.0" layoutY="689.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="136.0" style="-fx-background-color: #A7D397;" text="Confirm" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+    <Button fx:id="confirmBtn" alignment="CENTER" layoutX="1198.0" layoutY="689.0" mnemonicParsing="false" onAction="#handleConfirmButtonClick" prefHeight="50.0" prefWidth="136.0" style="-fx-background-color: #A7D397;" text="Confirm" textAlignment="CENTER" textFill="WHITE" wrapText="true">
         <font>
             <Font name="Arial Bold" size="17.0" />
         </font>
@@ -177,7 +177,7 @@
          </Text>
         </GridPane>
     </AnchorPane>
-    <Button alignment="CENTER" layoutX="1198.0" layoutY="632.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="136.0" style="-fx-background-color: #96B6C5;" text="Back" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+    <Button fx:id="backBtn" alignment="CENTER" layoutX="1198.0" layoutY="632.0" mnemonicParsing="false" onAction="#handleBackButtonClick" prefHeight="50.0" prefWidth="136.0" style="-fx-background-color: #96B6C5;" text="Back" textAlignment="CENTER" textFill="WHITE" wrapText="true">
         <font>
             <Font name="Arial Bold" size="17.0" />
         </font>

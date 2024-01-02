@@ -37,7 +37,7 @@
             <Image url="@../assets/form_icon.png" />
         </ImageView>
     </AnchorPane>
-    <Button alignment="CENTER" layoutX="1198.0" layoutY="689.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="136.0" style="-fx-background-color: #A7D397;" text="Next" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+    <Button fx:id="nextBtn" alignment="CENTER" layoutX="1198.0" layoutY="689.0" mnemonicParsing="false" onAction="#handleNextButtonClick" prefHeight="50.0" prefWidth="136.0" style="-fx-background-color: #A7D397;" text="Next" textAlignment="CENTER" textFill="WHITE" wrapText="true">
         <font>
             <Font name="Arial Bold" size="17.0" />
         </font>
@@ -102,18 +102,18 @@
             <HBox alignment="CENTER" spacing="50.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
                 <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Normal shipping">
                     <font>
-                        <Font size="16.0"/>
+                        <Font size="16.0" />
                     </font>
                 </Text>
-                <CheckBox mnemonicParsing="false" text="Fast shipping">
+                <CheckBox fx:id="fastShipping" mnemonicParsing="false" onAction="#handleFastShipping" text="Fast shipping">
                     <font>
-                        <Font size="16.0"/>
+                        <Font size="16.0" />
                     </font>
                 </CheckBox>
             </HBox>
         </GridPane>
     </AnchorPane>
-     <Button alignment="CENTER" layoutX="1198.0" layoutY="632.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="136.0" style="-fx-background-color: E19898;" text="Cancel" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+     <Button fx:id="cancelBtn" alignment="CENTER" layoutX="1198.0" layoutY="632.0" mnemonicParsing="false" onAction="#handleCancelButtonClick" prefHeight="50.0" prefWidth="136.0" style="-fx-background-color: E19898;" text="Cancel" textAlignment="CENTER" textFill="WHITE" wrapText="true">
          <font>
              <Font name="Arial Bold" size="17.0" />
          </font>
