@@ -13,6 +13,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -31,8 +32,8 @@ import javax.swing.*;
 
 public class ProductDetailScreenHandler implements Initializable {
 
-//    @FXML
-//    private AnchorPane mainAnchorPane;
+    @FXML
+    private AnchorPane mainAnchorPane;
     private EndpointRegister endpointRegister = new EndpointRegister();
 
     @FXML
@@ -40,6 +41,8 @@ public class ProductDetailScreenHandler implements Initializable {
 
     @FXML
     private Button addToCartButton;
+    @FXML
+    private ImageView cartIcon;
 
     @FXML
     private TextField inputNumberTextField;
@@ -66,6 +69,7 @@ public class ProductDetailScreenHandler implements Initializable {
 
 
     // Other fields and methods...
+
     private Media media;
 
     private String information;
@@ -191,6 +195,24 @@ public class ProductDetailScreenHandler implements Initializable {
         alert.setHeaderText(null);
         alert.setContentText(message);
         alert.showAndWait();
+    }
+    @FXML
+    private void handleCartIconClick(MouseEvent event) {
+        try {
+            // Load the FXML file for the view cart screen
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/grp08/capstoneprojectg08/fxml/view-cart-screen.fxml"));
+            Parent viewCartRoot = loader.load();
+
+            // Create a new stage for the view cart screen
+            Stage currentStage = (Stage) cartIcon.getScene().getWindow();
+            currentStage.setTitle("View Cart");
+            currentStage.setScene(new Scene(viewCartRoot));
+
+            // Show the view cart screen
+            currentStage.show();
+        } catch (IOException e) {
+            e.printStackTrace(); // Handle the exception appropriately
+        }
     }
         // Add logic to process the entered number (e.g., validation, parsing
 }
