@@ -11,7 +11,8 @@ This is a Capstone's source code for Software Design and Construction project
 | Nguyễn Quốc Thành| Member      |
 
 ## Video Demo
-![Video](https://youtu.be/3Fc4j4lMYr8)
+
+https://github.com/becacabe2002/TKXDPM.VP.20231-08/assets/76554470/45259dc6-10dd-46f4-893c-4c90d84ef062
 
 ## Report Content
 
