@@ -1,4 +1,5 @@
 package com.grp08.capstoneprojectg08.screen_handler.cart;
+import com.grp08.capstoneprojectg08.entity.cart.CartItem;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import com.grp08.capstoneprojectg08.controller.EndpointRegister;
@@ -28,32 +29,51 @@ import javafx.scene.text.Text;
 import javafx.util.Duration;
 import org.json.JSONObject;
 
-public class CartItemHandler {
+public class CartItemHandler implements Initializable{
+    private CartItem cartItem;
+
     @FXML
     private Label titleLabel;
 
     @FXML
-    private Label authorLabel;
+    private Label categoryLb;
 
     @FXML
     private Label priceLabel;
 
     @FXML
-    private Label quantityText;
+    private TextField quantityText;
 
     @FXML
     private Label totalLabel;
 
+    @FXML
+    private ImageView cartItemAva;
+
+    public void setCartItem(CartItem cartItem) {
+        this.cartItem = cartItem;
+        initializeCartItem();
+    }
+    public CartItem getCartItem() {
+        return cartItem;
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        initializeCartItem();
+    }
+
     // Method to set data for each media item in the cart
-    public void setMediaItemData(Media mediaItem) {
-//        JSONObject responseBody = response.getBody();
-//        JSONObject mediaDetails = responseBody.getJSONObject("media");
-        titleLabel.setText(mediaItem.getTitle());
-//        authorLabel.setText(mediaItem.getAuthor());
-        priceLabel.setText(String.valueOf(mediaItem.getPrice()));
-        quantityText.setText(String.valueOf(handleInputNumberChange()));
-        totalLabel.setText(String.valueOf(mediaItem.getValue()));
-        // Set other properties of the media item in the UI components
+    public void initializeCartItem(){
+        if(this.cartItem != null){
+            Media media = cartItem.getMedia();
+            titleLabel.setText(media.getTitle());
+            categoryLb.setText(media.getCategory().toString());
+            priceLabel.setText(String.valueOf(media.getPrice()));
+            quantityText.setText(String.valueOf(cartItem.getQuantity()));
+            totalLabel.setText(String.valueOf(cartItem.getSubPrice()));
+            cartItemAva.setImage(ImageUtil.getMediaImage(this.cartItem.getMedia()));
+        }
     }
 
     @FXML

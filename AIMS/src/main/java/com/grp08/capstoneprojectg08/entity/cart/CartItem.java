@@ -43,6 +43,21 @@ public class CartItem {
         return media;
     }
 
+    public void setMediaId(int mediaId) {
+        this.mediaId = mediaId;
+    }
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
+    public void setSubPrice(int subPrice) {
+        this.subPrice = subPrice;
+    }
+
+    public void setMedia(Media media) {
+        this.media = media;
+    }
+
     public void changeQuantity(int change){
         this.quantity += change;
         this.subPrice = this.quantity * media.getPrice();
