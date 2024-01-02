@@ -1,52 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-
-<?import javafx.scene.text.Font?>
-<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
-<AnchorPane prefHeight="110.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.grp08.capstoneprojectg08.screen_handler.cart.CartItemHandler"
-      style="-fx-background-color: #FAE7C9; -fx-border-radius: 10; -fx-background-radius: 10;">
-    <ImageView fitHeight="99.0" fitWidth="113.0" layoutX="27.0" layoutY="7.0" pickOnBounds="true"
-               preserveRatio="true">
-        <Image url="@../assets/sample_product_icon.png"/>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="110.0" prefWidth="800.0" style="-fx-background-color: #FAE7C9; -fx-border-radius: 10; -fx-background-radius: 10;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.grp08.capstoneprojectg08.screen_handler.cart.CartItemHandler">
+    <ImageView fitHeight="99.0" fitWidth="113.0" layoutX="27.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
+        <Image url="@../assets/sample_product_icon.png" />
     </ImageView>
     <VBox layoutX="142.0" layoutY="14.0" prefHeight="90.0" prefWidth="359.0" spacing="10.0">
-        <Label text="MUSIC CD 1">
+        <Label fx:id="titleLabel" text="MUSIC CD 1">
             <font>
-                <Font name="Arial Bold Italic" size="20.0"/>
+                <Font name="Arial Bold Italic" size="20.0" />
             </font>
         </Label>
-        <Label text="author 1">
+        <Label fx:id="authorLabel" text="author 1">
             <font>
-                <Font name="Arial Italic" size="15.0"/>
+                <Font name="Arial Italic" size="15.0" />
             </font>
         </Label>
-        <Label style="-fx-text-fill: #46a12a;" text="1.00 $" textFill="#46a12a">
+        <Label fx:id="priceLabel" style="-fx-text-fill: #46a12a;" text="1.00 $" textFill="#46a12a">
             <font>
-                <Font size="20.0"/>
+                <Font size="20.0" />
             </font>
         </Label>
     </VBox>
-    <TextField alignment="CENTER" layoutX="516.0" layoutY="50.0" prefHeight="25.0" prefWidth="127.0"
-               text="2"/>
-    <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="652.0" layoutY="26.0" pickOnBounds="true"
-               preserveRatio="true">
-        <Image url="@../assets/icon_arrow_up.png"/>
+    <TextField fx:id="quantityText" alignment="CENTER" layoutX="516.0" layoutY="50.0" prefHeight="25.0" prefWidth="127.0" text="2" />
+    <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="652.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
+        <Image url="@../assets/icon_arrow_up.png" />
     </ImageView>
-    <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="652.0" layoutY="63.0" pickOnBounds="true"
-               preserveRatio="true">
-        <Image url="@../assets/icon_arrow_down.png"/>
+    <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="652.0" layoutY="63.0" pickOnBounds="true" preserveRatio="true">
+        <Image url="@../assets/icon_arrow_down.png" />
     </ImageView>
     <Label layoutX="739.0" layoutY="22.0" text="Total">
         <font>
-            <Font name="Arial Bold" size="20.0"/>
+            <Font name="Arial Bold" size="20.0" />
         </font>
     </Label>
-    <Label layoutX="736.0" layoutY="62.0" text="2.00 $" textFill="#46a12a">
+    <Label fx:id="totalLabel" layoutX="736.0" layoutY="62.0" text="2.00 $" textFill="#46a12a">
         <font>
-            <Font name="System Bold" size="20.0"/>
+            <Font name="System Bold" size="20.0" />
         </font>
     </Label>
 </AnchorPane>

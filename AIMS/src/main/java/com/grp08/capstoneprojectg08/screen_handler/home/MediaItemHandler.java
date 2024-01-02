@@ -7,13 +7,13 @@ import com.grp08.capstoneprojectg08.request.RequestMethod;
 import com.grp08.capstoneprojectg08.response.BaseResponse;
 import com.grp08.capstoneprojectg08.response.ResponseCode;
 import com.grp08.capstoneprojectg08.util.ImageUtil;
-import javafx.animation.KeyValue;
-import javafx.animation.TranslateTransition;
+import com.grp08.capstoneprojectg08.screen_handler.product.ProductDetailScreenHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -21,16 +21,12 @@ import javafx.scene.image.ImageView;
 
 
 import javafx.scene.image.Image;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.StackPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import javafx.util.Duration;
 import org.json.JSONObject;
 
 
 import javax.swing.*;
-import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -48,7 +44,7 @@ public class MediaItemHandler implements Initializable {
     private ImageView MediaImage;
 
     @FXML
-    private TextField inputNumberTextField;
+    private TextField cartitemQuantityInput;
 
     @FXML
     private Label mediaTitleLb;
@@ -65,14 +61,12 @@ public class MediaItemHandler implements Initializable {
 //    @FXML
 //    private Label stockLabel;
 
-    @FXML
-    private TextField cartitemQuantityInput;
-
     private Media media;
 
     public void initialize(URL url, ResourceBundle resourceBundle) {
         // Initialize the UI components with the provided media object
         initializeMedia();
+        addToCartBtn.setOnAction(event -> addToCart());
     }
 
     private void initializeMedia() {
@@ -139,7 +133,7 @@ public class MediaItemHandler implements Initializable {
                 }
 
                 // Clear the input field after adding to cart
-                inputNumberTextField.clear();
+                cartitemQuantityInput.clear();
             } catch (NumberFormatException e) {
                 // Handle parsing errors or invalid input format
                 System.out.println("Invalid quantity format. Please enter a valid number.");
@@ -155,6 +149,21 @@ public class MediaItemHandler implements Initializable {
     private void redirectToProductDetail() {
         if (media != null) {
             try {
+                int productId = media.getID(); // Replace this with the actual method to get the product ID
+
+                // Create a JSON object for the request body
+                JSONObject requestBody = new JSONObject();
+                requestBody.put("mediaId", productId);
+
+                // Set the endpoint for sending the JSON request
+                String productDetailEndpoint = "/home/media-details"; // Replace this with your actual product detail endpoint
+
+                // Create a BaseRequest for the endpoint
+                BaseRequest baseRequest = new BaseRequest(RequestMethod.GET, productDetailEndpoint, requestBody);
+
+                // Use the EndpointRegister to handle the request
+                EndpointRegister endpointRegister = new EndpointRegister();
+                BaseResponse response = endpointRegister.handleRequest(baseRequest);
                 // Load the FXML file
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/grp08/capstoneprojectg08/fxml/product-detail-screen.fxml"));
                 Parent root = loader.load();
@@ -168,6 +177,8 @@ public class MediaItemHandler implements Initializable {
 
                 // Close the current stage
                 currentStage.close();
+                ProductDetailScreenHandler controller = new ProductDetailScreenHandler();
+                controller.loadMediaDetails(response);
 
                 // Show the new stage
                 stage.show();
@@ -180,19 +191,26 @@ public class MediaItemHandler implements Initializable {
 
     @FXML
     private int handleInputNumberChange() {
-        String enteredNumber = inputNumberTextField.getText();
+        String enteredNumber = cartitemQuantityInput.getText();
         try {
             int quantity = Integer.parseInt(enteredNumber);
-            return quantity > 0 ? quantity : -1; // Ensure the quantity is a positive value
+            if (quantity > 0) {
+                return quantity;
+            } else {
+                showAlert("Error", "Quantity should be a positive value.", Alert.AlertType.ERROR);
+                return -1;
+            }
         } catch (NumberFormatException e) {
-            // Handle invalid input: show an error message
-            showAlert("Error", "Invalid quantity format. Please enter a valid number.", JOptionPane.ERROR_MESSAGE);
+            showAlert("Error", "Invalid quantity format. Please enter a valid number.", Alert.AlertType.ERROR);
             return -1;
         }
     }
 
-    private void showAlert(String title, String message, int messageType) {
-        JFrame frame = new JFrame(title);
-        JOptionPane.showMessageDialog(frame, message, title, messageType);
+    private void showAlert(String title, String message, Alert.AlertType alertType) {
+        Alert alert = new Alert(alertType);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
     }
 }

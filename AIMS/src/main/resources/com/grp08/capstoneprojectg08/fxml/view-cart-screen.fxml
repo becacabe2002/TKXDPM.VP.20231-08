@@ -28,13 +28,13 @@
                 <Font name="Arial Bold" size="25.0" />
             </font>
         </Label>
-       <Button fx:id="backHomeBtn" alignment="CENTER" layoutX="1189.0" layoutY="31.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="144.0" style="-fx-background-color: #96B6C5;" text="Return Home" textAlignment="CENTER" textFill="#3876bf" wrapText="true">
+       <Button fx:id="backHomeBtn" alignment="CENTER" layoutX="1189.0" layoutY="31.0" mnemonicParsing="false" onAction="#handleCloseButtonClick" prefHeight="50.0" prefWidth="144.0" style="-fx-background-color: #96B6C5;" text="Close" textAlignment="CENTER" textFill="#3876bf" wrapText="true">
            <font>
                <Font name="Arial Bold" size="17.0" />
            </font>
        </Button>
     </AnchorPane>
-    <Button alignment="CENTER" layoutX="1087.0" layoutY="581.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="136.0" style="-fx-background-color: #A7D397;" text="Place Order" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+    <Button fx:id="placeOrderBtn" alignment="CENTER" layoutX="1087.0" layoutY="581.0" mnemonicParsing="false" onAction="#handlePlaceOrderButtonClick" prefHeight="44.0" prefWidth="136.0" style="-fx-background-color: #A7D397;" text="Place Order" textAlignment="CENTER" textFill="WHITE" wrapText="true">
         <font>
             <Font name="System Bold" size="20.0" />
         </font>

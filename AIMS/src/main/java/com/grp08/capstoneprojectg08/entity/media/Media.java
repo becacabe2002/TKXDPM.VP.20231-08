@@ -19,6 +19,8 @@ public class Media {
     public Media(int ID, MediaCategory category, int price, int stockQuantity, String title, int value, boolean fastShipping){
     }
 
+    public Media(){};
+
     public Media(int id, MediaCategory category, int price, int quantity, String title, int value, String imageUrl, boolean fastShipping) {
         this.ID = id;
         this.category = category;
