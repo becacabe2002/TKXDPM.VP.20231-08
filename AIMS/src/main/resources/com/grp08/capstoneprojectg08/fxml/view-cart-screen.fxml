@@ -71,6 +71,6 @@
          <font>
             <Font name="System Bold Italic" size="20.0" />
          </font>
-      </Text>
+      </Label>
    </AnchorPane>
 </AnchorPane>

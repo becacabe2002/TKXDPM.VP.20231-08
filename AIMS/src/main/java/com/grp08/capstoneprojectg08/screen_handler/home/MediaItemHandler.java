@@ -26,8 +26,6 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import org.json.JSONObject;
 
-
-import javax.swing.*;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -162,7 +160,6 @@ public class MediaItemHandler implements Initializable {
         }
     }
 
-    // TODO : toProductDetailBtn to see the detail of the media
     @FXML
     private void redirectToProductDetail() {
         if (media != null) {
@@ -214,6 +211,21 @@ public class MediaItemHandler implements Initializable {
         alert.setTitle(title);
         alert.setHeaderText(null);
         alert.setContentText(message);
+        alert.setOnCloseRequest(event -> {
+           try{
+               FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/grp08/capstoneprojectg08/fxml/home-screen.fxml"));
+               Parent root = loader.load();
+
+               // Create a new stage for the home screen
+               Stage stage = (Stage) mediaCategoryLb.getScene().getWindow();
+               stage.setScene(new Scene(root));
+
+               // Show the home screen
+               stage.show();
+           } catch (IOException e){
+               System.err.println(e.getMessage());
+           }
+        });
         alert.showAndWait();
     }
     private Media createMediaFromJson(JSONObject mediaJson) {

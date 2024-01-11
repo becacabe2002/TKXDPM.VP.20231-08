@@ -8,6 +8,7 @@ import com.grp08.capstoneprojectg08.request.RequestMethod;
 import com.grp08.capstoneprojectg08.response.BaseResponse;
 import com.grp08.capstoneprojectg08.response.ResponseCode;
 
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
@@ -47,14 +48,18 @@ public class HomeScreenHandler implements Initializable {
     @FXML
     private Button searchBtn;
 
+    @FXML
+    public Label NumberItemInCartLabel;
+
+
     private final EndpointRegister endpointRegister = new EndpointRegister();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         initializeCategories();
         List<Media> mediaList = fetchMediaItems(null, "All");
-
         loadMediaList(mediaList);
+        updateNumberOfCartItems();
         searchBtn.setOnAction(event -> handleSearch());
     }
 
@@ -72,6 +77,16 @@ public class HomeScreenHandler implements Initializable {
         MenuItem allItem = createCategoryMenuItem(MediaCategory.All);
 
         categoryFilter.getItems().addAll(allItem, bookItem, cdItem, dvdItem);
+    }
+
+    private void updateNumberOfCartItems(){
+        BaseRequest request = new BaseRequest();
+        request.setMethod(RequestMethod.GET);
+        request.setEndpoint("/cart/info");
+        BaseResponse res = endpointRegister.handleRequest(request);
+        JSONObject body = res.getBody();
+        int numberItems = body.getInt("numberOfItems");
+        NumberItemInCartLabel.setText(String.valueOf(numberItems));
     }
 
     private List<Media> fetchMediaItems(String searchname, String category) {

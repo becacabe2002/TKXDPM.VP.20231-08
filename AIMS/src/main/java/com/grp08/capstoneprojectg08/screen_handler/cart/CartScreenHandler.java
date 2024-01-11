@@ -86,12 +86,10 @@ public class CartScreenHandler implements Initializable {
         BaseRequest baseRequest = new BaseRequest();
         baseRequest.setEndpoint("/cart/info");
         baseRequest.setMethod(RequestMethod.GET);
-
-        JSONObject jsonObject = new JSONObject();
-
         BaseResponse response = endpointRegister.handleRequest(baseRequest);
         if (response.getResponseCode() == ResponseCode.OK) {
-            JSONArray cartItemsArray = response.getBody().getJSONArray("cartItems");
+            JSONObject body = response.getBody();
+            JSONArray cartItemsArray = body.getJSONArray("cartItems");
             if(cartItemsArray.isEmpty()){
                 Alert alert = new Alert(Alert.AlertType.WARNING);
                 alert.setTitle("Warning");
@@ -105,9 +103,13 @@ public class CartScreenHandler implements Initializable {
                     cartItemList.add(cartItem);
                 }
             }
+            SubtotalLabel.setText(String.valueOf(body.getFloat("subTotal") + " $"));
+            VATLabel.setText(String.valueOf(body.getFloat("vat")) + " $");
+            AmountLabel.setText(String.valueOf(body.getFloat("total")) + " $");
         } else {
             System.out.println("Failed to fetch media items: " + response.getResponseMessage());
         }
+
         return cartItemList;
     }
 
@@ -157,27 +159,57 @@ public class CartScreenHandler implements Initializable {
     private void handlePlaceOrderButtonClick() {
         // Handle close button click event
         System.out.println("place order button clicked");
+        // TODO: check xem trong gio hang co hang nao unavailable hay ko? (gọi tới endpoint "/cart/check-unavailable")
+        BaseRequest req = new BaseRequest();
+        req.setEndpoint("/cart/check-unavailable");
+        req.setMethod(RequestMethod.GET);
+        BaseResponse response = endpointRegister.handleRequest(req);
+        JSONArray jsonArray = response.getBody().getJSONArray("unavailableList");
+        //  Neu co, hien thi thong bao loi va khong dieu huong
+        if(jsonArray.length() > 0){
+            String displayUnavailableList = "\n";
+            for (int i = 0; i < jsonArray.length(); i++){
+                JSONObject unavailableMedia = jsonArray.getJSONObject(i);
+                displayUnavailableList += "* " + unavailableMedia.toString();
+                displayUnavailableList += "\n";
+            }
+            showAlert("Error", "These items in cart are unavaiable: " +
+                    displayUnavailableList + "Please change theses item in cart before placing again.", Alert.AlertType.WARNING);
+        } else {
+            BaseRequest bq = new BaseRequest();
+            bq.setEndpoint("/order/create-order");
+            bq.setMethod(RequestMethod.POST);
+            response = endpointRegister.handleRequest(bq);
+            if(response.getResponseCode() == ResponseCode.OK){
+                showAlert("Success", "Order is created. Please fill in delivery form to complete the order.", Alert.AlertType.INFORMATION);
+                try {
+                    // Load the FXML file for the home screen
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/grp08/capstoneprojectg08/fxml/delivery-form.fxml"));
+                    Parent root = loader.load();
 
-        try {
-            // Load the FXML file for the home screen
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/grp08/capstoneprojectg08/fxml/delivery-form.fxml"));
-            Parent root = loader.load();
+                    // Create a new stage for the home screen
+                    Stage stage = new Stage();
+                    stage.setScene(new Scene(root));
 
-            // Create a new stage for the home screen
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root));
+                    // Close the current product detail stage
+                    Stage currentStage = (Stage) placeOrderBtn.getScene().getWindow();
+                    currentStage.close();
 
-            // Close the current product detail stage
-            Stage currentStage = (Stage) placeOrderBtn.getScene().getWindow();
-            currentStage.close();
+                    // Show the home screen
+                    stage.show();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                    // Handle the exception accordingly
+                }
+            } else {
+                showAlert("System Error", "There is an error in the systems. Please try again.", Alert.AlertType.ERROR);
+            }
 
-            // Show the home screen
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-            // Handle the exception accordingly
         }
+        //  Neu khong, gọi tới endpoint để tạo Order và gắn vào invoice, sau đó mới chuyển hướng sang màn form
+
     }
+
 
     private Media createMediaFromJson(JSONObject mediaJson) {
         // Your implementation of creating Media from JSON

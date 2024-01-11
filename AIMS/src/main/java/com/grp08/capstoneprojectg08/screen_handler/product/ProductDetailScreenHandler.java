@@ -66,6 +66,9 @@ public class ProductDetailScreenHandler implements Initializable {
     @FXML
     private Text stockQuantity;
 
+    @FXML
+    private Label NumberItemInCartLabel;
+
 
 
     // Other fields and methods...
@@ -78,6 +81,16 @@ public class ProductDetailScreenHandler implements Initializable {
         return media;
     }
 
+    public void updateNumberItemInCart (){
+        BaseRequest request = new BaseRequest();
+        request.setMethod(RequestMethod.GET);
+        request.setEndpoint("/cart/info");
+        BaseResponse response = endpointRegister.handleRequest(request);
+        JSONObject body = response.getBody();
+        int numberItems = body.getInt("numberOfItems");
+        NumberItemInCartLabel.setText(String.valueOf(numberItems));
+    }
+
     public void setMedia(Media media, String information) {
         this.media = media;
         this.information = information;
@@ -88,6 +101,7 @@ public class ProductDetailScreenHandler implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         loadMediaDetails();
+        updateNumberItemInCart();
         //addToCartButton.setOnAction(event -> handleAddToCartButtonClick());
     }
 
@@ -153,6 +167,7 @@ public class ProductDetailScreenHandler implements Initializable {
                     // Handle success
                     // Show a success message (you can use a dialog, toast, or any UI component)
                     System.out.println("Item added to cart successfully!");
+                    updateNumberItemInCart();
                 } else {
                     // Handle failure
                     // Show an error message (you can use a dialog, toast, or any UI component)
