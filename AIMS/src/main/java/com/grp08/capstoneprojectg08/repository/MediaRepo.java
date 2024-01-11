@@ -33,12 +33,4 @@ public interface MediaRepo extends BaseRepo{
 
     public void reduceMediaQuantity(int mediaId, int quantity);
 
-    // TODO: add media (for admin), also set mediaUrl to under MediaImages folder
-    // * Book
-    // * CD
-    // * DVD
-
-
-    // TODO: delete media by id (for admin)
-
 }

@@ -97,7 +97,6 @@ public class MediaItemHandler implements Initializable {
     }
 
 
-    //TODO : addToCartBtn to add media to cart
     @FXML
     private void addToCart() {
         int quantity = handleInputNumberChange();

@@ -7,8 +7,4 @@ public class UserService {
 
     public UserService() {
     }
-
-    // TODO: get user's information
-
-    // TODO: get user's order history
 }
