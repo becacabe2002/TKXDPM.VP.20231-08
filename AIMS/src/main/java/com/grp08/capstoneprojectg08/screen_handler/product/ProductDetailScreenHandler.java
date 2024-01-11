@@ -34,7 +34,7 @@ public class ProductDetailScreenHandler implements Initializable {
 
     @FXML
     private AnchorPane mainAnchorPane;
-    private EndpointRegister endpointRegister = new EndpointRegister();
+    private final EndpointRegister endpointRegister = new EndpointRegister();
 
     @FXML
     private Button closeButton;
