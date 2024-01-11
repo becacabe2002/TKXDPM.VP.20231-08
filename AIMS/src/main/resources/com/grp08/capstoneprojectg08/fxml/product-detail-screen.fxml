@@ -25,7 +25,7 @@
         <ImageView fitHeight="52.0" fitWidth="61.0" layoutX="14.0" layoutY="34.0" pickOnBounds="true" preserveRatio="true">
             <Image url="@../assets/shop_icon.png" />
         </ImageView>
-        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="1280.0" layoutY="71.0" minHeight="30.0" prefWidth="40.0" style="-fx-background-color: #E1C78F; -fx-background-radius: 15;" text="2" textAlignment="CENTER" textOverrun="WORD_ELLIPSIS" wrapText="true">
+        <Label fx:id="NumberItemInCartLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="1280.0" layoutY="71.0" minHeight="30.0" prefWidth="40.0" style="-fx-background-color: #E1C78F; -fx-background-radius: 15;" text="2" textAlignment="CENTER" textOverrun="WORD_ELLIPSIS" wrapText="true">
             <font>
                 <Font name="Arial Bold Italic" size="18.0" />
             </font>

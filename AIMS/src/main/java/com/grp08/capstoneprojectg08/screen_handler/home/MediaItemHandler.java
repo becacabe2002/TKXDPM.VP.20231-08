@@ -127,6 +127,20 @@ public class MediaItemHandler implements Initializable {
                     // Show a success message (you can use a dialog, toast, or any UI component)
                     System.out.println("Item added to cart successfully!");
                     showAlert("Success", "Item added to cart successfully!", Alert.AlertType.INFORMATION);
+                    try{
+                        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/grp08/capstoneprojectg08/fxml/home-screen.fxml"));
+                        Parent mediaItemRoot = loader.load();
+                        HomeScreenHandler homeScreenHandler = loader.getController();
+                        BaseRequest request = new BaseRequest();
+                        request.setMethod(RequestMethod.GET);
+                        request.setEndpoint("/cart/info");
+                        BaseResponse res = endpointRegister.handleRequest(request);
+                        JSONObject body = res.getBody();
+                        int numberItems = body.getInt("numberOfItems");
+                        homeScreenHandler.NumberItemInCartLabel.setText(String.valueOf(numberItems));
+                    } catch (IOException e){
+                        System.err.println(e.getMessage());
+                    }
                 } else {
                     // Handle failure
                     // Show an error message (you can use a dialog, toast, or any UI component)

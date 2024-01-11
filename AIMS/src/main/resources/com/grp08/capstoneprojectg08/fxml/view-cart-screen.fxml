@@ -8,7 +8,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
 
 <AnchorPane prefHeight="768.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.grp08.capstoneprojectg08.screen_handler.cart.CartScreenHandler">
     <AnchorPane prefHeight="120.0" style="-fx-background-color: #B0926A;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -58,19 +57,19 @@
             <Font name="Arial" size="18.0" />
          </font>
       </Label>
-      <Text fill="#1e7c1b" layoutX="132.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" text="120.00 $">
+      <Label fx:id="SubtotalLabel" layoutX="132.0" layoutY="29.0" text="0 $" textFill="#3b9a43">
          <font>
             <Font name="System Italic" size="18.0" />
          </font>
-      </Text>
-      <Text fill="#1e7c1b" layoutX="132.0" layoutY="86.0" strokeType="OUTSIDE" strokeWidth="0.0" text="12.00 $">
+      </Label>
+      <Label fx:id="VATLabel" layoutX="132.0" layoutY="70.0" text="0 $" textFill="#3b9a43">
          <font>
             <Font name="System Italic" size="18.0" />
          </font>
-      </Text>
-      <Text fill="#1e7c1b" layoutX="132.0" layoutY="120.0" strokeType="OUTSIDE" strokeWidth="0.0" text="132.00 $">
+      </Label>
+      <Label fx:id="AmountLabel" layoutX="130.0" layoutY="101.0" text="0 $" textFill="#3b9a43">
          <font>
-            <Font name="System Bold Italic" size="18.0" />
+            <Font name="System Bold Italic" size="20.0" />
          </font>
       </Text>
    </AnchorPane>

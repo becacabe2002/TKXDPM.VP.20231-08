@@ -43,6 +43,12 @@ public class CartScreenHandler implements Initializable {
     @FXML
     private Button backHomeBtn;
     @FXML
+    private Label SubtotalLabel;
+    @FXML
+    private Label VATLabel;
+    @FXML
+    private Label AmountLabel;
+    @FXML
     private Button placeOrderBtn;
     @FXML
     private VBox cartItemsVBox;
@@ -187,5 +193,13 @@ public class CartScreenHandler implements Initializable {
         boolean fastShipping = mediaJson.getBoolean("fastShipping");
 
         return new Media(ID, category, price, stockQuantity, title, value, imageUrl, fastShipping);
+    }
+
+    private void showAlert(String title, String message, Alert.AlertType alertType) {
+        Alert alert = new Alert(alertType);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
     }
 }

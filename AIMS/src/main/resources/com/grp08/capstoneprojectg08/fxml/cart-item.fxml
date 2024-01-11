@@ -30,10 +30,10 @@
         </Label>
     </VBox>
     <TextField fx:id="quantityText" alignment="CENTER" layoutX="516.0" layoutY="50.0" prefHeight="25.0" prefWidth="127.0" text="2" />
-    <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="652.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
+    <ImageView fx:id="IncreaseButton" fitHeight="30.0" fitWidth="30.0" layoutX="652.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true" onMouseClicked="#increaseItemIconClick">
         <Image url="@../assets/icon_arrow_up.png" />
     </ImageView>
-    <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="652.0" layoutY="63.0" pickOnBounds="true" preserveRatio="true">
+    <ImageView fx:id="DecreaseButton" fitHeight="30.0" fitWidth="30.0" layoutX="652.0" layoutY="63.0" pickOnBounds="true" preserveRatio="true" onMouseClicked="#decreaseItemIconClick">
         <Image url="@../assets/icon_arrow_down.png" />
     </ImageView>
     <Label layoutX="739.0" layoutY="22.0" text="Total">
