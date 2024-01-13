@@ -59,13 +59,13 @@
             <padding>
                 <Insets bottom="10.0" left="20.0" right="20.0" top="5.0" />
             </padding>
-            <TextField GridPane.columnIndex="1" />
+            <TextField fx:id="name" GridPane.columnIndex="1" />
             <Label text="Name">
                 <font>
                     <Font name="Arial Bold" size="18.0" />
                 </font>
             </Label>
-            <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextField fx:id="phoneNum" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <Label text="Phone" GridPane.rowIndex="1">
                 <font>
                     <Font name="Arial Bold" size="18.0" />
@@ -86,8 +86,8 @@
                     <Font name="Arial Bold" size="18.0" />
                 </font>
             </Label>
-            <TextArea prefHeight="150.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-            <TextArea prefHeight="150.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+            <TextArea fx:id="detailAddress" prefHeight="150.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <TextArea fx:id="instruction" prefHeight="150.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
             <SplitMenuButton alignment="CENTER" mnemonicParsing="false" prefWidth="150.0" text="Pick a city" GridPane.columnIndex="1" GridPane.rowIndex="2">
                 <items>
                     <MenuItem mnemonicParsing="false" text="Action 1" />

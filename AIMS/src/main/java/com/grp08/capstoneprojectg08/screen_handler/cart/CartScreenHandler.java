@@ -10,6 +10,8 @@ import com.grp08.capstoneprojectg08.response.BaseResponse;
 import com.grp08.capstoneprojectg08.response.ResponseCode;
 
 
+import com.grp08.capstoneprojectg08.screen_handler.HandlerDto;
+import com.grp08.capstoneprojectg08.screen_handler.delivery.DeliveryFormHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
@@ -186,17 +188,15 @@ public class CartScreenHandler implements Initializable {
                     // Load the FXML file for the home screen
                     FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/grp08/capstoneprojectg08/fxml/delivery-form.fxml"));
                     Parent root = loader.load();
-
-                    // Create a new stage for the home screen
-                    Stage stage = new Stage();
-                    stage.setScene(new Scene(root));
+                    DeliveryFormHandler handler = loader.getController();
+                    HandlerDto.getInstance().registerDeliverFormHandler(handler);
 
                     // Close the current product detail stage
                     Stage currentStage = (Stage) placeOrderBtn.getScene().getWindow();
-                    currentStage.close();
+                    currentStage.setScene(new Scene(root));
 
                     // Show the home screen
-                    stage.show();
+                    currentStage.show();
                 } catch (IOException e) {
                     e.printStackTrace();
                     // Handle the exception accordingly

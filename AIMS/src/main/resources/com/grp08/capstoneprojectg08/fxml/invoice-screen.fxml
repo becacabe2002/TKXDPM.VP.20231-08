@@ -85,32 +85,32 @@
                     <Font name="Arial Bold" size="18.0" />
                 </font>
             </Label>
-              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Include Fast shipping" GridPane.columnIndex="1" GridPane.rowIndex="3">
+              <Text fx:id="shipMethod" strokeType="OUTSIDE" strokeWidth="0.0" text="Include Fast shipping" GridPane.columnIndex="1" GridPane.rowIndex="3">
                   <font>
                       <Font size="16.0" />
                   </font>
               </Text>
-         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="slkjsahlsjdhfsjncncskjdnkdsjncdncsdncsdncksncckdsnksdncksdncksdjcnskdnc" wrappingWidth="240.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
+         <Text fx:id="detail" strokeType="OUTSIDE" strokeWidth="0.0" text="slkjsahlsjdhfsjncncskjdnkdsjncdncsdncsdncksncckdsnksdncksdncksdjcnskdnc" wrappingWidth="240.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
             <font>
                <Font size="16.0" />
             </font>
          </Text>
-         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Hanoi" GridPane.columnIndex="1" GridPane.rowIndex="2">
+         <Text fx:id="city" strokeType="OUTSIDE" strokeWidth="0.0" text="Hanoi" GridPane.columnIndex="1" GridPane.rowIndex="2">
             <font>
                <Font size="16.0" />
             </font>
          </Text>
-         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="0123456789" GridPane.columnIndex="1" GridPane.rowIndex="1">
+         <Text fx:id="phoneNum" strokeType="OUTSIDE" strokeWidth="0.0" text="0123456789" GridPane.columnIndex="1" GridPane.rowIndex="1">
             <font>
                <Font size="16.0" />
             </font>
          </Text>
-         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Name" GridPane.columnIndex="1">
+         <Text fx:id="name" strokeType="OUTSIDE" strokeWidth="0.0" text="Name" GridPane.columnIndex="1">
             <font>
                <Font size="16.0" />
             </font>
          </Text>
-         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="akjdhsđslkncncsjncksdncckdncksnjcksncksdncsdnsdjcnjsdcjdn" wrappingWidth="240.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
+         <Text fx:id="instruction" strokeType="OUTSIDE" strokeWidth="0.0" text="akjdhsđslkncncsjncksdncckdncksnjcksncksdncsdnsdjcnjsdcjdn" wrappingWidth="240.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
             <font>
                <Font size="16.0" />
             </font>
@@ -145,32 +145,32 @@
                <Font name="Arial Bold" size="18.0" />
             </font>
          </Label>
-         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="10:20pm 21/10/2023" GridPane.columnIndex="3">
+         <Text fx:id="time" strokeType="OUTSIDE" strokeWidth="0.0" text="10:20pm 21/10/2023" GridPane.columnIndex="3">
             <font>
                <Font size="16.0" />
             </font>
          </Text>
-         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="slkdjflsjflkdsjhfsjdhfldsjfljdflkdsjkjhdafkđsfldsjhf" wrappingWidth="270.0" GridPane.columnIndex="3" GridPane.rowIndex="1">
+         <Text fx:id="fastInstruction" strokeType="OUTSIDE" strokeWidth="0.0" text="slkdjflsjflkdsjhfsjdhfldsjfljdflkdsjkjhdafkđsfldsjhf" wrappingWidth="270.0" GridPane.columnIndex="3" GridPane.rowIndex="1">
             <font>
                <Font size="16.0" />
             </font>
          </Text>
-         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="100.00 $" GridPane.columnIndex="3" GridPane.rowIndex="2">
+         <Text fx:id="subTotal" strokeType="OUTSIDE" strokeWidth="0.0" text="100.00 $" GridPane.columnIndex="3" GridPane.rowIndex="2">
             <font>
                <Font size="16.0" />
             </font>
          </Text>
-         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="10.00 $" GridPane.columnIndex="3" GridPane.rowIndex="3">
+         <Text fx:id="VAT" strokeType="OUTSIDE" strokeWidth="0.0" text="10.00 $" GridPane.columnIndex="3" GridPane.rowIndex="3">
             <font>
                <Font size="16.0" />
             </font>
          </Text>
-         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="20.00 $" GridPane.columnIndex="3" GridPane.rowIndex="4">
+         <Text fx:id="fee" strokeType="OUTSIDE" strokeWidth="0.0" text="20.00 $" GridPane.columnIndex="3" GridPane.rowIndex="4">
             <font>
                <Font size="16.0" />
             </font>
          </Text>
-         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="130.00 $" GridPane.columnIndex="3" GridPane.rowIndex="5">
+         <Text fx:id="total" strokeType="OUTSIDE" strokeWidth="0.0" text="130.00 $" GridPane.columnIndex="3" GridPane.rowIndex="5">
             <font>
                <Font size="16.0" />
             </font>
